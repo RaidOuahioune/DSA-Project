@@ -3,14 +3,31 @@
 
 #include <iostream>
 #include "MedicalInfo.h"
+using std::ostream;
 using std::string;
 
 class Patient
 {
 public:
     Patient(const string &, const string &, const string &, const string &, const string &, char, const string &, const MedicalInfo &);
+
     void printPatient() const;
     bool operator<(const Patient &) const;
+    bool operator>(const Patient &) const;
+    bool operator==(const Patient &) const;
+    /* friend ostream &operator<<(ostream &cout, const Patient &other)
+    {
+        cout << "ID: " << other.ID << endl
+             << "fullName: " << other.fullName << endl
+             << "Birthday: " << other.bDay << endl
+             << "Entry Date: " << other.entryDate << endl
+             << "Adress: " << other.adress << endl
+             << "Gender: " << ((other.FM == 'M') ? "Male" : "Female") << endl
+             << "Telephone: " << other.tel << endl;
+        other.MI.printInfo();
+
+        return cout;
+    }; */
 
 private:
     string ID;
@@ -51,5 +68,15 @@ bool Patient::operator<(const Patient &other) const
     }
     return (sum1 < sum2);
 };
+
+bool Patient::operator==(const Patient &other) const
+{
+    return (this->ID == other.ID);
+}
+
+bool Patient::operator>(const Patient &other) const
+{
+    return !((*this) < other) && !((*this) == other);
+}
 
 #endif

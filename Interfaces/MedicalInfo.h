@@ -39,6 +39,7 @@ void MedicalInfo::printInfo() const
     cout << HR << endl;
     for (const string &i : MedicalsTaken)
         cout << i << endl;
+    cout << endl;
 }
 
 #endif //
