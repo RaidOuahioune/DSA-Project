@@ -1,0 +1,45 @@
+ABO: AB+
+CD: Diabete
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: smecta aspirine rumafède gaviscon 
+Time: 02-11-2022 23-43-04
+Notes: A Stupid Note
+
+ABO: AB+
+CD: Diabete
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: smecta aspirine rumafède gaviscon 
+Time: 02-11-2022 23-44-02
+Notes: A Stupid Note
+
+ABO: AB+
+CD: Diabete
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: smecta aspirine rumafède gaviscon 
+Time: 02-11-2022 23-44-45
+Notes: A Stupid Note
+
+ABO: AB+
+CD: Diabete
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: smecta aspirine rumafède gaviscon 
+Time: 02-11-2022 23-48-22
+Notes: A Stupid Note
+
+ABO: AB+
+CD: Diabete
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: smecta aspirine rumafède gaviscon 
+Time: 02-11-2022 23-50-40
+Notes: A Stupid Note
+

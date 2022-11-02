@@ -10,24 +10,12 @@ class Patient
 {
 public:
     Patient(const string &, const string &, const string &, const string &, const string &, char, const string &, const MedicalInfo &);
-
+    string getId() const;
+    MedicalInfo getMedicalInfo() const;
     void printPatient() const;
     bool operator<(const Patient &) const;
     bool operator>(const Patient &) const;
     bool operator==(const Patient &) const;
-    /* friend ostream &operator<<(ostream &cout, const Patient &other)
-    {
-        cout << "ID: " << other.ID << endl
-             << "fullName: " << other.fullName << endl
-             << "Birthday: " << other.bDay << endl
-             << "Entry Date: " << other.entryDate << endl
-             << "Adress: " << other.adress << endl
-             << "Gender: " << ((other.FM == 'M') ? "Male" : "Female") << endl
-             << "Telephone: " << other.tel << endl;
-        other.MI.printInfo();
-
-        return cout;
-    }; */
 
 private:
     string ID;
@@ -42,6 +30,14 @@ private:
 
 Patient::Patient(const string &ID, const string &fullName, const string &bDay, const string &entryDate, const string &adress, char MF, const string &tel, const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(entryDate), adress(adress), FM(FM), tel(tel), MI(MI) {}
 
+string Patient::getId() const
+{
+    return this->ID;
+}
+MedicalInfo Patient::getMedicalInfo() const
+{
+    return this->MI;
+}
 void Patient::printPatient() const
 {
     cout << "ID: " << ID << endl

@@ -28,14 +28,14 @@ public:
     void InsertElement(const Patient &);
     bool BinarySearch(const Patient &);
     void deleteElement(const Patient &);
-    int getNumberOnNodes() const;
+    int getNumberOfPatient() const;
     void update(const string &, const MedicalInfo &);
     BST(){};
     ~BST();
 
 private:
     BSTNode *root = nullptr;
-    int numberOfNodes = 0;
+    int numberOfPatient = 0;
     void InOrderHelper(BSTNode *&);
     void InsertElementHelper(BSTNode *&, const Patient &);
     bool BinarySearchHelper(BSTNode *&, const Patient &);
@@ -43,9 +43,9 @@ private:
     void deleteElementhelper(BSTNode *&root, const Patient &);
     Patient getMin(BSTNode *&root);
 };
-int BST::getNumberOnNodes() const
+int BST::getNumberOfPatient() const
 {
-    return this->numberOfNodes;
+    return this->numberOfPatient;
 }
 
 void BST::InOrder()
@@ -98,7 +98,7 @@ void BST::DestructorHelper(BSTNode **root) // equivalent to make empty()
         delete (*root);
         *root = nullptr;
     }
-    numberOfNodes = 0;
+    numberOfPatient = 0;
 };
 
 BST::~BST()
@@ -111,7 +111,7 @@ void BST::InsertElementHelper(BSTNode *&root, const Patient &a)
     if (root == nullptr)
     {
         root = new BSTNode(a);
-        numberOfNodes++;
+        numberOfPatient++;
     }
     else
     {
@@ -168,6 +168,7 @@ void BST::deleteElementhelper(BSTNode *&root, const Patient &value)
         {
             delete root;
             root = nullptr;
+            this->numberOfPatient--;
         }
         else if (root->left == nullptr) // one child only
         {
@@ -175,12 +176,14 @@ void BST::deleteElementhelper(BSTNode *&root, const Patient &value)
             BSTNode *temp = root->right;
             delete root;
             root = temp;
+            this->numberOfPatient--;
         }
         else if (root->right == nullptr)
         {
             BSTNode *temp = root->left;
             delete root;
             root = temp;
+            this->numberOfPatient--;
         }
         else
         { // elemnt is a full node

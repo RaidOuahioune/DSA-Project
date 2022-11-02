@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include "../utilities/utilities.h"
 
 using std::cout;
 using std::endl;
@@ -12,7 +13,7 @@ using std::vector;
 class MedicalInfo
 {
 public:
-    MedicalInfo(const string &, const string &, const string &, const float &, const float &, const vector<string> &);
+    MedicalInfo(const string &, const string &, const string &, const float &, const float &, const vector<string> &, const string &);
     ~MedicalInfo(){};
 
     void printInfo() const;
@@ -24,22 +25,31 @@ private:
     float BP;                     // Blood Pressure in MMHG(Millimeters Of Mercury unit mesure)
     float HR;                     // Heart Rate in BPS (Beats per Second unit mesure)
     vector<string> MedicalsTaken; // Patient's last taken Medicals
-
+    string briefNote;             // in case the doctor needs to leave a comment on patient state
+    string time;                  // the time of the diagnosis
+    // string Department;          // ?
     friend class Patient;
+    friend class FileHandler;
 };
 
-MedicalInfo::MedicalInfo(const string &ABO, const string &CD, const string &Allergies, const float &BP, const float &HR, const vector<string> &MedicalsTaken) : ABO(ABO), CD(CD), Allergies(Allergies), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken) {}
+MedicalInfo::MedicalInfo(const string &ABO = "", const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "") : ABO(ABO), CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note)
+{
+    this->time = getTime(); // get current time
+}
 
 void MedicalInfo::printInfo() const
 {
     cout << ABO << endl;
     cout << CD << endl;
-    cout << Allergies << endl;
+    cout << this->Allergies<<endl;
     cout << BP << endl;
     cout << HR << endl;
     for (const string &i : MedicalsTaken)
         cout << i << endl;
-    cout << endl;
+    cout << briefNote << endl;
+    cout << time << endl
+         << endl;
+    ;
 }
 
 #endif //
