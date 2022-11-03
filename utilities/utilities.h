@@ -1,16 +1,16 @@
 #ifndef Utils_h
 #define Utils_h
+
 #include <iomanip>
 #include <ctime>
 #include <sstream>
-#include <string>
 #include <vector>
 #include <fstream>
-#include <boost/algorithm/string/classification.hpp> // Include boost::for is_any_of
-#include <boost/algorithm/string/split.hpp>
+
 using std::ifstream;
 using std::put_time;
 using std::string;
+using std::stringstream;
 using std::vector;
 
 bool is_file_exist(const char *fileName)
@@ -33,7 +33,11 @@ string getTime()
 vector<string> getVector(const string &sentence)
 {
   vector<string> medicals;
-  boost::split(medicals, sentence, boost::is_any_of(", "), boost::token_compress_on);
+  stringstream ss(sentence);
+  string words;
+  while (ss >> words)
+    medicals.push_back(words);
+
   return medicals;
 }
 
