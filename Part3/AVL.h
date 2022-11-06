@@ -6,22 +6,6 @@
 #include <iostream>
 using namespace std;
 
-// AvlTree class
-//
-// CONSTRUCTION: zero parameter
-//
-// ******************PUBLIC OPERATIONS*********************
-// void insert( x )       --> Insert x
-// void remove( x )       --> Remove x (unimplemented)
-// bool contains( x )     --> Return true if x is present
-// Patient findMin( )  --> Return smallest item
-// Patient findMax( )  --> Return largest item
-// boolean isEmpty( )     --> Return true if empty; else false
-// void makeEmpty( )      --> Remove all items
-// void printTree( )      --> Print tree in sorted order
-// ******************ERRORS********************************
-// Throws UnderflowException as warranted
-
 class AvlNode
 {
 public:
@@ -82,48 +66,16 @@ public:
         return *this;
     }
 
-    /**
-     * Find the smallest item in the tree.
-     * Throw UnderflowException if empty.
-     */
-    const Patient &findMin() const
+    bool contains(const string &ID) const
     {
-        if (isEmpty())
-            throw "UnderflowException";
-        return findMin(root)->element;
+        return contains(ID, root);
     }
 
-    /**
-     * Find the largest item in the tree.
-     * Throw UnderflowException if empty.
-     */
-    const Patient &findMax() const
-    {
-        if (isEmpty())
-            throw "UnderflowException";
-        return findMax(root)->element;
-    }
-
-    /**
-     * Returns true if x is found in the tree.
-     */
-    bool contains(const Patient &x) const
-    {
-        return contains(x, root);
-    }
-
-    /**
-     * Test if the tree is logically empty.
-     * Return true if empty, false otherwise.
-     */
     bool isEmpty() const
     {
         return root == nullptr;
     }
 
-    /**
-     * Print the tree contents in sorted order.
-     */
     void printTree() const
     {
         if (isEmpty())
@@ -132,36 +84,27 @@ public:
             printTree(root);
     }
 
-    /**
-     * Make the tree logically empty.
-     */
     void makeEmpty()
     {
         makeEmpty(root);
     }
 
-    /**
-     * Insert x into the tree; duplicates are ignored.
-     */
-    void insert(const Patient &x)
+    void insert(const Patient &ID)
     {
-        insert(x, root);
+        insert(ID, root);
+    }
+
+    void insert(Patient &&ID)
+    {
+        insert(std::move(ID), root);
     }
 
     /**
-     * Insert x into the tree; duplicates are ignored.
+     * Remove ID from the tree. Nothing is done if ID is not found.
      */
-    void insert(Patient &&x)
+    void remove(const Patient &ID)
     {
-        insert(std::move(x), root);
-    }
-
-    /**
-     * Remove x from the tree. Nothing is done if x is not found.
-     */
-    void remove(const Patient &x)
-    {
-        remove(x, root);
+        remove(ID, root);
     }
 
 private:
@@ -169,55 +112,55 @@ private:
 
     /**
      * Internal method to insert into a subtree.
-     * x is the item to insert.
+     * ID is the item to insert.
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
-    void insert(const Patient &x, AvlNode *&t)
+    void insert(const Patient &ID, AvlNode *&t)
     {
         if (t == nullptr)
-            t = new AvlNode{x, nullptr, nullptr};
-        else if (x < t->element)
-            insert(x, t->left);
-        else if (t->element < x)
-            insert(x, t->right);
+            t = new AvlNode{ID, nullptr, nullptr};
+        else if (ID < t->element)
+            insert(ID, t->left);
+        else if (t->element < ID)
+            insert(ID, t->right);
 
         balance(t);
     }
 
     /**
      * Internal method to insert into a subtree.
-     * x is the item to insert.
+     * ID is the item to insert.
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
-    void insert(Patient &&x, AvlNode *&t)
+    void insert(Patient &&ID, AvlNode *&t)
     {
         if (t == nullptr)
-            t = new AvlNode{std::move(x), nullptr, nullptr};
-        else if (x < t->element)
-            insert(std::move(x), t->left);
-        else if (t->element < x)
-            insert(std::move(x), t->right);
+            t = new AvlNode{std::move(ID), nullptr, nullptr};
+        else if (ID < t->element)
+            insert(std::move(ID), t->left);
+        else if (t->element < ID)
+            insert(std::move(ID), t->right);
 
         balance(t);
     }
 
     /**
      * Internal method to remove from a subtree.
-     * x is the item to remove.
+     * ID is the item to remove.
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
-    void remove(const Patient &x, AvlNode *&t)
+    void remove(const Patient &ID, AvlNode *&t)
     {
         if (t == nullptr)
             return; // Item not found; do nothing
 
-        if (x < t->element)
-            remove(x, t->left);
-        else if (t->element < x)
-            remove(x, t->right);
+        if (ID < t->element)
+            remove(ID, t->left);
+        else if (t->element < ID)
+            remove(ID, t->right);
         else if (t->left != nullptr && t->right != nullptr) // Two children
         {
             t->element = findMin(t->right)->element;
@@ -255,10 +198,6 @@ private:
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 
-    /**
-     * Internal method to find the smallest item in a subtree t.
-     * Return node containing the smallest item.
-     */
     AvlNode *findMin(AvlNode *t) const
     {
         if (t == nullptr)
@@ -268,52 +207,19 @@ private:
         return findMin(t->left);
     }
 
-    /**
-     * Internal method to find the largest item in a subtree t.
-     * Return node containing the largest item.
-     */
-    AvlNode *findMax(AvlNode *t) const
-    {
-        if (t != nullptr)
-            while (t->right != nullptr)
-                t = t->right;
-        return t;
-    }
-
-    /**
-     * Internal method to test if an item is in a subtree.
-     * x is item to search for.
-     * t is the node that roots the tree.
-     */
-    bool contains(const Patient &x, AvlNode *t) const
+    bool contains(const string &ID, AvlNode *t) const
     {
         if (t == nullptr)
             return false;
-        else if (x < t->element)
-            return contains(x, t->left);
-        else if (t->element < x)
-            return contains(x, t->right);
+        else if (stol(ID) < stol(t->element.getId()))
+            return contains(ID, t->left);
+        else if (stol(t->element.getId()) < stol(ID))
+            return contains(ID, t->right);
         else
             return true; // Match
+        return true;
     }
-    /****** NONRECURSIVE VERSION*************************
-        bool contains( const Patient & x, AvlNode *t ) const
-        {
-            while( t != nullptr )
-                if( x < t->element )
-                    t = t->left;
-                else if( t->element < x )
-                    t = t->right;
-                else
-                    return true;    // Match
 
-            return false;   // No match
-        }
-    *****************************************************/
-
-    /**
-     * Internal method to make subtree empty.
-     */
     void makeEmpty(AvlNode *&t)
     {
         if (t != nullptr)
@@ -325,9 +231,6 @@ private:
         t = nullptr;
     }
 
-    /**
-     * Internal method to print a subtree rooted at t in sorted order.
-     */
     void printTree(AvlNode *t) const
     {
         if (t != nullptr)
@@ -338,9 +241,6 @@ private:
         }
     }
 
-    /**
-     * Internal method to clone subtree.
-     */
     AvlNode *clone(AvlNode *t) const
     {
         if (t == nullptr)
@@ -348,10 +248,7 @@ private:
         else
             return new AvlNode{t->element, clone(t->left), clone(t->right), t->height};
     }
-    // Avl manipulations
-    /**
-     * Return the height of node t or -1 if nullptr.
-     */
+
     int height(AvlNode *t) const
     {
         return t == nullptr ? -1 : t->height;
@@ -362,11 +259,6 @@ private:
         return lhs > rhs ? lhs : rhs;
     }
 
-    /**
-     * Rotate binary tree node with left child.
-     * For AVL trees, this is a single rotation for case 1.
-     * Update heights, then set new root.
-     */
     void rotateWithLeftChild(AvlNode *&k2)
     {
         AvlNode *k1 = k2->left;
@@ -377,11 +269,6 @@ private:
         k2 = k1;
     }
 
-    /**
-     * Rotate binary tree node with right child.
-     * For AVL trees, this is a single rotation for case 4.
-     * Update heights, then set new root.
-     */
     void rotateWithRightChild(AvlNode *&k1)
     {
         AvlNode *k2 = k1->right;
@@ -392,24 +279,12 @@ private:
         k1 = k2;
     }
 
-    /**
-     * Double rotate binary tree node: first left child.
-     * with its right child; then node k3 with new left child.
-     * For AVL trees, this is a double rotation for case 2.
-     * Update heights, then set new root.
-     */
     void doubleWithLeftChild(AvlNode *&k3)
     {
         rotateWithRightChild(k3->left);
         rotateWithLeftChild(k3);
     }
 
-    /**
-     * Double rotate binary tree node: first right child.
-     * with its left child; then node k1 with new right child.
-     * For AVL trees, this is a double rotation for case 3.
-     * Update heights, then set new root.
-     */
     void doubleWithRightChild(AvlNode *&k1)
     {
         rotateWithLeftChild(k1->right);
