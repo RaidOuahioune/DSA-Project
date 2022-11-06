@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "MedicalInfo.h"
+#include "utilities.h"
 using std::ostream;
 using std::string;
 
@@ -52,17 +53,7 @@ void Patient::printPatient() const
 
 bool Patient::operator<(const Patient &other) const
 {
-    string ID1 = other.ID;
-    string ID2 = this->ID;
-
-    int sum1(0);
-    int sum2(0);
-    for (int i = 0; i < ID1.size(); ++i)
-    {
-        sum1 += ID1[i];
-        sum2 += ID2[i];
-    }
-    return (sum1 < sum2);
+    return stoi(this->ID) < stoi(other.ID);
 };
 
 bool Patient::operator==(const Patient &other) const

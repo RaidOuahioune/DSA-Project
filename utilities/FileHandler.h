@@ -33,11 +33,10 @@ void FileHandler::InsertMedicalInfo(const MedicalInfo &info) const
     file << "HR: " << info.HR << endl;
     file << "Medicals Taken: ";
     for (const string &medical : info.MedicalsTaken)
-    {
       file << medical << " ";
-    }
     file << endl;
     file << "Time: " << info.time << endl;
+    file << "Department: " << info.Department << endl;
     file << "Notes: " << info.briefNote << endl;
     file << endl;
   }
@@ -58,8 +57,8 @@ vector<MedicalInfo> FileHandler::getAllHistory() const
   { // we read line by line
 
     string line;
-    // we skip the first 9 lines of the genaral information
-    for (int i = 0; i <= 8; ++i)
+    // we skip the first 10 lines of the genaral information
+    for (int i = 0; i <= 9; ++i)
       getline(file, line);
 
     // Medical Info Object to be pushed to the output vector
@@ -69,7 +68,7 @@ vector<MedicalInfo> FileHandler::getAllHistory() const
 
     while (getline(file, line))
     {
-      if (counter != 8)
+      if (counter != 9)
       {
         if (counter == 0)
 
@@ -101,6 +100,10 @@ vector<MedicalInfo> FileHandler::getAllHistory() const
 
         else if (counter == 7)
 
+          info.Department = line.substr(string("Department: ").size())[0];
+
+        else if (counter == 8)
+
           info.briefNote = line.substr(string("Notes: ").size());
 
         // incrementing the counter is included in every case
@@ -110,7 +113,7 @@ vector<MedicalInfo> FileHandler::getAllHistory() const
       else
       {
         // This is an empty line so ignore it
-        // we push the Object to info since all its data members are filled
+        // we push the Object to output vector since all its data members are filled
         counter = 0;
         output.push_back(info);
       }

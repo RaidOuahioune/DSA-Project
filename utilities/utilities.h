@@ -41,4 +41,16 @@ vector<string> getVector(const string &sentence)
   return medicals;
 }
 
+string generateID()
+{
+  auto t = std::time(nullptr);
+  auto tm = *std::localtime(&t);
+
+  std::ostringstream oss;
+  // we have chosen the ID by time, so that we are sure that it is unique
+  oss << std::put_time(&tm, "%d%m%Y%H%M%S");
+
+  return oss.str();
+}
+
 #endif
