@@ -99,12 +99,16 @@ public:
         insert(std::move(ID), root);
     }
 
+    void update(const string& ID,const MedicalInfo& info){
+        
+    }
+
     /**
      * Remove ID from the tree. Nothing is done if ID is not found.
      */
-    void remove(const Patient &ID)
+    void Delete(const string &ID)
     {
-        remove(ID, root);
+        Delete(ID, root);
     }
 
 private:
@@ -147,24 +151,24 @@ private:
     }
 
     /**
-     * Internal method to remove from a subtree.
-     * ID is the item to remove.
+     * Internal method to Delete from a subtree.
+     * ID is the item to Delete.
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
-    void remove(const Patient &ID, AvlNode *&t)
+    void Delete(const string &ID, AvlNode *&t)
     {
         if (t == nullptr)
             return; // Item not found; do nothing
 
-        if (ID < t->element)
-            remove(ID, t->left);
-        else if (t->element < ID)
-            remove(ID, t->right);
+        if (stol(ID) < stol(t->element.getId()))
+            Delete(ID, t->left);
+        else if (stol(t->element.getId()) < stol(ID))
+            Delete(ID, t->right);
         else if (t->left != nullptr && t->right != nullptr) // Two children
         {
             t->element = findMin(t->right)->element;
-            remove(t->element, t->right);
+            Delete(t->element.getId(), t->right);
         }
         else
         {
