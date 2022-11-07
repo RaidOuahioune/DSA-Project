@@ -7,23 +7,19 @@ using std::ofstream;
 class FileHandler
 {
 public:
-  FileHandler(const string &);
-  void InsertMedicalInfo(const MedicalInfo &) const; // this function Insert the new inforamtion to the desired file given that the file already exists
-  void InsertFullData(const Patient &) const;        // Create a new file with current patient information
-  vector<MedicalInfo> getAllHistory() const;
+  FileHandler(){};
+  void InsertMedicalInfo(const MedicalInfo &, const string ID) const; // this function Insert the new inforamtion to the desired file given that the file already exists
+  void InsertFullData(const Patient &) const;                         // Create a new file with current patient information
+  vector<MedicalInfo> getAllHistory(const string &ID) const;
   ~FileHandler() {}
 
 private:
-  string FilePath; // THE PATh of the file where Patient Data is recorded
-  // each file stores all the Historical data of exactly one patient
 };
-
-FileHandler::FileHandler(const string &path) : FilePath(path) {}
-
-void FileHandler::InsertMedicalInfo(const MedicalInfo &info) const
+void FileHandler::InsertMedicalInfo(const MedicalInfo &info, const string ID) const
 {
   ofstream file;
-  file.open(this->FilePath, std::ios_base::app);
+  string FilePath = "Data/" + ID + ".txt";
+  file.open(FilePath, std::ios_base::app);
   if (file)
   {
     file << "ABO: " << info.ABO << endl;
@@ -48,17 +44,17 @@ void FileHandler::InsertMedicalInfo(const MedicalInfo &info) const
   file.close();
 }
 
-vector<MedicalInfo> FileHandler::getAllHistory() const
+vector<MedicalInfo> FileHandler::getAllHistory(const string &ID) const
 {
   vector<MedicalInfo> output;
   ifstream file;
-  file.open(this->FilePath);
+  file.open("Data/" + ID + ".txt");
   if (file)
   { // we read line by line
 
     string line;
-    // we skip the first 10 lines of the genaral information
-    for (int i = 0; i <= 9; ++i)
+    // we skip the first 7 lines of the genaral information
+    for (int i = 0; i <= 6; ++i)
       getline(file, line);
 
     // Medical Info Object to be pushed to the output vector
@@ -139,7 +135,7 @@ void FileHandler::InsertFullData(const Patient &patient) const
   else
   {
     ofstream file;
-    file.open(this->FilePath, std::ios_base::app);
+    file.open(path, std::ios_base::app);
     if (file)
     {
       file << "ID: " << patient.ID << endl;

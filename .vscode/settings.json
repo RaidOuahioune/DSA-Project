@@ -9,6 +9,7 @@
         "ostream": "cpp",
         "new": "cpp",
         "patient.h": "c",
-        "fstream": "c"
+        "fstream": "c",
+        "iostream": "cpp"
     }
 }

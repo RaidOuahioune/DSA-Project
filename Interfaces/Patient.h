@@ -30,7 +30,7 @@ private:
     friend class FileHandler;
 };
 
-Patient::Patient(const string &ID="", const string &fullName="", const string &bDay="", const string &adress="", char MF='', const string &tel="", const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(getTime()), adress(adress), FM(FM), tel(tel), MI(MI) {}
+Patient::Patient(const string &ID, const string &fullName, const string &bDay, const string &adress, char MF, const string &tel, const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(getTime()), adress(adress), FM(MF), tel(tel), MI(MI) {}
 
 string Patient::getId() const
 {
