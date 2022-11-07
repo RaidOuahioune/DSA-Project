@@ -129,6 +129,48 @@ vector<MedicalInfo> FileHandler::getAllHistory() const
 
 void FileHandler::InsertFullData(const Patient &patient) const
 {
+  string path = "Data/" + patient.ID + ".txt";
+  MedicalInfo info = patient.getMedicalInfo();
+  if (is_file_exist(path))
+  {
+    cout << "File already exists" << endl;
+    return;
+  }
+  else
+  {
+    ofstream file;
+    file.open(this->FilePath, std::ios_base::app);
+    if (file)
+    {
+      file << "ID: " << patient.ID << endl;
+      file << "FullName: " << patient.fullName << endl;
+      file << "BirthDay: " << patient.bDay << endl;
+      file << "Entry Date: " << patient.entryDate << endl;
+      file << "Adress: " << patient.adress << endl;
+      file << "Gender: " << patient.FM << endl;
+      file << "Telephone: " << patient.tel << endl;
+      // Now we insert the medical infos
+      file << "ABO: " << info.ABO << endl;
+      file << "CD: " << info.CD << endl;
+      file << "Allergies: " << info.Allergies << endl;
+      file << "BP: " << info.BP << endl;
+      file << "HR: " << info.HR << endl;
+      file << "Medicals Taken: ";
+      for (const string &medical : info.MedicalsTaken)
+        file << medical << " ";
+      file << endl;
+      file << "Time: " << info.time << endl;
+      file << "Department: " << info.Department << endl;
+      file << "Notes: " << info.briefNote << endl;
+      file << endl;
+    }
+    else
+    {
+      throw "Exception";
+    }
+
+    file.close();
+  }
 }
 
 #endif

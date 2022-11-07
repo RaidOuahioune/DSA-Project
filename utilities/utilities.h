@@ -13,7 +13,7 @@ using std::string;
 using std::stringstream;
 using std::vector;
 
-bool is_file_exist(const char *fileName)
+bool is_file_exist(const string &fileName)
 {
   std::ifstream infile(fileName);
   return infile.good();

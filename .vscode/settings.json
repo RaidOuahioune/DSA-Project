@@ -8,6 +8,7 @@
         "vector": "cpp",
         "ostream": "cpp",
         "new": "cpp",
-        "patient.h": "c"
+        "patient.h": "c",
+        "fstream": "c"
     }
 }

@@ -100,7 +100,7 @@ public:
     }
 
     void update(const string& ID,const MedicalInfo& info){
-        
+
     }
 
     /**
@@ -114,12 +114,6 @@ public:
 private:
     AvlNode *root;
 
-    /**
-     * Internal method to insert into a subtree.
-     * ID is the item to insert.
-     * t is the node that roots the subtree.
-     * Set the new root of the subtree.
-     */
     void insert(const Patient &ID, AvlNode *&t)
     {
         if (t == nullptr)
@@ -132,12 +126,7 @@ private:
         balance(t);
     }
 
-    /**
-     * Internal method to insert into a subtree.
-     * ID is the item to insert.
-     * t is the node that roots the subtree.
-     * Set the new root of the subtree.
-     */
+   
     void insert(Patient &&ID, AvlNode *&t)
     {
         if (t == nullptr)
@@ -150,12 +139,6 @@ private:
         balance(t);
     }
 
-    /**
-     * Internal method to Delete from a subtree.
-     * ID is the item to Delete.
-     * t is the node that roots the subtree.
-     * Set the new root of the subtree.
-     */
     void Delete(const string &ID, AvlNode *&t)
     {
         if (t == nullptr)

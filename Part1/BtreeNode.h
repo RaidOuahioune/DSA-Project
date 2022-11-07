@@ -1,6 +1,7 @@
 #ifndef BtreeNode_h
 #define BtreeNode_h
 #include <iostream>
+#include "../Interfaces/Patient.h"
 using std::cout;
 using std::endl;
 class BTreeNode

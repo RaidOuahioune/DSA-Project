@@ -10,7 +10,7 @@ using std::string;
 class Patient
 {
 public:
-    Patient(const string &, const string &, const string &, const string &, const string &, char, const string &, const MedicalInfo &);
+    Patient(const string &, const string &, const string &, const string &, char, const string &, const MedicalInfo &);
     string getId() const;
     MedicalInfo getMedicalInfo() const;
     void printPatient() const;
@@ -27,9 +27,10 @@ private:
     char FM;        // gender stands for Male or Female
     string tel;     // Phone number in case the hospital needed to concact the patient or the patient's family
     MedicalInfo MI; // from the MedicalInfo class
+    friend class FileHandler;
 };
 
-Patient::Patient(const string &ID, const string &fullName, const string &bDay, const string &entryDate, const string &adress, char MF, const string &tel, const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(entryDate), adress(adress), FM(FM), tel(tel), MI(MI) {}
+Patient::Patient(const string &ID="", const string &fullName="", const string &bDay="", const string &adress="", char MF='', const string &tel="", const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(getTime()), adress(adress), FM(FM), tel(tel), MI(MI) {}
 
 string Patient::getId() const
 {
@@ -42,8 +43,8 @@ MedicalInfo Patient::getMedicalInfo() const
 void Patient::printPatient() const
 {
     cout << "ID: " << ID << endl
-         << "fullName: " << fullName << endl
-         << "Birthday: " << bDay << endl
+         << "FullName: " << fullName << endl
+         << "BirthDay: " << bDay << endl
          << "Entry Date: " << entryDate << endl
          << "Adress: " << adress << endl
          << "Gender: " << ((FM == 'M') ? "Male" : "Female") << endl

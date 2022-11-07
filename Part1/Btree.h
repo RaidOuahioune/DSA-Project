@@ -14,8 +14,8 @@ public:
   BTree(int);
   ~BTree();
   void traverse();
-  bool Search(int);
-  void insertion(int);
+  bool contains(int);
+  void insert(int);
   void Delete(int);
 
 private:
@@ -41,14 +41,14 @@ void BTree::traverse()
   cout << endl;
 }
 
-bool BTree::Search(int k)
+bool BTree::contains(int k)
 {
   if (root == nullptr)
     return false;
   return (root->search(k) != nullptr);
 }
 // Insertion operation
-void BTree::insertion(int k)
+void BTree::insert(int k)
 {
   if (root == nullptr)
   {
