@@ -41,6 +41,7 @@ private:
     bool BinarySearchHelper(BSTNode *&, const string &) const;
     void DestructorHelper(BSTNode **);
     void deletehelper(BSTNode *&root, const string &);
+    void updateHelper(BSTNode *&root, const string &, const MedicalInfo &info);
     Patient getMin(BSTNode *&root);
 };
 int BST::getNumberOfPatient() const
@@ -95,7 +96,7 @@ void BST::DestructorHelper(BSTNode **root) // equivalent to make empty()
     {
         DestructorHelper(&((*root)->left));
         DestructorHelper(&((*root)->right));
-        delete(*root);
+        delete (*root);
         *root = nullptr;
     }
     numberOfPatient = 0;
@@ -192,6 +193,28 @@ void BST::deletehelper(BSTNode *&root, const string &value)
             // 2 Delete that value
             deletehelper(root->right, root->data.getId());
         }
+    }
+}
+
+void BST::update(const string &ID, const MedicalInfo &info)
+{
+    updateHelper(root, ID, info);
+}
+
+void BST::updateHelper(BSTNode &*root, const string &ID, const MedicalInfo &info)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    else
+    {
+        if (root->element.getId() == ID)
+            root->element.setMedicalInfo(info);
+        else if (stol(root->element.getId()) < stol(ID))
+            update(root->right, ID, info);
+        else
+            update(root->left, ID, info);
     }
 }
 

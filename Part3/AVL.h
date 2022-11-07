@@ -86,6 +86,7 @@ public:
 
     void makeEmpty()
     {
+        NumberOfPatient = 0;
         makeEmpty(root);
     }
 
