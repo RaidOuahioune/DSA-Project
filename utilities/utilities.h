@@ -1,12 +1,10 @@
 #ifndef Utils_h
 #define Utils_h
-
 #include <iomanip>
 #include <ctime>
 #include <sstream>
 #include <vector>
 #include <fstream>
-
 using std::ifstream;
 using std::put_time;
 using std::string;
