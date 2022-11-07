@@ -30,7 +30,7 @@ BTree::BTree(int treeOrder)
 }
 BTree::~BTree()
 {
-  delete root;// this line will recursively delete the whole tree due to the implmentation of Destructor of BtreeNode
+  delete root; // this line will recursively delete the whole tree due to the implmentation of Destructor of BtreeNode
   root = nullptr;
 }
 
@@ -38,7 +38,7 @@ void BTree::traverse()
 {
   if (root != nullptr)
     root->traverse();
-  cout<<endl;
+  cout << endl;
 }
 
 bool BTree::Search(int k)
@@ -81,7 +81,7 @@ void BTree::insertion(int k)
 // Delete Operation
 void BTree::Delete(int k)
 {
-  if (root==nullptr)
+  if (root == nullptr)
   {
     cout << "The tree is empty\n";
     return;

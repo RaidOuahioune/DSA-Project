@@ -25,9 +25,9 @@ class BST
 {
 public:
     void InOrder();
-    void InsertElement(const Patient &);
-    bool BinarySearch(const Patient &);
-    void deleteElement(const Patient &);
+    void insert(const Patient &);
+    bool contains(const string &);
+    void Delete(const string &);
     int getNumberOfPatient() const;
     void update(const string &, const MedicalInfo &);
     BST(){};
@@ -38,9 +38,9 @@ private:
     int numberOfPatient = 0;
     void InOrderHelper(BSTNode *&);
     void InsertElementHelper(BSTNode *&, const Patient &);
-    bool BinarySearchHelper(BSTNode *&, const Patient &);
+    bool BinarySearchHelper(BSTNode *&, const string &) const;
     void DestructorHelper(BSTNode **);
-    void deleteElementhelper(BSTNode *&root, const Patient &);
+    void deletehelper(BSTNode *&root, const string &);
     Patient getMin(BSTNode *&root);
 };
 int BST::getNumberOfPatient() const
@@ -62,29 +62,29 @@ void BST::InOrderHelper(BSTNode *&root)
     InOrderHelper(root->right);
 }
 
-void BST::InsertElement(const Patient &a)
+void BST::insert(const Patient &patient)
 {
-    InsertElementHelper(this->root, a);
+    InsertElementHelper(this->root, patient);
 }
 
-bool BST::BinarySearchHelper(BSTNode *&root, const Patient &other)
+bool BST::BinarySearchHelper(BSTNode *&root, const string &id) const
 {
     if (root == nullptr)
         return false;
     else
     {
-        if (root->data == other)
+        if (root->data.getId() == id)
             return true;
-        else if (root->data > other)
-            return BinarySearchHelper(root->left, other);
+        else if (stol(root->data.getId()) > stol(id))
+            return BinarySearchHelper(root->left, id);
         else
-            return BinarySearchHelper(root->right, other);
+            return BinarySearchHelper(root->right, id);
     }
 }
 
-bool BST::BinarySearch(const Patient &a)
+bool BST::contains(const string &id)
 {
-    return BinarySearchHelper(this->root, a);
+    return BinarySearchHelper(this->root, id);
 }
 
 void BST::DestructorHelper(BSTNode **root) // equivalent to make empty()
@@ -95,7 +95,7 @@ void BST::DestructorHelper(BSTNode **root) // equivalent to make empty()
     {
         DestructorHelper(&((*root)->left));
         DestructorHelper(&((*root)->right));
-        delete (*root);
+        delete(*root);
         *root = nullptr;
     }
     numberOfPatient = 0;
@@ -106,34 +106,34 @@ BST::~BST()
     DestructorHelper(&(this->root));
 }
 
-void BST::InsertElementHelper(BSTNode *&root, const Patient &a)
+void BST::InsertElementHelper(BSTNode *&root, const Patient &patient)
 {
     if (root == nullptr)
     {
-        root = new BSTNode(a);
+        root = new BSTNode(patient);
         numberOfPatient++;
     }
     else
     {
-        if (root->data == a)
+        if (root->data == patient)
         {
             cout << "No Duplicated Data is alowed" << endl;
 
             return;
         }
-        else if (root->data < a)
+        else if (root->data < patient)
         {
-            InsertElementHelper(root->right, a);
+            InsertElementHelper(root->right, patient);
         }
         else
         {
-            InsertElementHelper(root->left, a);
+            InsertElementHelper(root->left, patient);
         }
     }
 }
-void BST::deleteElement(const Patient &value)
+void BST::Delete(const string &value)
 {
-    deleteElementhelper(this->root, value);
+    deletehelper(this->root, value);
 }
 
 Patient BST::getMin(BSTNode *&root)
@@ -151,18 +151,18 @@ Patient BST::getMin(BSTNode *&root)
         return getMin(root->left);
     }
 }
-void BST::deleteElementhelper(BSTNode *&root, const Patient &value)
+void BST::deletehelper(BSTNode *&root, const string &value)
 {
     if (root == nullptr)
         return;
 
-    if (root->data > value)
-        deleteElementhelper(root->left, value);
-    else if (root->data < value)
-        deleteElementhelper(root->right, value);
+    if (stol(root->data.getId()) > stol(value))
+        deletehelper(root->left, value);
+    else if (stol(root->data.getId()) < stol(value))
+        deletehelper(root->right, value);
 
     else
-    { // if elemnt is a leaf
+    { // if elemnt is patient leaf
 
         if (root->left == nullptr && root->right == nullptr)
         {
@@ -186,11 +186,11 @@ void BST::deleteElementhelper(BSTNode *&root, const Patient &value)
             this->numberOfPatient--;
         }
         else
-        { // elemnt is a full node
+        { // elemnt is patient full node
             // 1 search for the min value in the right subtree
             root->data = getMin(root->right);
-            // 2 delete that value
-            deleteElementhelper(root->right, root->data);
+            // 2 Delete that value
+            deletehelper(root->right, root->data.getId());
         }
     }
 }
