@@ -2,6 +2,7 @@
 #define PATIENT_H
 
 #include <iostream>
+#include <ctime>
 #include "MedicalInfo.h"
 #include "../utilities/utilities.h"
 using std::ostream;
@@ -10,7 +11,7 @@ using std::string;
 class Patient
 {
 public:
-    Patient(const string &, const string &, const string &, const string &, char, const string &, const string &, const MedicalInfo &);
+    Patient(const string &, const string &, const string &, char, const string &, const string &, const MedicalInfo &);
     string getId() const;
     MedicalInfo getMedicalInfo() const;
     void setMedicalInfo(const MedicalInfo &);
@@ -20,6 +21,7 @@ public:
     bool operator==(const Patient &) const;
 
 private:
+    //{
     string ID;
     string fullName;
     string bDay;      // the birthday is at format dd/MM/yyyy
@@ -29,11 +31,23 @@ private:
     string tel; // Phone number in case the hospital needed to concact the patient or the patient's family
     string ABO; //  Blood Group System mean Blood Type
 
-    MedicalInfo MI; // from the MedicalInfo class
+    //} // These information are the static information for the patient, (they won't change)
+
+    MedicalInfo MI;         // from the MedicalInfo class
+    static int incrementer; // increments everytime a patient is created
     friend class FileHandler;
 };
 
-Patient::Patient(const string &ID, const string &fullName, const string &bDay, const string &adress, char MF, const string &tel, const string &ABO, const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(getTime()), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI) {}
+int Patient::incrementer = 10;
+
+Patient::Patient(const string &fullName, const string &bDay, const string &adress, char MF, const string &tel, const string &ABO, const MedicalInfo &MI) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
+{
+    if (++incrementer == 100)
+        incrementer = 10;
+    srand(time(nullptr));
+    ID = generateID(rand()) + std::to_string(incrementer);
+    entryDate = getTime();
+}
 
 string Patient::getId() const
 {
