@@ -201,7 +201,7 @@ void BST::update(const string &ID, const MedicalInfo &info)
     updateHelper(root, ID, info);
 }
 
-void BST::updateHelper(BSTNode &*root, const string &ID, const MedicalInfo &info)
+void BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info)
 {
     if (root == nullptr)
     {
@@ -209,12 +209,12 @@ void BST::updateHelper(BSTNode &*root, const string &ID, const MedicalInfo &info
     }
     else
     {
-        if (root->element.getId() == ID)
-            root->element.setMedicalInfo(info);
-        else if (stol(root->element.getId()) < stol(ID))
-            update(root->right, ID, info);
+        if (root->data.getId() == ID)
+            root->data.setMedicalInfo(info);
+        else if (stol(root->data.getId()) < stol(ID))
+            updateHelper(root->right, ID, info);
         else
-            update(root->left, ID, info);
+            updateHelper(root->left, ID, info);
     }
 }
 
