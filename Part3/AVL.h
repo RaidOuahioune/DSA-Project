@@ -27,7 +27,7 @@ private:
 class AvlTree
 {
 public:
-    AvlTree() : root{nullptr}
+    AvlTree() : root{nullptr}, NumberOfPatient(0)
     {
     }
 
@@ -91,6 +91,7 @@ public:
 
     void insert(const Patient &ID)
     {
+
         insert(ID, root);
     }
 
@@ -99,8 +100,9 @@ public:
         insert(std::move(ID), root);
     }
 
-    void update(const string& ID,const MedicalInfo& info){
-
+    void update(const string &ID, const MedicalInfo &info)
+    {
+        update(root, ID, info);
     }
 
     /**
@@ -108,29 +110,46 @@ public:
      */
     void Delete(const string &ID)
     {
+
         Delete(ID, root);
+    }
+    int getNumberOfPatient() const
+    {
+        return NumberOfPatient;
     }
 
 private:
     AvlNode *root;
+    static const int CAPACITY = 10000;
+    int NumberOfPatient;
 
     void insert(const Patient &ID, AvlNode *&t)
     {
+
         if (t == nullptr)
+        {
             t = new AvlNode{ID, nullptr, nullptr};
+            NumberOfPatient++;
+        }
         else if (ID < t->element)
             insert(ID, t->left);
         else if (t->element < ID)
             insert(ID, t->right);
+        else
+        {
+            cout << "Patient Already exist Maybe you want to use update instead" << endl;
+        }
 
         balance(t);
     }
 
-   
     void insert(Patient &&ID, AvlNode *&t)
     {
         if (t == nullptr)
+        {
+            NumberOfPatient++;
             t = new AvlNode{std::move(ID), nullptr, nullptr};
+        }
         else if (ID < t->element)
             insert(std::move(ID), t->left);
         else if (t->element < ID)
@@ -158,6 +177,7 @@ private:
             AvlNode *oldNode = t;
             t = (t->left != nullptr) ? t->left : t->right;
             delete oldNode;
+            NumberOfPatient--;
         }
 
         balance(t);
@@ -276,6 +296,22 @@ private:
     {
         rotateWithLeftChild(k1->right);
         rotateWithRightChild(k1);
+    }
+    void update(AvlNode *&root, const string &ID, const MedicalInfo &info)
+    {
+        if (root == nullptr)
+        {
+            return;
+        }
+        else
+        {
+            if (root->element.getId() == ID)
+                root->element.setMedicalInfo(info);
+            else if (stol(root->element.getId()) < stol(ID))
+                update(root->right, ID, info);
+            else
+                update(root->left, ID, info);
+        }
     }
 };
 

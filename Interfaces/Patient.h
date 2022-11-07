@@ -10,9 +10,10 @@ using std::string;
 class Patient
 {
 public:
-    Patient(const string &, const string &, const string &, const string &, char, const string &, const MedicalInfo &);
+    Patient(const string &, const string &, const string &, const string &, char, const string &, const string &, const MedicalInfo &);
     string getId() const;
     MedicalInfo getMedicalInfo() const;
+    void setMedicalInfo(const MedicalInfo &);
     void printPatient() const;
     bool operator<(const Patient &) const;
     bool operator>(const Patient &) const;
@@ -24,13 +25,15 @@ private:
     string bDay;      // the birthday is at format dd/MM/yyyy
     string entryDate; // the entry date of the patient at format dd/MM/yyyy
     string adress;
-    char FM;        // gender stands for Male or Female
-    string tel;     // Phone number in case the hospital needed to concact the patient or the patient's family
+    char FM;    // gender stands for Male or Female
+    string tel; // Phone number in case the hospital needed to concact the patient or the patient's family
+    string ABO; //  Blood Group System mean Blood Type
+
     MedicalInfo MI; // from the MedicalInfo class
     friend class FileHandler;
 };
 
-Patient::Patient(const string &ID, const string &fullName, const string &bDay, const string &adress, char MF, const string &tel, const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(getTime()), adress(adress), FM(MF), tel(tel), MI(MI) {}
+Patient::Patient(const string &ID, const string &fullName, const string &bDay, const string &adress, char MF, const string &tel, const string &ABO, const MedicalInfo &MI) : ID(ID), fullName(fullName), bDay(bDay), entryDate(getTime()), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI) {}
 
 string Patient::getId() const
 {
@@ -48,6 +51,7 @@ void Patient::printPatient() const
          << "Entry Date: " << entryDate << endl
          << "Adress: " << adress << endl
          << "Gender: " << ((FM == 'M') ? "Male" : "Female") << endl
+         << " ABO: " << ABO << endl
          << "Telephone: " << tel << endl;
     MI.printInfo();
 }
@@ -65,6 +69,11 @@ bool Patient::operator==(const Patient &other) const
 bool Patient::operator>(const Patient &other) const
 {
     return !((*this) < other) && !((*this) == other);
+}
+
+void Patient::setMedicalInfo(const MedicalInfo &info)
+{
+    this->MI = info;
 }
 
 #endif

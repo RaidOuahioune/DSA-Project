@@ -13,13 +13,12 @@ using std::vector;
 class MedicalInfo
 {
 public:
-    MedicalInfo(const string &, const string &, const string &, const float &, const float &, const vector<string> &, const string &, char);
+    MedicalInfo(const string &, const string &, const float &, const float &, const vector<string> &, const string &, char);
     ~MedicalInfo(){};
-
+    void setMedicalInfo() const;
     void printInfo() const;
 
 private:
-    string ABO;                   //  Blood Group System mean Blood Type
     string CD;                    // means if the patient has a chronic disease and what its type
     string Allergies;             // Allergies of the patient
     float BP;                     // Blood Pressure in MMHG(Millimeters Of Mercury unit mesure)
@@ -32,13 +31,12 @@ private:
     friend class FileHandler;
 };
 
-MedicalInfo::MedicalInfo(const string &ABO = "", const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = '\0') : ABO(ABO), CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), time(getTime()), Department(Department)
+MedicalInfo::MedicalInfo(const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = '\0') : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), time(getTime()), Department(Department)
 {
 }
 
 void MedicalInfo::printInfo() const
 {
-    cout << ABO << endl;
     cout << CD << endl;
     cout << Allergies << endl;
     cout << BP << endl;
