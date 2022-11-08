@@ -1,6 +1,7 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 #include "../Interfaces/Patient.h"
+#include "utilities.h"
 #include <fstream>
 using std::ifstream;
 using std::ofstream;
@@ -11,9 +12,12 @@ public:
   void InsertMedicalInfo(const MedicalInfo &, const string ID) const; // this function Insert the new inforamtion to the desired file given that the file already exists
   void InsertFullData(const Patient &) const;                         // Create a new file with current patient information
   vector<MedicalInfo> getAllHistory(const string &ID) const;
+  vector<Patient> getALLPatient() const;
   ~FileHandler() {}
 
 private:
+  Patient BuildPatient(const string &file) const;
+  MedicalInfo getRecentMedicalInfo(const string &file) const;
 };
 void FileHandler::InsertMedicalInfo(const MedicalInfo &info, const string ID) const
 {
@@ -22,7 +26,7 @@ void FileHandler::InsertMedicalInfo(const MedicalInfo &info, const string ID) co
   file.open(FilePath, std::ios_base::app);
   if (file)
   {
-    
+
     file << "CD: " << info.CD << endl;
     file << "Allergies: " << info.Allergies << endl;
     file << "BP: " << info.BP << endl;
@@ -69,7 +73,7 @@ vector<MedicalInfo> FileHandler::getAllHistory(const string &ID) const
         if (counter == 0)
           info.CD = line.substr(string("CD: ").size());
 
-        else if (counter ==1)
+        else if (counter == 1)
 
           info.Allergies = line.substr(string("Allergies: ").size());
 
@@ -164,6 +168,109 @@ void FileHandler::InsertFullData(const Patient &patient) const
 
     file.close();
   }
+}
+
+vector<Patient> FileHandler::getALLPatient() const
+{
+  vector<Patient> vec;
+  vector<string> files = getFiles();
+
+  for (const string &file : files)
+  {
+    vec.push_back(BuildPatient(file));
+  }
+  return vec;
+}
+
+Patient FileHandler::BuildPatient(const string &file) const
+{
+  string path = "Data/" + file;
+  Patient patient;
+  ifstream rfile;
+  rfile.open(path);
+  int counter = 0;
+  string line;
+  if (rfile)
+  {
+    // writing the general inforamtion of the patient
+    while (getline(rfile, line) && counter <= 7)
+    {
+      if (counter == 0)
+        patient.ID = line.substr(string("ID: ").size());
+      else if (counter == 1)
+        patient.fullName = line.substr(string("FullName: ").size());
+      else if (counter == 2)
+        patient.bDay = line.substr(string("BirthDay: ").size());
+      else if (counter == 3)
+        patient.entryDate = line.substr(string("Entry Date: ").size());
+      else if (counter == 4)
+        patient.adress = line.substr(string("Adress: ").size());
+      else if (counter == 5)
+        patient.FM = line.substr(string("Gender: ").size())[0];
+      else if (counter == 6)
+        patient.tel = line.substr(string("Telephone: ").size());
+      else if (counter == 7)
+        patient.ABO = line.substr(string("ABO: ").size());
+      counter++;
+    }
+  }
+  rfile.close();
+  patient.MI = getRecentMedicalInfo(file);
+
+  return patient;
+}
+
+MedicalInfo FileHandler::getRecentMedicalInfo(const string &file) const
+{
+  MedicalInfo info;
+  string path = "Data/" + file;
+
+  ifstream in(path, ios::binary);
+  in.seekg(0, ios::end);
+
+  string line;
+  char ch;
+  bool char_seen = false;
+
+  in.seekg(-1, ios::cur);
+  int counter = 0;
+  while (in.get(ch) && counter <= 8)
+  {
+    if (ch == '\n' && char_seen)
+    {
+      auto pos = in.tellg();
+      getline(in, line);
+
+      if (counter != 0)
+      {
+        if (counter == 1)
+          info.briefNote = line.substr(string("Notes: ").size());
+        else if (counter == 2)
+          info.Department = line.substr(string("Department: ").size())[0];
+        else if (counter == 3)
+          info.time = line.substr(string("Time: ").size());
+        else if (counter == 4)
+          info.MedicalsTaken = getVector(line.substr(string("Medicals Taken: ").size()));
+        else if (counter == 5)
+          info.HR = stof(line.substr(string("HR: ").size()));
+        else if (counter == 6)
+          info.BP = stof(line.substr(string("BP: ").size()));
+        else if (counter == 7)
+          info.Allergies = line.substr(string("Allergies: ").size());
+        else if (counter == 8)
+          info.CD = line.substr(string("CD: ").size());
+      }
+      counter++;
+
+      //cout << line << endl;
+      in.clear();
+      in.seekg(pos);
+    }
+    char_seen = true;
+    in.clear();
+    in.seekg(-2, ios::cur);
+  }
+  return info;
 }
 
 #endif

@@ -17,18 +17,9 @@ int main()
   Patient patient5("BLOATWafaARE5", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Chrollo", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   Patient patient6("BLOATWafaARE6", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Chrollo", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   FileHandler handler;
-  handler.InsertFullData(patient);
-  handler.InsertFullData(patient6);
-  handler.InsertFullData(patient2);
-  handler.InsertFullData(patient3);
-  handler.InsertFullData(patient4);
-  handler.InsertFullData(patient5);
-
-  auto start = chrono::high_resolution_clock().now();
-  for (const string &file : getFiles())
+  vector<Patient> allPatients = handler.getALLPatient();
+  for (const Patient &p : allPatients)
   {
-    cout << file << endl;
+    p.printPatient();
   }
-  auto end = chrono::high_resolution_clock().now();
-  cout << chrono::duration_cast<chrono::nanoseconds>(end - start).count();
 }

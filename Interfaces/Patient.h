@@ -65,7 +65,7 @@ void Patient::printPatient() const
          << "Entry Date: " << entryDate << endl
          << "Adress: " << adress << endl
          << "Gender: " << ((FM == 'M') ? "Male" : "Female") << endl
-         << " ABO: " << ABO << endl
+         << "ABO: " << ABO << endl
          << "Telephone: " << tel << endl;
     MI.printInfo();
 }

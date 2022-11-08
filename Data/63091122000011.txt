@@ -1,0 +1,35 @@
+ID: 63091122000011
+FullName: BOUZIGUESSER
+BirthDay: 15/13/2023
+Entry Date: 09-11-2022 00-00-33
+Adress: AinBessem Tounin Fernaka
+Gender: M
+Telephone: 0770251046
+ABO: AB+
+CD: DiabeteA
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: smecta aspirine rumafède gaviscon 
+Time: 09-11-2022 00-00-33
+Department: A
+Notes: A Stupid Note
+
+CD: Chrollo
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: aspirine rumafède gaviscon 
+Time: 09-11-2022 00-00-33
+Department: C
+Notes: Stupid Note
+
+CD: Diabete3
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: aspirine rumafède gaviscon 
+Time: 09-11-2022 00-00-33
+Department: C
+Notes: Stupid Note
+

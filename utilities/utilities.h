@@ -66,21 +66,10 @@ string generateID(int seed)
   // SECOND: WE GENERATE THE ACTUAL DATE WITH TIME AND SECONDS, AND WE REMOVED THE "20" FROM THE "2022" OF THE FULL DATE
 }
 
-//vector<string> getAllFiles()
-//{
-//  std::filesystem::directory_iterator end_itr;
-//  vector<string> files;
-//  for (std::filesystem::directory_iterator itr("Data"); itr != end_itr; ++itr)
-//  {
-//    files.push_back(itr->path().string());
-//  }
-//  return files;
-//}
-
 vector<string> getFiles()
 {
   char buffer[128];
-  const char* command = "cd Data && ls";
+  const char *command = "cd Data && ls";
   vector<string> files;
 
   // Open pipe to file
@@ -102,10 +91,5 @@ vector<string> getFiles()
   pclose(pipe);
   return files;
 }
-
-
-
-
-
 
 #endif
