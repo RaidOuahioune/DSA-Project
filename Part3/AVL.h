@@ -164,9 +164,9 @@ private:
         if (t == nullptr)
             return; // Item not found; do nothing
 
-        if (stol(ID) < stol(t->element.getId()))
+        if (stoll(ID) < stoll(t->element.getId()))
             Delete(ID, t->left);
-        else if (stol(t->element.getId()) < stol(ID))
+        else if (stoll(t->element.getId()) < stoll(ID))
             Delete(ID, t->right);
         else if (t->left != nullptr && t->right != nullptr) // Two children
         {
@@ -219,9 +219,9 @@ private:
     {
         if (t == nullptr)
             return false;
-        else if (stol(ID) < stol(t->element.getId()))
+        else if (stoll(ID) < stoll(t->element.getId()))
             return contains(ID, t->left);
-        else if (stol(t->element.getId()) < stol(ID))
+        else if (stoll(t->element.getId()) < stoll(ID))
             return contains(ID, t->right);
         else
             return true; // Match
@@ -308,7 +308,7 @@ private:
         {
             if (root->element.getId() == ID)
                 root->element.setMedicalInfo(info);
-            else if (stol(root->element.getId()) < stol(ID))
+            else if (stoll(root->element.getId()) < stoll(ID))
                 update(root->right, ID, info);
             else
                 update(root->left, ID, info);

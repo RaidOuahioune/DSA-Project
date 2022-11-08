@@ -14,9 +14,9 @@ public:
   BTree(int);
   ~BTree();
   void traverse();
-  bool contains(int);
-  void insert(int);
-  void Delete(int);
+  bool contains(const string &);
+  void insert(const Patient &);
+  void Delete(const string &);
 
 private:
   BTreeNode *root;
@@ -41,19 +41,19 @@ void BTree::traverse()
   cout << endl;
 }
 
-bool BTree::contains(int k)
+bool BTree::contains(const string &ID)
 {
   if (root == nullptr)
     return false;
-  return (root->search(k) != nullptr);
+  return (root->search(ID) != nullptr);
 }
 // Insertion operation
-void BTree::insert(int k)
+void BTree::insert(const Patient &patient)
 {
   if (root == nullptr)
   {
     root = new BTreeNode(order, true);
-    root->keys[0] = k;
+    root->keys[0] = patient;
     root->n = 1;
   }
   else
@@ -67,26 +67,26 @@ void BTree::insert(int k)
       s->splitChild(0, root);
 
       int i = 0;
-      if (s->keys[0] < k)
+      if (s->keys[0] < patient)
         i++;
-      s->Children[i]->insertNonFull(k);
+      s->Children[i]->insertNonFull(patient);
 
       root = s;
     }
     else
-      root->insertNonFull(k);
+      root->insertNonFull(patient);
   }
 }
 
 // Delete Operation
-void BTree::Delete(int k)
+void BTree::Delete(const string &ID)
 {
   if (root == nullptr)
   {
     cout << "The tree is empty\n";
     return;
   }
-  root->deletion(k);
+  root->deletion(ID);
 
   if (root->n == 0)
   {

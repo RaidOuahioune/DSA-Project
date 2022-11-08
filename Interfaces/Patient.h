@@ -40,7 +40,7 @@ private:
 
 int Patient::incrementer = 10;
 
-Patient::Patient(const string &fullName, const string &bDay, const string &adress, char MF, const string &tel, const string &ABO, const MedicalInfo &MI) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
+Patient::Patient(const string &fullName = "", const string &bDay = "", const string &adress = "", char MF = '\0', const string &tel = "", const string &ABO = "", const MedicalInfo &MI = MedicalInfo()) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
 {
     if (++incrementer == 100)
         incrementer = 10;
@@ -72,7 +72,7 @@ void Patient::printPatient() const
 
 bool Patient::operator<(const Patient &other) const
 {
-    return stol(this->ID) < stol(other.ID);
+    return stoll(this->ID) < stoll(other.ID);
 };
 
 bool Patient::operator==(const Patient &other) const

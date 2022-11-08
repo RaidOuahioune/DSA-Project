@@ -9,27 +9,32 @@ class BTreeNode
 public:
   BTreeNode(int treeOrder, bool isLeaf);
   ~BTreeNode();
-  void traverse();
-  int findKey(int k);
-  BTreeNode *search(int k);
-  void insertNonFull(int k);
-  void splitChild(int i, BTreeNode *y);
-  void deletion(int k);
-  void removeFromLeaf(int index);
-  void removeFromNonLeaf(int index);
-  int getPredecessor(int index);
-  int getSuccessor(int index);
-  void fill(int index);
-  void borrowFromPrev(int index);
-  void borrowFromNext(int index);
-  void merge(int index);
 
 private:
-  int *keys;
+  // DATA MEMBERS
+
+  Patient *keys;
   int order;
   BTreeNode **Children;
   int n;
   bool leaf;
+
+  // UTILITY FUNCTIONS
+
+  int findKey(const string &);
+  BTreeNode *search(const string &);
+  void insertNonFull(const Patient &);
+  void splitChild(int i, BTreeNode *y);
+  void deletion(const string &);
+  void removeFromLeaf(int index);
+  void removeFromNonLeaf(int index);
+  Patient getPredecessor(int index);
+  Patient getSuccessor(int index);
+  void fill(int index);
+  void borrowFromPrev(int index);
+  void borrowFromNext(int index);
+  void merge(int index);
+  void traverse();
   friend class BTree;
 };
 
@@ -38,19 +43,13 @@ BTreeNode::BTreeNode(int TreeOrder, bool leaf1)
   order = TreeOrder;
   leaf = leaf1;
 
-  keys = new int[2 * order - 1];
+  keys = new Patient[2 * order - 1];
   Children = new BTreeNode *[2 * order];
 
   n = 0;
 }
 BTreeNode::~BTreeNode()
 {
-  for (int y = 0; y < n; y++)
-  {
-    cout << keys[y] << "  ";
-  }
-  cout << endl;
-
   delete[] keys;
   // this loop is mendatory to avoid memory leaks and It defines a recursive Destruction of Nodes
   for (int i = 0; i <= n; ++i)
@@ -66,75 +65,74 @@ void BTreeNode::traverse()
   {
     if (leaf == false)
       Children[i]->traverse();
-    cout << " " << keys[i];
+    keys[i].printPatient();
   }
   if (leaf == false)
     Children[i]->traverse();
 }
 
 // Find the key
-int BTreeNode::findKey(int k)
+int BTreeNode::findKey(const string &ID)
 {
   int index = 0;
-  while (index < n && keys[index] < k)
+  while (index < n && stoll(keys[index].getId()) < stoll(ID))
     ++index;
   return index;
 }
 
 // Recursive Search
-BTreeNode *BTreeNode::search(int k)
+BTreeNode *BTreeNode::search(const string &ID)
 {
   int i = 0;
   // search k in the sorted array(ascending) of keys where n is the current number of keys in the node
-  while (i < n && k > keys[i])
+  while (i < n && (stoll(ID) > stoll(keys[i].getId())))
   {
     i++;
   }
-  if (i < n && keys[i] == k)
+  if (i < n && keys[i].getId() == ID)
   {
     return this; // return node cuz it contains the k
   }
   // at this point we have travesred all the node which means elemnt is not found
   // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
-  return leaf ? nullptr : Children[i]->search(k);
+  return leaf ? nullptr : Children[i]->search(ID);
 }
 
 // Insertion non full
-void BTreeNode::insertNonFull(int k)
+void BTreeNode::insertNonFull(const Patient &patient)
 {
-  int index = findKey(k);
-  if (index < n && keys[index] == k)
+  int index = findKey(patient.getId());
+  if (index < n && keys[index] == patient)
   {
-    cout << k << " ALREADY EXISTS" << endl;
+    cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
     return;
   }
   int i = n - 1;
 
   if (leaf == true)
   {
-    while (i >= 0 && keys[i] > k)
+    while (i >= 0 && keys[i] > patient)
     {
-
       keys[i + 1] = keys[i];
       i--;
     }
 
-    keys[i + 1] = k;
+    keys[i + 1] = patient;
     n = n + 1;
   }
   else
   {
-    while (i >= 0 && keys[i] > k)
+    while (i >= 0 && keys[i] > patient)
       i--;
 
     if (Children[i + 1]->n == 2 * order - 1)
     {
       splitChild(i + 1, Children[i + 1]);
 
-      if (keys[i + 1] < k)
+      if (keys[i + 1] < patient)
         i++;
     }
-    Children[i + 1]->insertNonFull(k);
+    Children[i + 1]->insertNonFull(patient);
   }
 }
 
@@ -171,11 +169,11 @@ void BTreeNode::splitChild(int i, BTreeNode *y)
 // Traverse
 
 // Deletion operation
-void BTreeNode::deletion(int k)
+void BTreeNode::deletion(const string &ID)
 {
-  int index = findKey(k);
+  int index = findKey(ID);
 
-  if (index < n && keys[index] == k) // it means that we found the k in the array of keys of the node that have called this node
+  if (index < n && keys[index].getId() == ID) // it means that we found the k in the array of keys of the node that have called this node
   {
     if (leaf)
       removeFromLeaf(index);
@@ -186,7 +184,7 @@ void BTreeNode::deletion(int k)
   {
     if (leaf)
     {
-      cout << "The key " << k << " is does not exist in the tree\n";
+      cout << "The Patient with the ID: " << ID << " does not exist in the tree\n";
       return;
     }
 
@@ -196,9 +194,9 @@ void BTreeNode::deletion(int k)
       fill(index);
 
     if (flag && index > n)
-      Children[index - 1]->deletion(k);
+      Children[index - 1]->deletion(ID);
     else
-      Children[index]->deletion(k);
+      Children[index]->deletion(ID);
   }
   return;
 }
@@ -217,31 +215,31 @@ void BTreeNode::removeFromLeaf(int index)
 // Delete from non leaf node
 void BTreeNode::removeFromNonLeaf(int index)
 {
-  int k = keys[index];
+  string ID = keys[index].getId();
 
   if (Children[index]->n >= order)
   {
-    int pred = getPredecessor(index);
+    Patient pred = getPredecessor(index);
     keys[index] = pred;
-    Children[index]->deletion(pred);
+    Children[index]->deletion(pred.getId());
   }
 
   else if (Children[index + 1]->n >= order)
   {
-    int succ = getSuccessor(index);
+    Patient succ = getSuccessor(index);
     keys[index] = succ;
-    Children[index + 1]->deletion(succ);
+    Children[index + 1]->deletion(succ.getId());
   }
 
   else
   {
     merge(index);
-    Children[index]->deletion(k);
+    Children[index]->deletion(ID);
   }
   return;
 }
 
-int BTreeNode::getPredecessor(int index)
+Patient BTreeNode::getPredecessor(int index)
 {
   BTreeNode *cur = Children[index];
   while (!cur->leaf)
@@ -250,7 +248,7 @@ int BTreeNode::getPredecessor(int index)
   return cur->keys[cur->n - 1];
 }
 
-int BTreeNode::getSuccessor(int index)
+Patient BTreeNode::getSuccessor(int index)
 {
   BTreeNode *cur = Children[index + 1];
   while (!cur->leaf)

@@ -76,7 +76,7 @@ bool BST::BinarySearchHelper(BSTNode *&root, const string &id) const
     {
         if (root->data.getId() == id)
             return true;
-        else if (stol(root->data.getId()) > stol(id))
+        else if (stoll(root->data.getId()) > stoll(id))
             return BinarySearchHelper(root->left, id);
         else
             return BinarySearchHelper(root->right, id);
@@ -157,9 +157,9 @@ void BST::deletehelper(BSTNode *&root, const string &value)
     if (root == nullptr)
         return;
 
-    if (stol(root->data.getId()) > stol(value))
+    if (stoll(root->data.getId()) > stoll(value))
         deletehelper(root->left, value);
-    else if (stol(root->data.getId()) < stol(value))
+    else if (stoll(root->data.getId()) < stoll(value))
         deletehelper(root->right, value);
 
     else
@@ -211,7 +211,7 @@ void BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info
     {
         if (root->data.getId() == ID)
             root->data.setMedicalInfo(info);
-        else if (stol(root->data.getId()) < stol(ID))
+        else if (stoll(root->data.getId()) < stoll(ID))
             updateHelper(root->right, ID, info);
         else
             updateHelper(root->left, ID, info);
