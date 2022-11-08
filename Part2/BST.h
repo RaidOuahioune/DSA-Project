@@ -221,6 +221,7 @@ void BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info
 
 void BST::InsertSortedArray(const vector<Patient> &vec)
 {
+    numberOfPatient = vec.size();
     this->InsertSortedArrayHelper(this->root, vec, 0, vec.size() - 1);
 }
 

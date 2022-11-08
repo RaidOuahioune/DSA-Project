@@ -120,6 +120,7 @@ public:
     }
     void InsertSortedArray(const vector<Patient> &vec)
     {
+        NumberOfPatient=vec.size();
         this->InsertSortedArrayHelper(this->root, vec, 0, vec.size() - 1);
     }
 

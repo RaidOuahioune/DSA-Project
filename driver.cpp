@@ -22,5 +22,9 @@ int main()
   vec.push_back(patient5);
   AvlTree tree;
   tree.InsertSortedArray(vec);
+  //cout<<tree.getNumberOfPatient();
+  tree.Delete(patient.getId());
+  cout<<tree.getNumberOfPatient()<<endl;
   tree.printTree();
+
 }
