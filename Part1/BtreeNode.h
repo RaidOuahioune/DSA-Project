@@ -35,6 +35,7 @@ private:
   void borrowFromNext(int index);
   void merge(int index);
   void traverse();
+  void update(const string &ID, const MedicalInfo &info);
   friend class BTree;
 };
 
@@ -363,6 +364,31 @@ void BTreeNode::merge(int index)
   delete (sibling);
   sibling = nullptr;
   return;
+}
+
+void BTreeNode::update(const string &ID, const MedicalInfo &info)
+{
+  int i = 0;
+  // search k in the sorted array(ascending) of keys where n is the current number of keys in the node
+  while (i < n && (stoll(ID) > stoll(keys[i].getId())))
+  {
+    i++;
+  }
+  if (i < n && keys[i].getId() == ID)
+  {
+    // once element is found update it
+    keys[i].setMedicalInfo(info);
+
+    return;
+  }
+  // at this point we have travesred all the node which means elemnt is not found
+  // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
+  if (leaf)
+  { // if current node is  leaf it means we didn't find the elment (hence no update is done)
+    cout << endl<<"ID not Found!You may want to use Create a new patient Instead" << endl;
+    return;
+  } // otherwise traverse the subtree
+  Children[i]->update(ID, info);
 }
 
 #endif

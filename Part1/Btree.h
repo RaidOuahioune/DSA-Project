@@ -17,6 +17,7 @@ public:
   bool contains(const string &);
   void insert(const Patient &);
   void Delete(const string &);
+  void update(const string &, const MedicalInfo &);
 
 private:
   BTreeNode *root;
@@ -101,4 +102,13 @@ void BTree::Delete(const string &ID)
   return;
 }
 
+void BTree::update(const string &ID, const MedicalInfo &info)
+{
+  if (root != nullptr)
+  {
+    root->update(ID, info);
+  }
+  else
+    cout << "\nTree is Empty !You may want to Create a new Patient Instead" << endl;
+}
 #endif
