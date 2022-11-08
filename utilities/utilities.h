@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <random>
+#include <filesystem>
 using std::ifstream;
 using std::put_time;
 using std::string;
@@ -65,4 +66,14 @@ string generateID(int seed)
   // SECOND: WE GENERATE THE ACTUAL DATE WITH TIME AND SECONDS, AND WE REMOVED THE "20" FROM THE "2022" OF THE FULL DATE
 }
 
+vector<string> getAllFiles()
+{
+  std::filesystem::directory_iterator end_itr;
+  vector<string> files;
+  for (std::filesystem::directory_iterator itr("Data"); itr != end_itr; ++itr)
+  {
+    files.push_back(itr->path().string());
+  }
+  return files;
+}
 #endif
