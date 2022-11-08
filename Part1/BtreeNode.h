@@ -44,7 +44,8 @@ BTreeNode::BTreeNode(int TreeOrder, bool leaf1)
   leaf = leaf1;
 
   keys = new Patient[2 * order - 1];
-  Children = new BTreeNode *[2 * order]{ nullptr };
+  Children = new BTreeNode *[2 * order]
+  { nullptr };
 
   n = 0;
 }
@@ -53,7 +54,7 @@ BTreeNode::~BTreeNode()
 
   delete[] keys;
   // this loop is mendatory to avoid memory leaks and It defines a recursive    Destruction of Nodes
-  for (int i = 0; i < 2 * order; i++)
+  for (int i = 0; i < 2 * order - 1; i++)
   {
     delete Children[i];
   }
