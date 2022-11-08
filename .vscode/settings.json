@@ -1,15 +1,5 @@
 {
-    "files.associations": {
-        "string": "cpp",
-        "iosfwd": "cpp",
-        "*.tcc": "cpp",
-        "deque": "cpp",
-        "unordered_map": "cpp",
-        "vector": "cpp",
-        "ostream": "cpp",
-        "new": "cpp",
-        "patient.h": "c",
-        "fstream": "c",
-        "iostream": "cpp"
-    }
+  "files.associations": {
+    "new": "cpp"
+  }
 }

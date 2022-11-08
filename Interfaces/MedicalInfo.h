@@ -14,7 +14,9 @@ class MedicalInfo
 {
 public:
     MedicalInfo(const string &, const string &, const float &, const float &, const vector<string> &, const string &, char);
-    ~MedicalInfo(){};
+    ~MedicalInfo()
+    {
+    }
     void setMedicalInfo() const;
     void printInfo() const;
 
@@ -31,8 +33,9 @@ private:
     friend class FileHandler;
 };
 
-MedicalInfo::MedicalInfo(const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = '\0') : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), time(getTime()), Department(Department)
+MedicalInfo::MedicalInfo(const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = '\0') : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), Department(Department)
 {
+    time = getTime();
 }
 
 void MedicalInfo::printInfo() const
