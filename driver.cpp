@@ -14,14 +14,13 @@ int main()
   Patient patient3("BLOATWafaARE", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Diabete3", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   Patient patient4("BLOATWafaARE4", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Diabete3", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   Patient patient5("BLOATWafaARE5", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Diabete3", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
-
-
-  BTree btree(2);
-  btree.insert(patient);
-  btree.insert(patient2);
-  btree.insert(patient3);
-  btree.insert(patient4);
-  btree.insert(patient5);
-
-  btree.traverse();
+  vector<Patient> vec;
+  vec.push_back(patient);
+  vec.push_back(patient2);
+  vec.push_back(patient3);
+  vec.push_back(patient4);
+  vec.push_back(patient5);
+  AvlTree tree;
+  tree.InsertSortedArray(vec);
+  tree.printTree();
 }

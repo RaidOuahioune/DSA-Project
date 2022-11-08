@@ -3,10 +3,9 @@
 
 #include <iostream>
 #include <string.h>
+
 #include "../Interfaces/Patient.h"
 #include "../Interfaces/MedicalInfo.h"
-
-using namespace std;
 
 class BSTNode
 {
@@ -30,6 +29,7 @@ public:
     void Delete(const string &);
     int getNumberOfPatient() const;
     void update(const string &, const MedicalInfo &);
+    void InsertSortedArray(const vector<Patient> &);
     BST(){};
     ~BST();
 
@@ -40,8 +40,9 @@ private:
     void InsertElementHelper(BSTNode *&, const Patient &);
     bool BinarySearchHelper(BSTNode *&, const string &) const;
     void DestructorHelper(BSTNode **);
-    void deletehelper(BSTNode *&root, const string &);
-    void updateHelper(BSTNode *&root, const string &, const MedicalInfo &info);
+    void deletehelper(BSTNode *&, const string &);
+    void updateHelper(BSTNode *&, const string &, const MedicalInfo &);
+    void InsertSortedArrayHelper(BSTNode *&, const vector<Patient> &, int, int);
     Patient getMin(BSTNode *&root);
 };
 int BST::getNumberOfPatient() const
@@ -218,4 +219,27 @@ void BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info
     }
 }
 
+void BST::InsertSortedArray(const vector<Patient> &vec)
+{
+    this->InsertSortedArrayHelper(this->root, vec, 0, vec.size() - 1);
+}
+
+void BST::InsertSortedArrayHelper(BSTNode *&root, const vector<Patient> &array, int left, int right)
+{
+    if (left > right)
+        return;
+    if (right == left)
+    {
+        root = new BSTNode(array[(left + right) / 2]);
+        return;
+    }
+    else
+    {
+        int middle = (right + left) / 2;
+
+        root = new BSTNode(array[middle]);
+        InsertSortedArrayHelper(root->left, array, left, middle - 1); // it's like we have deleted the middle from the list when we are done inserting that node
+        InsertSortedArrayHelper(root->right, array, middle + 1, right);
+    }
+}
 #endif

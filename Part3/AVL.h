@@ -118,6 +118,10 @@ public:
     {
         return NumberOfPatient;
     }
+    void InsertSortedArray(const vector<Patient> &vec)
+    {
+        this->InsertSortedArrayHelper(this->root, vec, 0, vec.size() - 1);
+    }
 
 private:
     AvlNode *root;
@@ -312,6 +316,25 @@ private:
                 update(root->right, ID, info);
             else
                 update(root->left, ID, info);
+        }
+    }
+
+    void InsertSortedArrayHelper(AvlNode *&root, const vector<Patient> &array, int left, int right)
+    {
+        if (left > right)
+            return;
+        if (right == left)
+        {
+            root = new AvlNode(array[(left + right) / 2], nullptr, nullptr);
+            return;
+        }
+        else
+        {
+            int middle = (right + left) / 2;
+
+            root = new AvlNode(array[middle], nullptr, nullptr);
+            InsertSortedArrayHelper(root->left, array, left, middle - 1); // it's like we have deleted the middle from the list when we are done inserting that node
+            InsertSortedArrayHelper(root->right, array, middle + 1, right);
         }
     }
 };
