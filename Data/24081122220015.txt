@@ -1,0 +1,17 @@
+ID: 24081122220015
+FullName: BLOATWafaARE5
+BirthDay: 15/19/2026
+Entry Date: 08-11-2022 22-00-28
+Adress: NYC SA7BIII
+Gender: M
+Telephone: 0776992954
+ABO: A-
+CD: Chrollo
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: aspirine rumafède gaviscon 
+Time: 08-11-2022 22-00-28
+Department: C
+Notes: Stupid Note
+

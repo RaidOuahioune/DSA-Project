@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 #include "Part1/Btree.h"
 #include "Part3/AVL.h"
 #include "Part2/BST.h"
@@ -7,7 +8,7 @@
 using namespace std;
 
 int main()
-{
+{ //
   Patient patient("BOUZIGUESSER", "15/13/2023", "AinBessem Tounin Fernaka", 'M', "0770251046", "AB+", MedicalInfo("DiabeteA", "Ghabra", 12.7, 75, {"smecta", "aspirine", "rumafède", "gaviscon"}, "A Stupid Note", 'A'));
   Patient patient2("BLOATWARE", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "O+", MedicalInfo("Diabete", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "A Stupid Note", 'B'));
 
@@ -15,10 +16,19 @@ int main()
   Patient patient4("BLOATWafaARE4", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Diabete3", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   Patient patient5("BLOATWafaARE5", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Chrollo", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   Patient patient6("BLOATWafaARE6", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Chrollo", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
- 
+  FileHandler handler;
+  handler.InsertFullData(patient);
+  handler.InsertFullData(patient6);
+  handler.InsertFullData(patient2);
+  handler.InsertFullData(patient3);
+  handler.InsertFullData(patient4);
+  handler.InsertFullData(patient5);
 
-  for (auto u : getAllFiles())
+  auto start = chrono::high_resolution_clock().now();
+  for (const string &file : getFiles())
   {
-    cout << u << endl;
+    cout << file << endl;
   }
+  auto end = chrono::high_resolution_clock().now();
+  cout << chrono::duration_cast<chrono::nanoseconds>(end - start).count();
 }
