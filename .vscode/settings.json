@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "patient.h": "c",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "iostream": "cpp",
+    "chrono": "cpp"
   }
 }

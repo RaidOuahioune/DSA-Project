@@ -17,9 +17,25 @@ int main()
   Patient patient5("BLOATWafaARE5", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Chrollo", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   Patient patient6("BLOATWafaARE6", "15/19/2026", "NYC SA7BIII", 'M', "0776992954", "A-", MedicalInfo("Chrollo", "Ghabra", 12.7, 75, {"aspirine", "rumafède", "gaviscon"}, "Stupid Note", 'C'));
   FileHandler handler;
+  handler.InsertFullData(patient);
+  handler.InsertFullData(patient2);
+  handler.InsertFullData(patient3);
+  handler.InsertFullData(patient4);
+  handler.InsertFullData(patient5);
+  handler.InsertFullData(patient6);
+
   vector<Patient> allPatients = handler.getALLPatient();
+  AvlTree avl1;
+  auto start = chrono::high_resolution_clock::now();
+  avl1.InsertSortedArray(allPatients);
+  auto end = chrono::high_resolution_clock::now();
+  cout << "Duration of the Sorted Array Insertion: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+  AvlTree avl2;
+  auto start2 = chrono::high_resolution_clock::now();
   for (const Patient &p : allPatients)
   {
-    p.printPatient();
+    avl2.insert(p);
   }
+  auto end2 = chrono::high_resolution_clock::now();
+  cout << "Duration of the Traditional Way: " << chrono::duration_cast<chrono::nanoseconds>(end2 - start2).count();
 }

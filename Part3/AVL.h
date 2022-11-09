@@ -120,7 +120,7 @@ public:
     }
     void InsertSortedArray(const vector<Patient> &vec)
     {
-        NumberOfPatient=vec.size();
+        NumberOfPatient = vec.size();
         this->InsertSortedArrayHelper(this->root, vec, 0, vec.size() - 1);
     }
 
@@ -274,6 +274,8 @@ private:
 
     void rotateWithLeftChild(AvlNode *&k2)
     {
+        // PlZ Uncomment this line if you want to test InsertSortedArray()function that guarantes no balancing for the tree and in a linear time
+         std::cout << "Warining There is A rotation" << std::endl;
         AvlNode *k1 = k2->left;
         k2->left = k1->right;
         k1->right = k2;
@@ -284,6 +286,7 @@ private:
 
     void rotateWithRightChild(AvlNode *&k1)
     {
+        std::cout << "Warining There is A rotation" << std::endl;
         AvlNode *k2 = k1->right;
         k1->right = k2->left;
         k2->left = k1;

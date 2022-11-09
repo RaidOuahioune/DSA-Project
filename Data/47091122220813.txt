@@ -1,0 +1,17 @@
+ID: 47091122220813
+FullName: BLOATWafaARE
+BirthDay: 15/19/2026
+Entry Date: 09-11-2022 22-08-21
+Adress: NYC SA7BIII
+Gender: M
+Telephone: 0776992954
+ABO: A-
+CD: Diabete3
+Allergies: Ghabra
+BP: 12.7
+HR: 75
+Medicals Taken: aspirine rumafède gaviscon 
+Time: 09-11-2022 22-08-21
+Department: C
+Notes: Stupid Note
+
