@@ -29,13 +29,23 @@ int main()
   auto start = chrono::high_resolution_clock::now();
   avl1.InsertSortedArray(allPatients);
   auto end = chrono::high_resolution_clock::now();
-  cout << "Duration of the Sorted Array Insertion: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
-  AvlTree avl2;
+  cout << "Duration of the Sorted Array Insertion(AVl): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+  BTree avl2(5);
   auto start2 = chrono::high_resolution_clock::now();
   for (const Patient &p : allPatients)
   {
     avl2.insert(p);
   }
   auto end2 = chrono::high_resolution_clock::now();
-  cout << "Duration of the Traditional Way: " << chrono::duration_cast<chrono::nanoseconds>(end2 - start2).count();
+  cout << "Duration of the Traditional Way(Btree): " << chrono::duration_cast<chrono::nanoseconds>(end2 - start2).count() << endl;
+
+  start = chrono::high_resolution_clock::now();
+  (avl1.contains(patient4.getId()) == true) ? cout << "YEs\n" : cout << "No\n";
+  end = chrono::high_resolution_clock::now();
+  cout << "Search in Avl: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+
+  start = chrono::high_resolution_clock::now();
+  (avl1.contains(patient4.getId()) == true) ? cout << "YEs\n" : cout << "No\n";
+  end = chrono::high_resolution_clock::now();
+  cout << "Search in Btree: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
 }

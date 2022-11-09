@@ -55,7 +55,7 @@ BTreeNode::~BTreeNode()
 
   delete[] keys;
   // this loop is mendatory to avoid memory leaks and It defines a recursive    Destruction of Nodes
-  for (int i = 0; i < 2 * order - 1; i++)
+  for (int i = 0; i <= n; i++)
   {
     delete Children[i];
   }
@@ -385,7 +385,8 @@ void BTreeNode::update(const string &ID, const MedicalInfo &info)
   // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
   if (leaf)
   { // if current node is  leaf it means we didn't find the elment (hence no update is done)
-    cout << endl<<"ID not Found!You may want to use Create a new patient Instead" << endl;
+    cout << endl
+         << "ID not Found!You may want to use Create a new patient Instead" << endl;
     return;
   } // otherwise traverse the subtree
   Children[i]->update(ID, info);

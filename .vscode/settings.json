@@ -3,6 +3,7 @@
     "patient.h": "c",
     "*.tcc": "cpp",
     "iostream": "cpp",
-    "chrono": "cpp"
+    "chrono": "cpp",
+    "ostream": "cpp"
   }
 }
