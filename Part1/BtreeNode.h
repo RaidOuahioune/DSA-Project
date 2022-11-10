@@ -24,6 +24,7 @@ private:
   int findKey(const string &);
   BTreeNode *search(const string &);
   void insertNonFull(const Patient &);
+  void insertNonFull(Patient &&);
   void splitChild(int i, BTreeNode *y);
   void deletion(const string &);
   void removeFromLeaf(int index);
@@ -139,7 +140,42 @@ void BTreeNode::insertNonFull(const Patient &patient)
     Children[i + 1]->insertNonFull(patient);
   }
 }
+void BTreeNode::insertNonFull(Patient &&patient)
+{
+  int index = findKey(patient.getId());
+  if (index < n && keys[index] == std::move(patient))
+  {
+    cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
+    return;
+  }
+  int i = n - 1;
 
+  if (leaf == true)
+  {
+    while (i >= 0 && keys[i] > patient)
+    {
+      keys[i + 1] = keys[i];
+      i--;
+    }
+
+    keys[i + 1] = std::move(patient);
+    n = n + 1;
+  }
+  else
+  {
+    while (i >= 0 && keys[i] > patient)
+      i--;
+
+    if (Children[i + 1]->n == 2 * order - 1)
+    {
+      splitChild(i + 1, Children[i + 1]);
+
+      if (keys[i + 1] < patient)
+        i++;
+    }
+    Children[i + 1]->insertNonFull(std::move(patient));
+  }
+}
 // Split child
 void BTreeNode::splitChild(int i, BTreeNode *y)
 {

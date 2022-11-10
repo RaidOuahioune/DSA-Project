@@ -16,8 +16,10 @@ private:
     friend class BST;
 
 public:
-    BSTNode(const Patient info, BSTNode *r = nullptr, BSTNode *l = nullptr)
+    BSTNode(const Patient& info, BSTNode *r = nullptr, BSTNode *l = nullptr)
         : right(r), left(l), data(info) {}
+    BSTNode(Patient &&info, BSTNode *r = nullptr, BSTNode *l = nullptr)
+        : right(r), left(l), data(std::move(info)) {}
 };
 
 class BST
@@ -25,6 +27,7 @@ class BST
 public:
     void InOrder();
     void insert(const Patient &);
+    void insert(Patient &&);
     bool contains(const string &);
     void Delete(const string &);
     int getNumberOfPatient() const;
@@ -38,6 +41,7 @@ private:
     int numberOfPatient = 0;
     void InOrderHelper(BSTNode *&);
     void InsertElementHelper(BSTNode *&, const Patient &);
+    void InsertElementHelper(BSTNode *&, Patient &&);
     bool BinarySearchHelper(BSTNode *&, const string &) const;
     void DestructorHelper(BSTNode **);
     void deletehelper(BSTNode *&, const string &);
@@ -67,6 +71,10 @@ void BST::InOrderHelper(BSTNode *&root)
 void BST::insert(const Patient &patient)
 {
     InsertElementHelper(this->root, patient);
+}
+void BST::insert(Patient &&patient)
+{
+    InsertElementHelper(this->root, std::move(patient));
 }
 
 bool BST::BinarySearchHelper(BSTNode *&root, const string &id) const
@@ -115,23 +123,23 @@ void BST::InsertElementHelper(BSTNode *&root, const Patient &patient)
         root = new BSTNode(patient);
         numberOfPatient++;
     }
+    else if (root->data < patient)
+        InsertElementHelper(root->right, patient);
     else
-    {
-        if (root->data == patient)
-        {
-            cout << "No Duplicated Data is alowed" << endl;
+        InsertElementHelper(root->left, patient);
+}
 
-            return;
-        }
-        else if (root->data < patient)
-        {
-            InsertElementHelper(root->right, patient);
-        }
-        else
-        {
-            InsertElementHelper(root->left, patient);
-        }
+void BST::InsertElementHelper(BSTNode *&root, Patient &&patient)
+{
+    if (root == nullptr)
+    {
+        root = new BSTNode(std::move(patient));
+        numberOfPatient++;
     }
+    else if (root->data < patient)
+        InsertElementHelper(root->right, std::move(patient));
+    else
+        InsertElementHelper(root->left, std::move(patient));
 }
 void BST::Delete(const string &value)
 {

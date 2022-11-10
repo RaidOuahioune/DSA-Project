@@ -16,6 +16,7 @@ public:
   void traverse();
   bool contains(const string &);
   void insert(const Patient &);
+  void insert(Patient &&);
   void Delete(const string &);
   void update(const string &, const MedicalInfo &);
 
@@ -76,6 +77,36 @@ void BTree::insert(const Patient &patient)
     }
     else
       root->insertNonFull(patient);
+  }
+}
+
+void BTree::insert(Patient &&patient)
+{
+  if (root == nullptr)
+  {
+    root = new BTreeNode(order, true);
+    root->keys[0] = std::move(patient);
+    root->n = 1;
+  }
+  else
+  {
+    if (root->n == 2 * order - 1)
+    {
+      BTreeNode *s = new BTreeNode(order, false);
+
+      s->Children[0] = root;
+
+      s->splitChild(0, root);
+
+      int i = 0;
+      if (s->keys[0] < patient)
+        i++;
+      s->Children[i]->insertNonFull(std::move(patient));
+
+      root = s;
+    }
+    else
+      root->insertNonFull(std::move(patient));
   }
 }
 
