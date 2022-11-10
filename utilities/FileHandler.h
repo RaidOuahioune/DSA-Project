@@ -163,7 +163,7 @@ void FileHandler::InsertFullData(const Patient &patient) const
     }
     else
     {
-      throw "Exception";
+      cout<<"Error Occured when Trying to read a file"<<endl;
     }
 
     file.close();
@@ -220,7 +220,7 @@ Patient FileHandler::BuildPatient(const string &file) const
   return patient;
 }
 
-MedicalInfo FileHandler::getRecentMedicalInfo(const string &file) const
+MedicalInfo FileHandler::getRecentMedicalInfo(const string &file)  const
 {
   MedicalInfo info;
   string path = "Data/" + file;

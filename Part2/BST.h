@@ -16,7 +16,7 @@ private:
     friend class BST;
 
 public:
-    BSTNode(const Patient& info, BSTNode *r = nullptr, BSTNode *l = nullptr)
+    BSTNode(const Patient &info, BSTNode *r = nullptr, BSTNode *l = nullptr)
         : right(r), left(l), data(info) {}
     BSTNode(Patient &&info, BSTNode *r = nullptr, BSTNode *l = nullptr)
         : right(r), left(l), data(std::move(info)) {}
@@ -44,10 +44,10 @@ private:
     void InsertElementHelper(BSTNode *&, Patient &&);
     bool BinarySearchHelper(BSTNode *&, const string &) const;
     void DestructorHelper(BSTNode **);
-    void deletehelper(BSTNode *&, const string &);
+    void Delete(const string &, BSTNode *&);
     void updateHelper(BSTNode *&, const string &, const MedicalInfo &);
     void InsertSortedArrayHelper(BSTNode *&, const vector<Patient> &, int, int);
-    Patient getMin(BSTNode *&root);
+    BSTNode *findMin(BSTNode *&root) const;
 };
 int BST::getNumberOfPatient() const
 {
@@ -143,65 +143,37 @@ void BST::InsertElementHelper(BSTNode *&root, Patient &&patient)
 }
 void BST::Delete(const string &value)
 {
-    deletehelper(this->root, value);
+    Delete( value,this->root);
 }
 
-Patient BST::getMin(BSTNode *&root)
+BSTNode *BST::findMin(BSTNode *&root) const
 {
     if (root == nullptr)
+        return nullptr;
+    if (root->left == nullptr)
+        return root;
+    return findMin(root->left);
+}
+void BST::Delete(const string &ID, BSTNode *&root)
+{
+    if (root == nullptr)
+        return; // Item not found; do nothing
+
+    if (stoll(ID) < stoll(root->data.getId()))
+        Delete(ID, root->left);
+    else if (stoll(root->data.getId()) < stoll(ID))
+        Delete(ID, root->right);
+    else if (root->left != nullptr && root->right != nullptr) // Two children
     {
-        throw "exception";
-    }
-    else if (root->left == nullptr && root->right == nullptr)
-    {
-        return root->data;
+        root->data = findMin(root->right)->data;
+        Delete(root->data.getId(), root->right);
     }
     else
     {
-        return getMin(root->left);
-    }
-}
-void BST::deletehelper(BSTNode *&root, const string &value)
-{
-    if (root == nullptr)
-        return;
-
-    if (stoll(root->data.getId()) > stoll(value))
-        deletehelper(root->left, value);
-    else if (stoll(root->data.getId()) < stoll(value))
-        deletehelper(root->right, value);
-
-    else
-    { // if elemnt is patient leaf
-
-        if (root->left == nullptr && root->right == nullptr)
-        {
-            delete root;
-            root = nullptr;
-            this->numberOfPatient--;
-        }
-        else if (root->left == nullptr) // one child only
-        {
-
-            BSTNode *temp = root->right;
-            delete root;
-            root = temp;
-            this->numberOfPatient--;
-        }
-        else if (root->right == nullptr)
-        {
-            BSTNode *temp = root->left;
-            delete root;
-            root = temp;
-            this->numberOfPatient--;
-        }
-        else
-        { // elemnt is patient full node
-            // 1 search for the min value in the right subtree
-            root->data = getMin(root->right);
-            // 2 Delete that value
-            deletehelper(root->right, root->data.getId());
-        }
+        BSTNode *oldNode = root;
+        root = (root->left != nullptr) ? root->left : root->right;
+        delete oldNode;
+        numberOfPatient--;
     }
 }
 

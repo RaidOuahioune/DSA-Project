@@ -23,12 +23,12 @@ private:
 
   int findKey(const string &);
   BTreeNode *search(const string &);
-  void insertNonFull(const Patient &);
-  void insertNonFull(Patient &&);
+  void insertNonFull(const Patient &, int &numberOfPatient);
+  void insertNonFull(Patient &&, int &numberOfPatient);
   void splitChild(int i, BTreeNode *y);
-  void deletion(const string &);
-  void removeFromLeaf(int index);
-  void removeFromNonLeaf(int index);
+  void deletion(const string &, int &numberOfPatient);
+  void removeFromLeaf(int index, int &numberOfPatient);
+  void removeFromNonLeaf(int index, int &numberOfPatient);
   Patient getPredecessor(int index);
   Patient getSuccessor(int index);
   void fill(int index);
@@ -54,14 +54,19 @@ BTreeNode::BTreeNode(int TreeOrder, bool leaf1)
 BTreeNode::~BTreeNode()
 {
 
-  delete[] keys;
   // this loop is mendatory to avoid memory leaks and It defines a recursive    Destruction of Nodes
-  for (int i = 0; i <= n; i++)
+
+  for (int i = 0; i < n; i++)
   {
-    delete Children[i];
+    if (!leaf)
+    {
+      delete (Children[i]);
+      Children[i] = nullptr;
+    }
   }
 
   delete[] Children;
+  delete[] keys;
 }
 void BTreeNode::traverse()
 {
@@ -104,7 +109,7 @@ BTreeNode *BTreeNode::search(const string &ID)
 }
 
 // Insertion non full
-void BTreeNode::insertNonFull(const Patient &patient)
+void BTreeNode::insertNonFull(const Patient &patient, int &numberOfPatient)
 {
   int index = findKey(patient.getId());
   if (index < n && keys[index] == patient)
@@ -124,6 +129,7 @@ void BTreeNode::insertNonFull(const Patient &patient)
 
     keys[i + 1] = patient;
     n = n + 1;
+    numberOfPatient++;
   }
   else
   {
@@ -137,10 +143,10 @@ void BTreeNode::insertNonFull(const Patient &patient)
       if (keys[i + 1] < patient)
         i++;
     }
-    Children[i + 1]->insertNonFull(patient);
+    Children[i + 1]->insertNonFull(patient, numberOfPatient);
   }
 }
-void BTreeNode::insertNonFull(Patient &&patient)
+void BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
 {
   int index = findKey(patient.getId());
   if (index < n && keys[index] == std::move(patient))
@@ -160,6 +166,7 @@ void BTreeNode::insertNonFull(Patient &&patient)
 
     keys[i + 1] = std::move(patient);
     n = n + 1;
+    numberOfPatient++;
   }
   else
   {
@@ -173,7 +180,7 @@ void BTreeNode::insertNonFull(Patient &&patient)
       if (keys[i + 1] < patient)
         i++;
     }
-    Children[i + 1]->insertNonFull(std::move(patient));
+    Children[i + 1]->insertNonFull(std::move(patient), numberOfPatient);
   }
 }
 // Split child
@@ -209,16 +216,16 @@ void BTreeNode::splitChild(int i, BTreeNode *y)
 // Traverse
 
 // Deletion operation
-void BTreeNode::deletion(const string &ID)
+void BTreeNode::deletion(const string &ID, int &numberOfPatient)
 {
   int index = findKey(ID);
 
   if (index < n && keys[index].getId() == ID) // it means that we found the k in the array of keys of the node that have called this node
   {
     if (leaf)
-      removeFromLeaf(index);
+      removeFromLeaf(index, numberOfPatient);
     else
-      removeFromNonLeaf(index);
+      removeFromNonLeaf(index, numberOfPatient);
   }
   else
   {
@@ -234,26 +241,27 @@ void BTreeNode::deletion(const string &ID)
       fill(index);
 
     if (flag && index > n)
-      Children[index - 1]->deletion(ID);
+      Children[index - 1]->deletion(ID, numberOfPatient);
     else
-      Children[index]->deletion(ID);
+      Children[index]->deletion(ID, numberOfPatient);
   }
   return;
 }
 
 // Remove from the leaf
-void BTreeNode::removeFromLeaf(int index)
+void BTreeNode::removeFromLeaf(int index, int &numberOfPatient)
 {
   for (int i = index + 1; i < n; ++i)
     keys[i - 1] = keys[i];
 
   n--;
+  numberOfPatient--;
 
   return;
 }
 
 // Delete from non leaf node
-void BTreeNode::removeFromNonLeaf(int index)
+void BTreeNode::removeFromNonLeaf(int index, int &numberOfPatient)
 {
   string ID = keys[index].getId();
 
@@ -261,20 +269,20 @@ void BTreeNode::removeFromNonLeaf(int index)
   {
     Patient pred = getPredecessor(index);
     keys[index] = pred;
-    Children[index]->deletion(pred.getId());
+    Children[index]->deletion(pred.getId(), numberOfPatient);
   }
 
   else if (Children[index + 1]->n >= order)
   {
     Patient succ = getSuccessor(index);
     keys[index] = succ;
-    Children[index + 1]->deletion(succ.getId());
+    Children[index + 1]->deletion(succ.getId(), numberOfPatient);
   }
 
   else
   {
     merge(index);
-    Children[index]->deletion(ID);
+    Children[index]->deletion(ID, numberOfPatient);
   }
   return;
 }
@@ -396,10 +404,6 @@ void BTreeNode::merge(int index)
 
   child->n += sibling->n + 1;
   n--;
-
-  delete (sibling);
-  sibling = nullptr;
-  return;
 }
 
 void BTreeNode::update(const string &ID, const MedicalInfo &info)

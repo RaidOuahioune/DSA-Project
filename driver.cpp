@@ -10,5 +10,5 @@ using namespace std;
 
 int main()
 { //
-  Test::BuildTreeComparaison();
+  Test::DeleteComparaison();
 }

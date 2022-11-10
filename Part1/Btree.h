@@ -19,16 +19,19 @@ public:
   void insert(Patient &&);
   void Delete(const string &);
   void update(const string &, const MedicalInfo &);
+  int getNumberOfPatient() const;
 
 private:
   BTreeNode *root;
   int order;
+  int numberOfPatient;
 };
 
 BTree::BTree(int treeOrder)
 {
   root = nullptr;
   order = treeOrder;
+  numberOfPatient = 0;
 }
 BTree::~BTree()
 {
@@ -57,6 +60,7 @@ void BTree::insert(const Patient &patient)
     root = new BTreeNode(order, true);
     root->keys[0] = patient;
     root->n = 1;
+    numberOfPatient++;
   }
   else
   {
@@ -71,12 +75,12 @@ void BTree::insert(const Patient &patient)
       int i = 0;
       if (s->keys[0] < patient)
         i++;
-      s->Children[i]->insertNonFull(patient);
+      s->Children[i]->insertNonFull(patient, numberOfPatient);
 
       root = s;
     }
     else
-      root->insertNonFull(patient);
+      root->insertNonFull(patient, numberOfPatient);
   }
 }
 
@@ -101,12 +105,12 @@ void BTree::insert(Patient &&patient)
       int i = 0;
       if (s->keys[0] < patient)
         i++;
-      s->Children[i]->insertNonFull(std::move(patient));
+      s->Children[i]->insertNonFull(std::move(patient), numberOfPatient);
 
       root = s;
     }
     else
-      root->insertNonFull(std::move(patient));
+      root->insertNonFull(std::move(patient), numberOfPatient);
   }
 }
 
@@ -118,7 +122,7 @@ void BTree::Delete(const string &ID)
     cout << "The tree is empty\n";
     return;
   }
-  root->deletion(ID);
+  root->deletion(ID, numberOfPatient);
 
   if (root->n == 0)
   {
@@ -128,7 +132,8 @@ void BTree::Delete(const string &ID)
     else
       root = root->Children[0];
 
-    delete tmp;
+    delete (tmp);
+    tmp = nullptr;
   }
   return;
 }
@@ -141,5 +146,9 @@ void BTree::update(const string &ID, const MedicalInfo &info)
   }
   else
     cout << "\nTree is Empty !You may want to Create a new Patient Instead" << endl;
+}
+int BTree::getNumberOfPatient() const
+{
+  return this->numberOfPatient;
 }
 #endif
