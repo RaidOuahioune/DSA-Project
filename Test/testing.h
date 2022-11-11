@@ -11,10 +11,25 @@ namespace Test
   {
     FileHandler handler;
     vector<Patient> allPatients = handler.getALLPatient();
-    AvlTree avl1;
+
+    BST binaryTree;
     auto start = chrono::high_resolution_clock::now();
-    avl1.InsertSortedArray(allPatients);
+    for (const Patient &p : allPatients)
+    {
+      binaryTree.insert(p);
+    }
     auto end = chrono::high_resolution_clock::now();
+    cout << "Duration of the Traditional Way(BST): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    BST binaryTree2;
+    start = chrono::high_resolution_clock::now();
+    binaryTree2.InsertSortedArray(allPatients);
+    end = chrono::high_resolution_clock::now();
+    cout << "Duration of the Sorted Array Insertion (BST): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+
+    AvlTree avl1;
+    start = chrono::high_resolution_clock::now();
+    avl1.InsertSortedArray(allPatients);
+    end = chrono::high_resolution_clock::now();
     cout << "Duration of the Sorted Array Insertion (AVl): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
 
     AvlTree avl2;
@@ -34,20 +49,6 @@ namespace Test
     }
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Traditional Way(Btree): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
-
-    BST binaryTree;
-    start = chrono::high_resolution_clock::now();
-    for (const Patient &p : allPatients)
-    {
-      binaryTree.insert(p);
-    }
-    end = chrono::high_resolution_clock::now();
-    cout << "Duration of the Traditional Way(BST): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
-    BST binaryTree2;
-    start = chrono::high_resolution_clock::now();
-    binaryTree2.InsertSortedArray(allPatients);
-    end = chrono::high_resolution_clock::now();
-    cout << "Duration of the Sorted Array Insertion (BST): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
   }
 
   void SearchComparaison()
@@ -136,8 +137,8 @@ namespace Test
     MedicalInfo info = MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A');
 
     srand(time(nullptr));
-    int random = rand() % allPatients.size();// to get a random index 
-    string randomId = allPatients[random].getId();// get a random ID from the patient at that random position
+    int random = rand() % allPatients.size();      // to get a random index
+    string randomId = allPatients[random].getId(); // get a random ID from the patient at that random position
 
     auto start = chrono::high_resolution_clock::now();
     BinaryTree.update(randomId, info);
@@ -155,12 +156,12 @@ namespace Test
     cout << "Duration of Update in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
   }
 
-
   void DeleteComparaison()
   {
 
     FileHandler handler;
     vector<Patient> allPatients = handler.getALLPatient();
+
     BST BinaryTree;
     AvlTree avlTree;
     BTree btree(5);
@@ -170,7 +171,7 @@ namespace Test
     {
       btree.insert(patient);
     }
- 
+
     srand(time(nullptr));
     int random = rand() % allPatients.size();
     string randomId = allPatients[random].getId();
@@ -189,12 +190,7 @@ namespace Test
     btree.Delete(randomId);
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Deleting  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
-
-
-
-    cout<<btree.getNumberOfPatient()<<endl;
   }
-
 
 }
 #endif
