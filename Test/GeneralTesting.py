@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def plotBuildTreeAnalysis():
   data = pd.read_csv("GenralComparaison/BuildTree.csv")
-  fig, axs = plt.subplots(5, figsize=(10, 10))
+  fig, axs = plt.subplots(5, figsize=(12, 10))
   axs[0].set_ylabel("Excution Time")
   axs[0].set_title("TW(BST) Build")
   axs[0].plot(data["Size"].values,

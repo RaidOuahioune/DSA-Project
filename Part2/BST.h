@@ -6,6 +6,7 @@
 
 #include "../Interfaces/Patient.h"
 #include "../Interfaces/MedicalInfo.h"
+#include "../utilities/FileHandler.h"
 
 class BSTNode
 {
@@ -25,7 +26,7 @@ public:
 class BST
 {
 public:
-    void InOrder();
+    void storeAllPatients();
     void insert(const Patient &);
     void insert(Patient &&);
     bool contains(const string &);
@@ -39,7 +40,7 @@ public:
 private:
     BSTNode *root = nullptr;
     int numberOfPatient = 0;
-    void InOrderHelper(BSTNode *&);
+    void storeAllPatientsHelper(BSTNode *&);
     void InsertElementHelper(BSTNode *&, const Patient &);
     void InsertElementHelper(BSTNode *&, Patient &&);
     bool BinarySearchHelper(BSTNode *&, const string &) const;
@@ -48,24 +49,25 @@ private:
     void updateHelper(BSTNode *&, const string &, const MedicalInfo &);
     void InsertSortedArrayHelper(BSTNode *&, const vector<Patient> &, int, int);
     BSTNode *findMin(BSTNode *&root) const;
+    void storeData(const Patient &patient) const;
 };
 int BST::getNumberOfPatient() const
 {
     return this->numberOfPatient;
 }
 
-void BST::InOrder()
+void BST::storeAllPatients()
 {
-    InOrderHelper(this->root);
+    storeAllPatientsHelper(this->root);
 }
 
-void BST::InOrderHelper(BSTNode *&root)
+void BST::storeAllPatientsHelper(BSTNode *&root)
 {
     if (root == nullptr)
         return;
-    InOrderHelper(root->left);
-    root->data.printPatient();
-    InOrderHelper(root->right);
+    storeAllPatientsHelper(root->left);
+    storeData(root->data);
+    storeAllPatientsHelper(root->right);
 }
 
 void BST::insert(const Patient &patient)
@@ -143,7 +145,7 @@ void BST::InsertElementHelper(BSTNode *&root, Patient &&patient)
 }
 void BST::Delete(const string &value)
 {
-    Delete( value,this->root);
+    Delete(value, this->root);
 }
 
 BSTNode *BST::findMin(BSTNode *&root) const
@@ -222,5 +224,13 @@ void BST::InsertSortedArrayHelper(BSTNode *&root, const vector<Patient> &array, 
         InsertSortedArrayHelper(root->left, array, left, middle - 1); // it's like we have deleted the middle from the list when we are done inserting that node
         InsertSortedArrayHelper(root->right, array, middle + 1, right);
     }
+}
+void BST::storeData(const Patient &patient) const
+{
+    FileHandler handler;
+    if (is_file_exist("Data/" + patient.getId() + ".txt"))
+        handler.InsertMedicalInfo(patient.getMedicalInfo(), patient.getId());
+    else
+        handler.InsertFullData(patient);
 }
 #endif

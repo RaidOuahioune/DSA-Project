@@ -4,6 +4,7 @@
 #include "../Interfaces/Patient.h"
 #include <algorithm>
 #include <iostream>
+#include "../utilities/FileHandler.h"
 using namespace std;
 
 class AvlNode
@@ -76,12 +77,12 @@ public:
         return root == nullptr;
     }
 
-    void printTree() const
+    void storeAllPatients() const
     {
         if (isEmpty())
             cout << "Empty tree" << endl;
         else
-            printTree(root);
+            storeAllPatients(root);
     }
 
     void makeEmpty()
@@ -244,13 +245,13 @@ private:
         t = nullptr;
     }
 
-    void printTree(AvlNode *t) const
+    void storeAllPatients(AvlNode *t) const
     {
         if (t != nullptr)
         {
-            printTree(t->left);
-            t->element.printPatient();
-            printTree(t->right);
+            storeAllPatients(t->left);
+            this->storeData(t->element);
+            storeAllPatients(t->right);
         }
     }
 
@@ -275,7 +276,7 @@ private:
     void rotateWithLeftChild(AvlNode *&k2)
     {
         // PlZ Uncomment this line if you want to test InsertSortedArray()function that guarantes no balancing for the tree and Building in a linear time
-         //std::cout << "Warining There is A rotation" << std::endl;
+        // std::cout << "Warining There is A rotation" << std::endl;
         AvlNode *k1 = k2->left;
         k2->left = k1->right;
         k1->right = k2;
@@ -286,7 +287,7 @@ private:
 
     void rotateWithRightChild(AvlNode *&k1)
     {
-        //std::cout << "Warining There is A rotation" << std::endl;
+        // std::cout << "Warining There is A rotation" << std::endl;
         AvlNode *k2 = k1->right;
         k1->right = k2->left;
         k2->left = k1;
@@ -340,6 +341,14 @@ private:
             InsertSortedArrayHelper(root->left, array, left, middle - 1); // it's like we have deleted the middle from the list when we are done inserting that node
             InsertSortedArrayHelper(root->right, array, middle + 1, right);
         }
+    }
+    void storeData(const Patient &patient) const
+    {
+        FileHandler handler;
+        if (is_file_exist("Data/" + patient.getId() + ".txt"))
+            handler.InsertMedicalInfo(patient.getMedicalInfo(), patient.getId());
+        else
+            handler.InsertFullData(patient);
     }
 };
 

@@ -2,6 +2,7 @@
 #define BtreeNode_h
 #include <iostream>
 #include "../Interfaces/Patient.h"
+#include "../utilities/FileHandler.h"
 using std::cout;
 using std::endl;
 class BTreeNode
@@ -37,6 +38,8 @@ private:
   void merge(int index);
   void traverse();
   void update(const string &ID, const MedicalInfo &info);
+  void storeData(const Patient &patient) const;
+
   friend class BTree;
 };
 
@@ -75,7 +78,7 @@ void BTreeNode::traverse()
   {
     if (leaf == false)
       Children[i]->traverse();
-    keys[i].printPatient();
+    storeData(keys[i]);
   }
   if (leaf == false)
     Children[i]->traverse();
@@ -430,6 +433,14 @@ void BTreeNode::update(const string &ID, const MedicalInfo &info)
     return;
   } // otherwise traverse the subtree
   Children[i]->update(ID, info);
+}
+void BTreeNode::storeData(const Patient &patient) const
+{
+  FileHandler handler;
+  if (is_file_exist("Data/" + patient.getId() + ".txt"))
+    handler.InsertMedicalInfo(patient.getMedicalInfo(), patient.getId());
+  else
+    handler.InsertFullData(patient);
 }
 
 #endif

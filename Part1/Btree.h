@@ -13,7 +13,7 @@ class BTree
 public:
   BTree(int);
   ~BTree();
-  void traverse();
+  void storeAllPatients();
   bool contains(const string &);
   void insert(const Patient &);
   void insert(Patient &&);
@@ -39,7 +39,7 @@ BTree::~BTree()
   root = nullptr;
 }
 
-void BTree::traverse()
+void BTree::storeAllPatients()
 {
   if (root != nullptr)
     root->traverse();
