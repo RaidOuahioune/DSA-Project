@@ -4,8 +4,8 @@
 #include "utilities.h"
 #include <fstream>
 using std::ifstream;
-using std::ofstream;
 using std::ios;
+using std::ofstream;
 class FileHandler
 {
 public:
@@ -164,7 +164,7 @@ void FileHandler::InsertFullData(const Patient &patient) const
     }
     else
     {
-      cout<<"Error Occured when Trying to read a file"<<endl;
+      cout << "Error Occured when Trying to read a file" << endl;
     }
 
     file.close();
@@ -174,7 +174,12 @@ void FileHandler::InsertFullData(const Patient &patient) const
 vector<Patient> FileHandler::getALLPatient() const
 {
   vector<Patient> vec;
-  vector<string> files = getFiles();
+  vector<string> files;
+#ifdef _WIN32
+  files = getFilesinWin();
+#else
+  files = getFiles();
+#endif
 
   for (const string &file : files)
   {
@@ -221,7 +226,7 @@ Patient FileHandler::BuildPatient(const string &file) const
   return patient;
 }
 
-MedicalInfo FileHandler::getRecentMedicalInfo(const string &file)  const
+MedicalInfo FileHandler::getRecentMedicalInfo(const string &file) const
 {
   MedicalInfo info;
   string path = "Data/" + file;
@@ -263,7 +268,7 @@ MedicalInfo FileHandler::getRecentMedicalInfo(const string &file)  const
       }
       counter++;
 
-      //cout << line << endl;
+      // cout << line << endl;
       in.clear();
       in.seekg(pos);
     }

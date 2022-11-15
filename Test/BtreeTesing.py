@@ -12,7 +12,8 @@ def plotAnalysis(file):
             axs[i].set_xlabel("Size")
         if(i==0):
           axs[i].set_title(file)
-        axs[i].set_ylabel("Excution Time")
+        
+        axs[i].set_ylabel("Excution Time(ns)")
 
         axs[i].plot(data["Size"].values,
                     data[f"Order{i+2}"].values, c=colors[i], label=f"Order{i+2}")

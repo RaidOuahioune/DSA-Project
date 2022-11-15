@@ -7,11 +7,13 @@
 #include <fstream>
 #include <random>
 #include <filesystem>
+#include <filesystem>
 using std::ifstream;
 using std::put_time;
 using std::string;
 using std::stringstream;
 using std::vector;
+namespace fs = std::filesystem;
 
 bool is_file_exist(const string &fileName)
 {
@@ -69,7 +71,11 @@ string generateID(int seed)
 vector<string> getFiles()
 {
   char buffer[128];
-  const char *command = "cd Data && ls";
+
+  const char *command;
+
+  command = "cd Data && ls";
+
   vector<string> files;
 
   // Open pipe to file
@@ -91,5 +97,14 @@ vector<string> getFiles()
   pclose(pipe);
   return files;
 }
+vector<string> getFilesinWin()
+{
+  std::string path = "Data";
+  vector<string> files;
 
+  for (const auto &entry : fs::directory_iterator(path))
+    files.push_back(string(entry.path()).substr(5));
+
+  return files;
+}
 #endif
