@@ -12,6 +12,8 @@ class BTree
 
 public:
   BTree(int);
+  BTree &operator=(const BTree &rhs);
+  BTree &operator=(BTree &&rhs);
   ~BTree();
   void storeAllPatients();
   bool contains(const string &);
@@ -27,7 +29,7 @@ private:
   int numberOfPatient;
 };
 
-BTree::BTree(int treeOrder)
+BTree::BTree(int treeOrder = 3)
 {
   root = nullptr;
   order = treeOrder;
@@ -150,5 +152,21 @@ void BTree::update(const string &ID, const MedicalInfo &info)
 int BTree::getNumberOfPatient() const
 {
   return this->numberOfPatient;
+}
+
+BTree &BTree::operator=(const BTree &rhs)
+{
+  this->order = rhs.order;
+  this->numberOfPatient = rhs.numberOfPatient;
+  this->root = rhs.root;
+  return (*this);
+}
+BTree &BTree::operator=(BTree &&rhs)
+{
+  this->order = rhs.order;
+  this->numberOfPatient = rhs.numberOfPatient;
+  this->root = rhs.root;
+  delete rhs.root;
+  return (*this);
 }
 #endif

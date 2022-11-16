@@ -6,6 +6,7 @@
 using std::ifstream;
 using std::ios;
 using std::ofstream;
+const int NUMBER_OF_DEPARTMENTS = 5;
 class FileHandler
 {
 public:
@@ -13,13 +14,14 @@ public:
   void InsertMedicalInfo(const MedicalInfo &, const string ID) const; // this function Insert the new inforamtion to the desired file given that the file already exists
   void InsertFullData(const Patient &) const;                         // Create a new file with current patient information
   vector<MedicalInfo> getAllHistory(const string &ID) const;
-  vector<Patient> getALLPatient() const;
+  vector<vector<Patient>> getALLPatient(int&) const;
   ~FileHandler() {}
 
 private:
   Patient BuildPatient(const string &file) const;
   MedicalInfo getRecentMedicalInfo(const string &file) const;
 };
+
 void FileHandler::InsertMedicalInfo(const MedicalInfo &info, const string ID) const
 {
   ofstream file;
@@ -171,19 +173,21 @@ void FileHandler::InsertFullData(const Patient &patient) const
   }
 }
 
-vector<Patient> FileHandler::getALLPatient() const
+vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
 {
-  vector<Patient> vec;
   vector<string> files;
 #ifdef _WIN32
   files = getFilesinWin();
 #else
   files = getFiles();
 #endif
-
+  size = files.size();
+  vector<vector<Patient>> vec(NUMBER_OF_DEPARTMENTS);
+  Patient patient;
   for (const string &file : files)
   {
-    vec.push_back(BuildPatient(file));
+    patient = BuildPatient(file);
+    vec[patient.getDepartment() - 'A'].push_back((patient));
   }
   return vec;
 }

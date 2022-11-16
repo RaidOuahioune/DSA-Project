@@ -44,6 +44,7 @@ public:
 
     ~AvlTree()
     {
+       
         makeEmpty();
     }
 

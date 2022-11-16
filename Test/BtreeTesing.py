@@ -15,7 +15,7 @@ def plotAnalysis(file):
         
         axs[i].set_ylabel("Excution Time(ns)")
 
-        axs[i].plot(data["Size"].values,
+        axs[i].scatter(data["Size"].values,
                     data[f"Order{i+2}"].values, c=colors[i], label=f"Order{i+2}")
 
     fig.legend(loc=2)

@@ -1,0 +1,17 @@
+ID: 19161122232639
+FullName: 
+BirthDay: 
+Entry Date: 16-11-2022 23-26-43
+Adress: 
+Gender: M
+Telephone: 
+ABO: 
+CD: 
+Allergies: 
+BP: 0
+HR: 0
+Medicals Taken: 
+Time: 16-11-2022 23-26-43
+Department: A
+Notes: 
+

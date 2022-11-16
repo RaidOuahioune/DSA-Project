@@ -8,54 +8,78 @@
 using std::fstream;
 namespace GeneralTesting
 {
-  
 
   void BuildTreeComparaison()
   {
+    int size;
     ofstream file;
     file.open("Test/GenralComparaison/BuildTree.csv", ios_base::app);
 
     FileHandler handler;
-    vector<Patient> allPatients = handler.getALLPatient();
-    file << allPatients.size() << ',';
+    vector<vector<Patient>> allPatients = handler.getALLPatient(size);
+    file << size << ',';
 
-    BST binaryTree;
+    vector<BST> BSTtrees(NUMBER_OF_DEPARTMENTS);
     auto start = chrono::high_resolution_clock::now();
-    for (const Patient &p : allPatients)
+    for (const vector<Patient> &vec : allPatients)
     {
-      binaryTree.insert(p);
+
+      for (const Patient &patient : vec)
+      {
+        BSTtrees[patient.getDepartment() - 'A'].insert((patient));
+      }
     }
     auto end = chrono::high_resolution_clock::now();
     cout << "Duration of the Traditional Way(BST): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
-    BST binaryTree2;
+    vector<BST> BSTtrees2(NUMBER_OF_DEPARTMENTS);
     start = chrono::high_resolution_clock::now();
-    binaryTree2.InsertSortedArray(allPatients);
+    for (int y = 0; y < NUMBER_OF_DEPARTMENTS; y++)
+    {
+      BSTtrees2[y].InsertSortedArray(allPatients[y]);
+    }
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Sorted Array Insertion (BST): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
-    AvlTree avl1;
+    vector<AvlTree> AVltrees(NUMBER_OF_DEPARTMENTS);
     start = chrono::high_resolution_clock::now();
-    avl1.InsertSortedArray(allPatients);
+    for (int y = 0; y < NUMBER_OF_DEPARTMENTS; y++)
+    {
+      AVltrees[y].InsertSortedArray(allPatients[y]);
+    }
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Sorted Array Insertion (AVl): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
-    AvlTree avl2;
+    vector<AvlTree> AVltrees2(NUMBER_OF_DEPARTMENTS);
     start = chrono::high_resolution_clock::now();
-    for (const Patient &p : allPatients)
+    for (const vector<Patient> &vec : allPatients)
     {
-      avl2.insert(p);
+
+      for (const Patient &patient : vec)
+      {
+        AVltrees2[patient.getDepartment() - 'A'].insert((patient));
+      }
     }
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Traditional Way Build(Avl): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
 
-    BTree btree(5);
-    start = chrono::high_resolution_clock::now();
-    for (const Patient &p : allPatients)
+    vector<BTree> Btrees(NUMBER_OF_DEPARTMENTS);
+    for (BTree &tree : Btrees)
     {
-      btree.insert(p);
+      tree = BTree(NUMBER_OF_DEPARTMENTS);
     }
+
+    start = std::chrono::high_resolution_clock::now();
+    for (const vector<Patient> &vec : allPatients)
+    {
+
+      for (const Patient &patient : vec)
+      {
+        Btrees[patient.getDepartment() - 'A'].insert((patient));
+      }
+    }
+
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Traditional Way(Btree): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
@@ -64,162 +88,217 @@ namespace GeneralTesting
 
   void SearchComparaison()
   {
+    int size;
     ofstream file;
     file.open("Test/GenralComparaison/Search.csv", ios_base::app);
     FileHandler handler;
-    vector<Patient> allPatients = handler.getALLPatient();
-    file << allPatients.size() << ',';
-    BST BinaryTree;
-    AvlTree avlTree;
-    BTree btree(5);
-    BinaryTree.InsertSortedArray(allPatients);
-    avlTree.InsertSortedArray(allPatients);
-    for (const Patient &patient : allPatients)
+    vector<vector<Patient>> allPatients = handler.getALLPatient(size);
+    file << size << ',';
+    vector<BST> BSTtrees(NUMBER_OF_DEPARTMENTS);
+    vector<AvlTree> AVltrees(NUMBER_OF_DEPARTMENTS);
+    vector<BTree> Btrees(NUMBER_OF_DEPARTMENTS);
+    for (BTree &tree : Btrees)
     {
-      btree.insert(patient);
+      tree = BTree(NUMBER_OF_DEPARTMENTS);
+    }
+
+    for (const vector<Patient> &vec : allPatients)
+    {
+
+      for (const Patient &patient : vec)
+      {
+        Btrees[patient.getDepartment() - 'A'].insert(patient);
+      }
     }
 
     srand(time(nullptr));
-    int random = rand() % allPatients.size();
-    string randomId = allPatients[random].getId();
+
+    int randomDep=0;
+    while (allPatients[randomDep].size() == 0)
+    {
+      randomDep = rand() % NUMBER_OF_DEPARTMENTS;
+    }
+    int random = rand() % allPatients[randomDep].size();
+    string randomId = allPatients[randomDep][random].getId();
 
     auto start = chrono::high_resolution_clock::now();
-    BinaryTree.contains(randomId);
+    BSTtrees[randomDep].contains(randomId);
     auto end = chrono::high_resolution_clock::now();
-    cout << "Duration  of seaching in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration  of Searching in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
 
     start = chrono::high_resolution_clock::now();
-    avlTree.contains(randomId);
+    AVltrees[randomDep].contains(randomId);
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of the seaching  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration of the Searching  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
     start = chrono::high_resolution_clock::now();
-    btree.contains(randomId);
+    BSTtrees[randomDep].contains((randomId));
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of the seaching  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration of the Searching  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file.close();
   }
 
   void InsertionComparaison()
   {
-    fstream file;
+    int size;
+    Patient patient = Patient("Raid Ouahioune", "12/10/2004", "Aghouat", 'M', "0669511304", "A+", MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A'));
+    ofstream file;
     file.open("Test/GenralComparaison/Insert.csv", ios_base::app);
     FileHandler handler;
-    vector<Patient> allPatients = handler.getALLPatient();
-    file << allPatients.size() << ',';
-    BST BinaryTree;
-    AvlTree avlTree;
-    BTree btree(5);
-    BinaryTree.InsertSortedArray(allPatients);
-    avlTree.InsertSortedArray(allPatients);
-    for (const Patient &patient : allPatients)
+    vector<vector<Patient>> allPatients = handler.getALLPatient(size);
+    file << size << ',';
+    vector<BST> BSTtrees(NUMBER_OF_DEPARTMENTS);
+    vector<AvlTree> AVltrees(NUMBER_OF_DEPARTMENTS);
+    vector<BTree> Btrees(NUMBER_OF_DEPARTMENTS);
+    for (BTree &tree : Btrees)
     {
-      btree.insert(patient);
+      tree = BTree(NUMBER_OF_DEPARTMENTS);
     }
-    Patient patient = Patient("Raid Ouahioune", "12/10/2004", "Aghouat", 'M', "0669511304", "A+", MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A'));
 
+    for (const vector<Patient> &vec : allPatients)
+    {
+
+      for (const Patient &patient : vec)
+      {
+        Btrees[patient.getDepartment() - 'A'].insert((patient));
+      }
+    }
+
+    srand(time(nullptr));
+
+    int randomDep=0;
+    while (allPatients[randomDep].size() == 0)
+    {
+      randomDep = rand() % NUMBER_OF_DEPARTMENTS;
+    }
     auto start = chrono::high_resolution_clock::now();
-    BinaryTree.insert(patient);
+    BSTtrees[randomDep].insert(patient);
     auto end = chrono::high_resolution_clock::now();
-    cout << "Duration of inserting in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
-    file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
-    start = chrono::high_resolution_clock::now();
-    avlTree.insert(patient);
-    end = chrono::high_resolution_clock::now();
-    cout << "Duration of inserting  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration  of Inserting in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
 
     start = chrono::high_resolution_clock::now();
-    btree.insert(patient);
+    AVltrees[randomDep].insert(patient);
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of inserting in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
-
+    cout << "Duration of the Inserting  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
+    start = chrono::high_resolution_clock::now();
+    BSTtrees[randomDep].insert((patient));
+    end = chrono::high_resolution_clock::now();
+    cout << "Duration of the Inserting  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file.close();
   }
 
   void UpdateComparaison()
   {
-    ofstream file;
-    file.open("Test/GenralComparaison/update.csv", ios_base::app);
-
-    FileHandler handler;
-    vector<Patient> allPatients = handler.getALLPatient();
-    file << allPatients.size() << ',';
-    BST BinaryTree;
-    AvlTree avlTree;
-    BTree btree(5);
-    BinaryTree.InsertSortedArray(allPatients);
-    avlTree.InsertSortedArray(allPatients);
-    for (const Patient &patient : allPatients)
-    {
-      btree.insert(patient);
-    }
+    int size;
 
     MedicalInfo info = MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A');
 
+    ofstream file;
+    file.open("Test/GenralComparaison/update.csv", ios_base::app);
+    FileHandler handler;
+    vector<vector<Patient>> allPatients = handler.getALLPatient(size);
+    file << size << ',';
+    vector<BST> BSTtrees(NUMBER_OF_DEPARTMENTS);
+    vector<AvlTree> AVltrees(NUMBER_OF_DEPARTMENTS);
+    vector<BTree> Btrees(NUMBER_OF_DEPARTMENTS);
+    for (BTree &tree : Btrees)
+    {
+      tree = BTree(NUMBER_OF_DEPARTMENTS);
+    }
+
+    for (const vector<Patient> &vec : allPatients)
+    {
+
+      for (const Patient &patient : vec)
+      {
+        Btrees[patient.getDepartment() - 'A'].insert((patient));
+      }
+    }
+
     srand(time(nullptr));
-    int random = rand() % allPatients.size();      // to get a random index
-    string randomId = allPatients[random].getId(); // get a random ID from the patient at that random position
+
+    int randomDep=0;
+    while (allPatients[randomDep].size() == 0)
+    {
+      randomDep = rand() % NUMBER_OF_DEPARTMENTS;
+    }
+    int random = rand() % allPatients[randomDep].size();
+    string randomId = allPatients[randomDep][random].getId();
 
     auto start = chrono::high_resolution_clock::now();
-    BinaryTree.update(randomId, info);
+    BSTtrees[randomDep].update(randomId, info);
     auto end = chrono::high_resolution_clock::now();
-    cout << "Duration of Update in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration  of update in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
 
     start = chrono::high_resolution_clock::now();
-    avlTree.update(randomId, info);
+    AVltrees[randomDep].update(randomId, info);
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of Update in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration of the update  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
     start = chrono::high_resolution_clock::now();
-    btree.update(randomId, info);
+    BSTtrees[randomDep].update(randomId, info);
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of Update in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration of the update  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file.close();
   }
 
   void DeleteComparaison()
   {
+    int size;
     ofstream file;
     file.open("Test/GenralComparaison/delete.csv", ios_base::app);
     FileHandler handler;
-    vector<Patient> allPatients = handler.getALLPatient();
-    file << allPatients.size() << ',';
-    BST BinaryTree;
-    AvlTree avlTree;
-    BTree btree(5);
-    BinaryTree.InsertSortedArray(allPatients);
-    avlTree.InsertSortedArray(allPatients);
-    for (const Patient &patient : allPatients)
+    vector<vector<Patient>> allPatients = handler.getALLPatient(size);
+    file << size << ',';
+    vector<BST> BSTtrees(NUMBER_OF_DEPARTMENTS);
+    vector<AvlTree> AVltrees(NUMBER_OF_DEPARTMENTS);
+    vector<BTree> Btrees(NUMBER_OF_DEPARTMENTS);
+    for (BTree &tree : Btrees)
     {
-      btree.insert(patient);
+      tree = BTree(NUMBER_OF_DEPARTMENTS);
+    }
+
+    for (const vector<Patient> &vec : allPatients)
+    {
+
+      for (const Patient &patient : vec)
+      {
+        Btrees[patient.getDepartment() - 'A'].insert((patient));
+      }
     }
 
     srand(time(nullptr));
-    int random = rand() % allPatients.size();
-    string randomId = allPatients[random].getId();
+
+    int randomDep=0;
+    while (allPatients[randomDep].size() == 0)
+    {
+      randomDep = rand() % NUMBER_OF_DEPARTMENTS;
+    }
+    int random = rand() % allPatients[randomDep].size();
+    string randomId = allPatients[randomDep][random].getId();
 
     auto start = chrono::high_resolution_clock::now();
-    BinaryTree.Delete(randomId);
+    BSTtrees[randomDep].Delete((randomId));
     auto end = chrono::high_resolution_clock::now();
-    cout << "Duration  of Deleting in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration  of delete in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
 
     start = chrono::high_resolution_clock::now();
-    avlTree.Delete(randomId);
+    AVltrees[randomDep].Delete((randomId));
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of the Deleting  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration of the delete  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
-
     start = chrono::high_resolution_clock::now();
-    btree.Delete(randomId);
+    BSTtrees[randomDep].Delete((randomId));
     end = chrono::high_resolution_clock::now();
-    cout << "Duration of the Deleting  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    cout << "Duration of the delete  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file.close();
   }
@@ -238,16 +317,14 @@ namespace GeneralTesting
   {
     for (int y = 1; y <= 300; y++)
     {
+      addNewPatients();
       BuildTreeComparaison();
       SearchComparaison();
       InsertionComparaison();
       UpdateComparaison();
       DeleteComparaison();
-      addNewPatients();
     }
   }
-
-  
 
 }
 #endif

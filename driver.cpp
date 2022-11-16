@@ -8,7 +8,10 @@
 #include <filesystem>
 using namespace std;
 
+//
 int main()
 {
+
+  BtreeComparaison::GenerateData();
   
 }

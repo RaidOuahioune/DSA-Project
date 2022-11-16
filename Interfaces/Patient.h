@@ -16,6 +16,7 @@ public:
     MedicalInfo getMedicalInfo() const;
     void setMedicalInfo(const MedicalInfo &);
     void printPatient() const;
+    char getDepartment() const;
     bool operator<(const Patient &) const;
     bool operator>(const Patient &) const;
     bool operator==(const Patient &) const;
@@ -40,7 +41,7 @@ private:
 
 int Patient::incrementer = 10;
 
-Patient::Patient(const string &fullName = "", const string &bDay = "", const string &adress = "", char MF = '\0', const string &tel = "", const string &ABO = "", const MedicalInfo &MI = MedicalInfo()) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
+Patient::Patient(const string &fullName = "", const string &bDay = "", const string &adress = "", char MF = 'M', const string &tel = "", const string &ABO = "", const MedicalInfo &MI = MedicalInfo()) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
 {
     if (++incrementer == 100)
         incrementer = 10;
@@ -88,6 +89,11 @@ bool Patient::operator>(const Patient &other) const
 void Patient::setMedicalInfo(const MedicalInfo &info)
 {
     this->MI = info;
+}
+
+char Patient::getDepartment() const
+{
+    return this->MI.Department;
 }
 
 #endif

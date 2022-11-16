@@ -114,7 +114,8 @@ void BST::DestructorHelper(BSTNode **root) // equivalent to make empty()
 };
 
 BST::~BST()
-{
+{   
+
     DestructorHelper(&(this->root));
 }
 

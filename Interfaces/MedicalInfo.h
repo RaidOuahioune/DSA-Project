@@ -33,7 +33,7 @@ private:
     friend class FileHandler;
 };
 
-MedicalInfo::MedicalInfo(const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = '\0') : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), Department(Department)
+MedicalInfo::MedicalInfo(const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = char(65 + rand() % 5)) : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), Department(Department)
 {
     time = getTime();
 }

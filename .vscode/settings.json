@@ -58,6 +58,7 @@
     "streambuf": "cpp",
     "cinttypes": "cpp",
     "typeinfo": "cpp",
-    "filehandler.h": "c"
+    "filehandler.h": "c",
+    "filesystem": "cpp"
   }
 }

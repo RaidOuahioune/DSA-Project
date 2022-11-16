@@ -6,25 +6,26 @@ def plotBuildTreeAnalysis():
   fig, axs = plt.subplots(5, figsize=(12, 10))
   axs[0].set_ylabel("Excution Time(ns)")
   axs[0].set_title("TW(BST) Build")
+  
   axs[0].plot(data["Size"].values,
                data["TW(BST)"].values, c="red", label="TW(BST)")
   
   axs[1].set_ylabel("Excution Time(ns)")
-  axs[1].set_title("SAI(BST) Build")
+  #axs[1].set_title("SAI(BST) Build")
   axs[1].plot(data["Size"].values,
                data["SAI(BST)"].values, c="blue", label="SAI(BST)")
   
   axs[2].set_ylabel("Excution Time(ns)")
-  axs[2].set_title("SAI(AVL) Build")
+  #axs[2].set_title("SAI(AVL) Build")
   axs[2].plot(data["Size"].values,
                data["SAI(AVL)"].values, c="pink", label="SAI(AVL)")
   
   axs[3].set_ylabel("Excution Time(ns)")
-  axs[3].set_title("TW(AVL) Build")
+  #axs[3].set_title("TW(AVL) Build")
   axs[3].plot(data["Size"].values,
                data["TW(AVL)"].values, c="orange", label="TW(AVL)")
   axs[4].set_ylabel("Excution Time(ns)")
-  axs[4].set_title("TW(Btree) Build")
+  #axs[4].set_title("TW(Btree) Build")
   axs[4].set_xlabel("Size")
   axs[4].plot(data["Size"].values,
                data["TW(Btree)"].values, c="green", label="TW(Btree)")
