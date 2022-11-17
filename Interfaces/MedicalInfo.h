@@ -19,6 +19,15 @@ public:
     }
     void setMedicalInfo() const;
     void printInfo() const;
+    void setCd(const string & ) ;
+    void setAllergies(const string & ) ;
+    void setBP( float ) ;
+    void steHr( float ) ;
+    void setMedicalstaken( const vector<string> & ) ;
+    void setNote( const string & ) ;
+    void setTime( const string & ) ;
+    void setDepartment(const char &) ;
+
 
 private:
     string CD;                    // means if the patient has a chronic disease and what its type
@@ -51,5 +60,38 @@ void MedicalInfo::printInfo() const
     cout << briefNote << endl;
     cout << endl;
 }
+void MedicalInfo:: setCd(const string & a)
+{
+    this->CD = a ;
+}
+void MedicalInfo::setAllergies( const string &a )
+{
+    this->Allergies = a ;
+}
+void MedicalInfo:: setBP( float a)
+{
+    this->BP = a ;
+}
+void MedicalInfo:: steHr(float a )
+{
+    this->HR = a ;
+}
+void MedicalInfo:: setMedicalstaken( const vector<string> & array)
+{
+    this->MedicalsTaken = array;
+}
+void MedicalInfo:: setNote( const string & a)
+{
+    this->briefNote = a ;
+}
+void MedicalInfo:: setTime(const string & a)
+{
+    this->time = a ;
+}
+void MedicalInfo:: setDepartment(const char & a)
+{
+    this->Department = a ;
+} 
+
 
 #endif //

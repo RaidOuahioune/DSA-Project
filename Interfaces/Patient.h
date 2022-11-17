@@ -19,6 +19,13 @@ public:
     bool operator<(const Patient &) const;
     bool operator>(const Patient &) const;
     bool operator==(const Patient &) const;
+    void setName( const string & ) ;
+    void setBday(const string &  ) ;
+    void setEntryday( const string & );
+    void setAddress( const string &) ;
+    void setFm( const char &) ;
+    void setPhone( const string &  ) ;
+    void setAbo( const string & ) ;
 
 private:
     //{
@@ -68,6 +75,34 @@ void Patient::printPatient() const
          << "ABO: " << ABO << endl
          << "Telephone: " << tel << endl;
     MI.printInfo();
+}
+void Patient:: setName(const string & a )
+{
+    this->fullName = a  ;
+}
+void Patient:: setBday( const string & a)
+{
+    this->bDay = a ;
+}
+void Patient::setEntryday(const string & a)
+{
+    this->entryDate = a ;
+}
+void Patient::setAddress(const string & a)
+{
+    this->adress = a ;
+}
+void Patient :: setFm(const char & a )
+{
+    this->FM = a ;
+}
+void Patient :: setPhone(const string & a)
+{
+    this->tel = a ;
+}
+void Patient :: setAbo(const string & a)
+{
+    this->ABO = a ;
 }
 
 bool Patient::operator<(const Patient &other) const

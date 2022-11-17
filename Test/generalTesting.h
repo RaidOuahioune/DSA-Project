@@ -238,12 +238,12 @@ namespace GeneralTesting
   {
     for (int y = 1; y <= 300; y++)
     {
+      addNewPatients();
       BuildTreeComparaison();
       SearchComparaison();
       InsertionComparaison();
       UpdateComparaison();
       DeleteComparaison();
-      addNewPatients();
     }
   }
 
