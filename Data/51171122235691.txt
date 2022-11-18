@@ -1,0 +1,17 @@
+ID: 51171122235691
+FullName: Casper Enriqueta 
+BirthDay: 05-02-1967
+Entry Date: 17-11-2022 23-56-25
+Adress: Nevada/SERRANO DR/Block:O/dep:16
+Gender: F
+Telephone: 0655010349
+ABO: B-
+CD: Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: Drug Allergy 
+BP: 114.377
+HR: 113.072
+Medicals Taken: Gabapentin Labetalol 
+Time: 17-11-2022 23-56-25
+Department: E
+Notes: 
+

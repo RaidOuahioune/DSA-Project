@@ -12,7 +12,7 @@ namespace BtreeComparaison
   vector<int> Orders = {2, 3, 4, 5, 6};
   void BuildTreeComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/BtreeComparaison/BuildTree.csv", std::ios_base::app);
 
@@ -49,7 +49,7 @@ namespace BtreeComparaison
 
   void SearchComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/BtreeComparaison/Search.csv", std::ios_base::app);
     FileHandler handler;
@@ -95,7 +95,7 @@ namespace BtreeComparaison
 
   void InsertionComparaison()
   {
-    int size;
+    int size=0;
     fstream file;
     file.open("Test/BtreeComparaison/Insert.csv", ios_base::app);
     FileHandler handler;
@@ -138,7 +138,7 @@ namespace BtreeComparaison
 
   void UpdateComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/BtreeComparaison/update.csv", ios_base::app);
 
@@ -188,7 +188,7 @@ namespace BtreeComparaison
 
   void DeleteComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/BtreeComparaison/delete.csv", ios_base::app);
     FileHandler handler;

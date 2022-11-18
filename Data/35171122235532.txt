@@ -1,0 +1,17 @@
+ID: 35171122235532
+FullName: Aneesa Geovany 
+BirthDay: 00-01-1996
+Entry Date: 17-11-2022 23-55-58
+Adress: Wyoming/WASHINGTON BLVD/Block:Q/dep:171
+Gender: M
+Telephone: 0634210908
+ABO: A+
+CD: ALS (Lou Gehrig's Disease)/ 
+Allergies: milk allergy Mold Allergy 
+BP: 105.748
+HR: 83.832
+Medicals Taken: Apixaban Erythromycin 
+Time: 17-11-2022 23-55-58
+Department: D
+Notes: 
+

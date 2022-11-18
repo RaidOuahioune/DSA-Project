@@ -1,0 +1,17 @@
+ID: 21171122235652
+FullName: Salvatore Natoshia 
+BirthDay: 14-09-1947
+Entry Date: 17-11-2022 23-56-28
+Adress: Nevada/WHIPPLE ST/Block:M/dep:75
+Gender: F
+Telephone: 0690604956
+ABO: A-
+CD: Asthma/ 
+Allergies: shellfish allergy 
+BP: 117.976
+HR: 125.267
+Medicals Taken: Bupropion Mupirocin 
+Time: 17-11-2022 23-56-28
+Department: B
+Notes: 
+

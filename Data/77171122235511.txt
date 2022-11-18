@@ -1,0 +1,17 @@
+ID: 77171122235511
+FullName: Tresa Raya 
+BirthDay: 25-05-1937
+Entry Date: 17-11-2022 23-55-55
+Adress: Delaware/HEAD ST/Block:N/dep:136
+Gender: F
+Telephone: 0680917670
+ABO: AB-
+CD: Arthritis/ 
+Allergies: Drug Allergy Pollen Allergy  
+BP: 126.648
+HR: 154.653
+Medicals Taken: Naproxen Irbesartan 
+Time: 17-11-2022 23-55-55
+Department: A
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 16171122235625
+FullName: Alyshia Yanelis 
+BirthDay: 15-04-1957
+Entry Date: 17-11-2022 23-56-15
+Adress: Texas/HIGH ST/Block:K/dep:166
+Gender: F
+Telephone: 0568182537
+ABO: B-
+CD: 
+Allergies: milk allergy Pet Allergy  
+BP: 110.027
+HR: 98.3319
+Medicals Taken: Meloxicam 
+Time: 17-11-2022 23-56-15
+Department: C
+Notes: 
+

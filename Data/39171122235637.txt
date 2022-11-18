@@ -1,0 +1,17 @@
+ID: 39171122235637
+FullName: Aziz Evangelia 
+BirthDay: 20-02-1992
+Entry Date: 17-11-2022 23-56-26
+Adress: Connecticut/PARAMOUNT TER/Block:E/dep:121
+Gender: M
+Telephone: 0566200494
+ABO: AB+
+CD: 
+Allergies: milk allergy shellfish allergy 
+BP: 107.203
+HR: 88.7595
+Medicals Taken: Latanoprost 
+Time: 17-11-2022 23-56-26
+Department: E
+Notes: 
+

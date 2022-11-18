@@ -1,0 +1,17 @@
+ID: 19171122235622
+FullName: Marta Shaelynn 
+BirthDay: 29-07-1945
+Entry Date: 17-11-2022 23-56-13
+Adress: PennsylvaniaRhode Island/VULCAN STWY/Block:F/dep:130
+Gender: F
+Telephone: 0741676635
+ABO: O-
+CD: Alzheimer/ Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: shellfish allergy Latex Allergy  Pet Allergy  
+BP: 99.1761
+HR: 61.5606
+Medicals Taken: Drospirenone; Solifenacin Primidone 
+Time: 17-11-2022 23-56-13
+Department: A
+Notes: 
+

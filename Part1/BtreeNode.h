@@ -43,7 +43,7 @@ private:
   friend class BTree;
 };
 
-BTreeNode::BTreeNode(int TreeOrder, bool leaf1)
+BTreeNode::BTreeNode(int TreeOrder = NUMBER_OF_DEPARTMENTS, bool leaf1)
 {
   order = TreeOrder;
   leaf = leaf1;

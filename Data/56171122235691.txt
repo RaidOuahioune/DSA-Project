@@ -1,0 +1,17 @@
+ID: 56171122235691
+FullName: Donika Valisa 
+BirthDay: 27-03-1970
+Entry Date: 17-11-2022 23-56-05
+Adress: Louisiana/BENTON AVE/Block:Y/dep:158
+Gender: M
+Telephone: 0660294155
+ABO: O+
+CD: Reflex Sympathetic Dystrophy (RSD) Syndrome/ 
+Allergies: 
+BP: 105.83
+HR: 84.1068
+Medicals Taken: Diltiazem Omega-3-acid 
+Time: 17-11-2022 23-56-05
+Department: A
+Notes: 
+

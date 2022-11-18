@@ -1,0 +1,17 @@
+ID: 56171122235630
+FullName: Armondo Eran 
+BirthDay: 21-09-2009
+Entry Date: 17-11-2022 23-56-18
+Adress: Texas/YOSEMITE AVE/Block:T/dep:112
+Gender: F
+Telephone: 0555050786
+ABO: AB-
+CD: 
+Allergies: Latex Allergy  Pollen Allergy  
+BP: 138.825
+HR: 195.916
+Medicals Taken: Diltiazem 
+Time: 17-11-2022 23-56-18
+Department: B
+Notes: 
+

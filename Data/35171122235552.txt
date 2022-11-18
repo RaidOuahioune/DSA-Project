@@ -1,0 +1,17 @@
+ID: 35171122235552
+FullName: Arnel Seung 
+BirthDay: 28-00-1997
+Entry Date: 17-11-2022 23-55-51
+Adress: Delaware/SEVILLE ST/Block:P/dep:139
+Gender: F
+Telephone: 0655340894
+ABO: AB-
+CD: Cancer/ 
+Allergies: soy allergy  wheat allergy  Pollen Allergy  
+BP: 129.962
+HR: 165.882
+Medicals Taken: Ondansetron Hydrochlorothiazide 
+Time: 17-11-2022 23-55-51
+Department: E
+Notes: 
+

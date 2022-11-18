@@ -1,0 +1,17 @@
+ID: 63171122235549
+FullName: Martisha Chitara 
+BirthDay: 20-09-1991
+Entry Date: 17-11-2022 23-55-57
+Adress: Colorado/LEGION CT/Block:W/dep:151
+Gender: F
+Telephone: 0789928392
+ABO: A-
+CD: Cancer/ Bowel Diseases/ 
+Allergies: peanut allergy  
+BP: 112.666
+HR: 107.274
+Medicals Taken: Simvastatin Fluticasone Tamsulosin 
+Time: 17-11-2022 23-55-57
+Department: C
+Notes: 
+

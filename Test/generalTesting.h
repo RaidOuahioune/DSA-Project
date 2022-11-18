@@ -11,7 +11,7 @@ namespace GeneralTesting
 
   void BuildTreeComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/GenralComparaison/BuildTree.csv", ios_base::app);
 
@@ -88,7 +88,7 @@ namespace GeneralTesting
 
   void SearchComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/GenralComparaison/Search.csv", ios_base::app);
     FileHandler handler;
@@ -113,7 +113,7 @@ namespace GeneralTesting
 
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -142,7 +142,7 @@ namespace GeneralTesting
 
   void InsertionComparaison()
   {
-    int size;
+    int size=0;
     Patient patient = Patient("Raid Ouahioune", "12/10/2004", "Aghouat", 'M', "0669511304", "A+", MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A'));
     ofstream file;
     file.open("Test/GenralComparaison/Insert.csv", ios_base::app);
@@ -168,7 +168,7 @@ namespace GeneralTesting
 
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -194,7 +194,7 @@ namespace GeneralTesting
 
   void UpdateComparaison()
   {
-    int size;
+    int size=0;
 
     MedicalInfo info = MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A');
 
@@ -222,7 +222,7 @@ namespace GeneralTesting
 
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -251,7 +251,7 @@ namespace GeneralTesting
 
   void DeleteComparaison()
   {
-    int size;
+    int size=0;
     ofstream file;
     file.open("Test/GenralComparaison/delete.csv", ios_base::app);
     FileHandler handler;
@@ -276,7 +276,7 @@ namespace GeneralTesting
 
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -313,7 +313,7 @@ namespace GeneralTesting
     }
   }
 
-  void GenerateData()
+  void GenerateDataAndTest()
   {
     for (int y = 1; y <= 300; y++)
     {
@@ -323,6 +323,13 @@ namespace GeneralTesting
       InsertionComparaison();
       UpdateComparaison();
       DeleteComparaison();
+    }
+  }
+  void GenerateDataOnly()
+  {
+    for (int y = 1; y < 100000; y++)
+    {
+      addNewPatients();
     }
   }
 

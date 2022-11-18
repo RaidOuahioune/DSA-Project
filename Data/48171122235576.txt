@@ -1,0 +1,17 @@
+ID: 48171122235576
+FullName: Chasity Rittany 
+BirthDay: 13-07-1969
+Entry Date: 17-11-2022 23-55-56
+Adress: Missouri/OSHAUGHNESSY BLVD/Block:R/dep:44
+Gender: F
+Telephone: 0798795862
+ABO: AB-
+CD: Alzheimer/ 
+Allergies: wheat allergy  Pet Allergy  
+BP: 119.68
+HR: 131.042
+Medicals Taken: Potassium Bimatoprost Letrozole 
+Time: 17-11-2022 23-55-56
+Department: C
+Notes: 
+

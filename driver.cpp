@@ -7,11 +7,17 @@
 #include "Test/BtreeComparaison.h"
 #include <filesystem>
 using namespace std;
-
 //
 int main()
 {
+  FileHandler handler;
+  vector<AvlTree> BSTtree(NUMBER_OF_DEPARTMENTS);
+  vector<vector<Patient>> allPatients = handler.getALLPatient();
 
-  BtreeComparaison::GenerateData();
-  
+  for (int y = 0; y < NUMBER_OF_DEPARTMENTS; y++)
+  {
+    BSTtree[y].InsertSortedArray(allPatients[y]);
+  }
+  for (int y = 0; y < NUMBER_OF_DEPARTMENTS; y++)
+    cout << BSTtree[y].getNumberOfPatient() << endl;
 }

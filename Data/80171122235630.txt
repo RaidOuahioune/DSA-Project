@@ -1,0 +1,17 @@
+ID: 80171122235630
+FullName: Arnulfo Tonee 
+BirthDay: 18-00-2016
+Entry Date: 17-11-2022 23-56-04
+Adress: Virginia/SELBY ST/Block:W/dep:89
+Gender: M
+Telephone: 0576728872
+ABO: A+
+CD: 
+Allergies: milk allergy peanut allergy  
+BP: 137.945
+HR: 192.934
+Medicals Taken: Allopurinol 
+Time: 17-11-2022 23-56-04
+Department: C
+Notes: 
+

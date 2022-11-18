@@ -1,0 +1,17 @@
+ID: 90171122235664
+FullName: Juventino Mccall 
+BirthDay: 26-09-1987
+Entry Date: 17-11-2022 23-56-07
+Adress: Vermont/04TH AVE/Block:Z/dep:97
+Gender: F
+Telephone: 0788337056
+ABO: A-
+CD: Ulcerative Colitis/ Bowel Diseases/ 
+Allergies: peanut allergy  
+BP: 91.6232
+HR: 35.9666
+Medicals Taken: Gabapentin Flecainide Dexamethasone 
+Time: 17-11-2022 23-56-07
+Department: B
+Notes: 
+

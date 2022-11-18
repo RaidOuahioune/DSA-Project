@@ -24,7 +24,7 @@ private:
     string CD;                    // means if the patient has a chronic disease and what its type
     string Allergies;             // Allergies of the patient
     float BP;                     // Blood Pressure in MMHG(Millimeters Of Mercury unit mesure)
-    float HR;                     // Heart Rate in BPS (Beats per Second unit mesure)
+    float HR;                     // Heart Rate in BPS (Beats per Minte unit mesure)
     vector<string> MedicalsTaken; // Patient's last taken Medicals
     string briefNote;             // in case the doctor needs to leave a comment on patient state
     string time;                  // the time of the diagnosis
@@ -33,7 +33,7 @@ private:
     friend class FileHandler;
 };
 
-MedicalInfo::MedicalInfo(const string &CD = "", const string &Allergie = "", const float &BP = 0, const float &HR = 0, const vector<string> &MedicalsTaken = {}, const string &note = "", char Department = char(65 + rand() % 5)) : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), Department(Department)
+MedicalInfo::MedicalInfo(const string &CD = generateCDS(), const string &Allergie = generateAllergies(), const float &BP = generateBP(), const float &HR = generateHB(), const vector<string> &MedicalsTaken = generateMedicals(), const string &note = "", char Department = char(65 + rand() % 5)) : CD(CD), Allergies(Allergie), BP(BP), HR(HR), MedicalsTaken(MedicalsTaken), briefNote(note), Department(Department)
 {
     time = getTime();
 }

@@ -1,0 +1,17 @@
+ID: 99171122235615
+FullName: Ida Demetre 
+BirthDay: 10-04-1977
+Entry Date: 17-11-2022 23-56-09
+Adress: North Dakota/PARK HILL AVE/Block:C/dep:141
+Gender: F
+Telephone: 0694972474
+ABO: AB-
+CD: Arthritis/ 
+Allergies: wheat allergy  Mold Allergy 
+BP: 102.681
+HR: 73.439
+Medicals Taken: Propranolol Fenofibrate 
+Time: 17-11-2022 23-56-09
+Department: E
+Notes: 
+

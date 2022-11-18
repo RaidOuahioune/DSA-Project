@@ -1,0 +1,17 @@
+ID: 38171122235657
+FullName: Stevie Reuven 
+BirthDay: 04-09-1965
+Entry Date: 17-11-2022 23-56-20
+Adress: North Dakota/CARSON ST/Block:[/dep:165
+Gender: F
+Telephone: 0685090026
+ABO: AB-
+CD: Bowel Diseases/ 
+Allergies: milk allergy wheat allergy  Pollen Allergy  
+BP: 99.6129
+HR: 63.0407
+Medicals Taken: Pravastatin Metronidazole 
+Time: 17-11-2022 23-56-20
+Department: B
+Notes: 
+

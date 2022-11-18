@@ -1,0 +1,17 @@
+ID: 25171122235649
+FullName: Marquese Tyanne 
+BirthDay: 12-11-2004
+Entry Date: 17-11-2022 23-56-29
+Adress: Wyoming/MAYNARD ST/Block:S/dep:103
+Gender: M
+Telephone: 0682166733
+ABO: B+
+CD: Alzheimer/ 
+Allergies: Insect Allergy Latex Allergy  
+BP: 110.993
+HR: 101.604
+Medicals Taken: Dulaglutide Diazepam 
+Time: 17-11-2022 23-56-29
+Department: D
+Notes: 
+

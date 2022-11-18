@@ -1,0 +1,17 @@
+ID: 67171122235679
+FullName: Erika Isabelle 
+BirthDay: 28-08-1959
+Entry Date: 17-11-2022 23-56-31
+Adress: Georgia/EATON PL/Block:F/dep:159
+Gender: F
+Telephone: 0581239143
+ABO: O-
+CD: 
+Allergies: tree nut allergy  
+BP: 121.855
+HR: 138.411
+Medicals Taken: Metoprolol 
+Time: 17-11-2022 23-56-31
+Department: D
+Notes: 
+

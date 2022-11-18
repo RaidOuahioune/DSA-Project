@@ -3,9 +3,11 @@
 #include "../Interfaces/Patient.h"
 #include "utilities.h"
 #include <fstream>
+#include <chrono>
 using std::ifstream;
 using std::ios;
 using std::ofstream;
+
 const int NUMBER_OF_DEPARTMENTS = 5;
 class FileHandler
 {
@@ -14,7 +16,8 @@ public:
   void InsertMedicalInfo(const MedicalInfo &, const string ID) const; // this function Insert the new inforamtion to the desired file given that the file already exists
   void InsertFullData(const Patient &) const;                         // Create a new file with current patient information
   vector<MedicalInfo> getAllHistory(const string &ID) const;
-  vector<vector<Patient>> getALLPatient(int&) const;
+  vector<vector<Patient>> getALLPatient(int &) const;
+  vector<vector<Patient>> getALLPatient() const;
   ~FileHandler() {}
 
 private:
@@ -175,25 +178,77 @@ void FileHandler::InsertFullData(const Patient &patient) const
 
 vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
 {
-  vector<string> files;
-#ifdef _WIN32
-  files = getFilesinWin();
-#else
-  files = getFiles();
-#endif
-  size = files.size();
+  //#ifdef _WIN32
+  //  files = getFilesinWin();
+  //#else
+  //  files = getFiles();
+  //#endif
+  //  size = files.size();
+  //
   vector<vector<Patient>> vec(NUMBER_OF_DEPARTMENTS);
-  Patient patient;
-  for (const string &file : files)
+  char buffer[128];
+  const char *command;
+  command = "cd Data && ls";
+
+  // Open pipe to file
+  FILE *pipe = popen(command, "r");
+  if (!pipe)
   {
-    patient = BuildPatient(file);
-    vec[patient.getDepartment() - 'A'].push_back((patient));
+    return vec;
   }
+  string file;
+  Patient patient;
+  // read till end of process:
+  while (!feof(pipe))
+  {
+    // use buffer to read and add to result
+    if (fgets(buffer, 128, pipe) != NULL)
+    {
+      size++;
+      file = string(buffer).erase(18);
+      patient = BuildPatient(file);
+      vec[patient.getDepartment() - 'A'].push_back((patient));
+    }
+  }
+  pclose(pipe);
+  return vec;
+}
+vector<vector<Patient>> FileHandler::getALLPatient() const
+{
+
+  vector<vector<Patient>> vec(NUMBER_OF_DEPARTMENTS);
+  char buffer[128];
+
+  const char *command;
+
+  command = "cd Data && ls";
+
+  // Open pipe to file
+  FILE *pipe = popen(command, "r");
+  if (!pipe)
+  {
+    return vec;
+  }
+  string file;
+  Patient patient;
+  // read till end of process:
+  while (!feof(pipe))
+  {
+    // use buffer to read and add to result
+    if (fgets(buffer, 128, pipe) != NULL)
+    {
+      file = string(buffer).erase(18);
+      patient = BuildPatient(file);
+      vec[patient.getDepartment() - 'A'].push_back((patient));
+    }
+  }
+  pclose(pipe);
   return vec;
 }
 
 Patient FileHandler::BuildPatient(const string &file) const
 {
+  
   string path = "Data/" + file;
   Patient patient;
   ifstream rfile;
@@ -226,7 +281,6 @@ Patient FileHandler::BuildPatient(const string &file) const
   }
   rfile.close();
   patient.MI = getRecentMedicalInfo(file);
-
   return patient;
 }
 

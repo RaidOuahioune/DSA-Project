@@ -1,0 +1,17 @@
+ID: 98171122235574
+FullName: Watson Adah 
+BirthDay: 06-11-2006
+Entry Date: 17-11-2022 23-55-53
+Adress: Alabama/SAN JOSE AV ON RAMP/Block:G/dep:17
+Gender: M
+Telephone: 0583776075
+ABO: O+
+CD: 
+Allergies: 
+BP: 115.918
+HR: 118.294
+Medicals Taken: Folic 
+Time: 17-11-2022 23-55-53
+Department: A
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 57171122235687
+FullName: Cordelia Alayne 
+BirthDay: 05-01-1981
+Entry Date: 17-11-2022 23-56-03
+Adress: Arkansas/HARLEM ALY/Block:U/dep:96
+Gender: F
+Telephone: 0534079656
+ABO: A-
+CD: 
+Allergies: soy allergy  shellfish allergy Pollen Allergy  
+BP: 120.023
+HR: 132.202
+Medicals Taken: Trazodone 
+Time: 17-11-2022 23-56-03
+Department: B
+Notes: 
+

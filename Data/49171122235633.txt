@@ -1,0 +1,17 @@
+ID: 49171122235633
+FullName: Dane Simran 
+BirthDay: 20-07-1982
+Entry Date: 17-11-2022 23-56-16
+Adress: Michigan/DE FOREST WAY/Block:O/dep:11
+Gender: M
+Telephone: 0781373528
+ABO: A+
+CD: Arthritis/ Heart Disease/ 
+Allergies: 
+BP: 127.974
+HR: 159.148
+Medicals Taken: Amoxicillin; Erenumab Hydrochlorothiazide 
+Time: 17-11-2022 23-56-16
+Department: D
+Notes: 
+

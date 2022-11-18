@@ -1,0 +1,17 @@
+ID: 57171122235674
+FullName: Blaze Oneal 
+BirthDay: 16-05-1982
+Entry Date: 17-11-2022 23-56-14
+Adress: Florida/DOVE LOOP/Block:F/dep:187
+Gender: M
+Telephone: 0736923258
+ABO: AB+
+CD: Cancer/ Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: 
+BP: 92.261
+HR: 38.1278
+Medicals Taken: Clopidogrel Citalopram Hydrochlorothiazide 
+Time: 17-11-2022 23-56-14
+Department: D
+Notes: 
+

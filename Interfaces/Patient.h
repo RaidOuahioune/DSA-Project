@@ -41,7 +41,7 @@ private:
 
 int Patient::incrementer = 10;
 
-Patient::Patient(const string &fullName = "", const string &bDay = "", const string &adress = "", char MF = 'M', const string &tel = "", const string &ABO = "", const MedicalInfo &MI = MedicalInfo()) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
+Patient::Patient(const string &fullName = generateFUllName(), const string &bDay = generateBDay(), const string &adress = generateAdress(), char MF = generateFM(), const string &tel = generateTel(), const string &ABO = generateABO(), const MedicalInfo &MI = MedicalInfo()) : fullName(fullName), bDay(bDay), adress(adress), FM(MF), tel(tel), ABO(ABO), MI(MI)
 {
     if (++incrementer == 100)
         incrementer = 10;
