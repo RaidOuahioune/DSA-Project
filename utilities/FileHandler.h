@@ -184,7 +184,7 @@ vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
   Patient patient;
   for (const auto &entry : fs::directory_iterator("Data"))
   {
-    file = string(entry.path()).substr(5);
+    file = (entry.path().string()).substr(5);
     size++;
     patient = BuildPatient(file);
     vec[patient.getDepartment() - 'A'].push_back((patient));
@@ -201,7 +201,7 @@ vector<vector<Patient>> FileHandler::getALLPatient() const
   Patient patient;
   for (const auto &entry : fs::directory_iterator("Data"))
   {
-    file = string(entry.path()).substr(5);
+    file = (entry.path().string()).substr(5); // without /Data
     patient = BuildPatient(file);
     vec[patient.getDepartment() - 'A'].push_back((patient));
   }

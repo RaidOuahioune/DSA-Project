@@ -44,14 +44,20 @@ public:
 
     ~AvlTree()
     {
-       
+
         makeEmpty();
+    }
+
+    bool printPatient(const string &ID) const
+    {
+        return printPatient(ID, root);
     }
 
     /**
      * Deep copy.
      */
-    AvlTree &operator=(const AvlTree &rhs)
+    AvlTree &
+    operator=(const AvlTree &rhs)
     {
         AvlTree copy = rhs;
         std::swap(*this, copy);
@@ -111,10 +117,10 @@ public:
     /**
      * Remove ID from the tree. Nothing is done if ID is not found.
      */
-    void Delete(const string &ID)
+    void Delete(const string &ID, bool &state)
     {
 
-        Delete(ID, root);
+        Delete(ID, root, state);
     }
     int getNumberOfPatient() const
     {
@@ -131,21 +137,25 @@ private:
     static const int CAPACITY = 10000;
     int NumberOfPatient;
 
-    void insert(const Patient &ID, AvlNode *&t)
+    void insert(const Patient &patient, AvlNode *&t)
     {
 
         if (t == nullptr)
         {
-            t = new AvlNode{ID, nullptr, nullptr};
+            t = new AvlNode{patient, nullptr, nullptr};
             NumberOfPatient++;
         }
-        else if (ID < t->element)
-            insert(ID, t->left);
-        else if (t->element < ID)
-            insert(ID, t->right);
+        else if (patient < t->element)
+            insert(patient, t->left);
+        else if (t->element < patient)
+            insert(patient, t->right);
         else
         {
-            cout << "Patient Already exist Maybe you want to use update instead" << endl;
+            cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
+            t->element.setMedicalInfo(patient.getMedicalInfo());
+            cout << "THE PATIENT'S INFORMATION ENTERED HAS BEEN UPDATED "
+                 << endl;
+            return;
         }
 
         balance(t);
@@ -166,19 +176,19 @@ private:
         balance(t);
     }
 
-    void Delete(const string &ID, AvlNode *&t)
+    void Delete(const string &ID, AvlNode *&t, bool &state)
     {
         if (t == nullptr)
             return; // Item not found; do nothing
 
         if (stoll(ID) < stoll(t->element.getId()))
-            Delete(ID, t->left);
+            Delete(ID, t->left, state);
         else if (stoll(t->element.getId()) < stoll(ID))
-            Delete(ID, t->right);
+            Delete(ID, t->right, state);
         else if (t->left != nullptr && t->right != nullptr) // Two children
         {
             t->element = findMin(t->right)->element;
-            Delete(t->element.getId(), t->right);
+            Delete(t->element.getId(), t->right, state);
         }
         else
         {
@@ -186,6 +196,7 @@ private:
             t = (t->left != nullptr) ? t->left : t->right;
             delete oldNode;
             NumberOfPatient--;
+            state = true;
         }
 
         balance(t);
@@ -232,6 +243,21 @@ private:
             return contains(ID, t->right);
         else
             return true; // Match
+        return true;
+    }
+    bool printPatient(const string &ID, AvlNode *t) const
+    {
+        if (t == nullptr)
+            return false;
+        else if (stoll(ID) < stoll(t->element.getId()))
+            return printPatient(ID, t->left);
+        else if (stoll(t->element.getId()) < stoll(ID))
+            return printPatient(ID, t->right);
+        else
+        {
+            t->element.printPatient();
+            return true; // Match
+        }
         return true;
     }
 
@@ -288,7 +314,7 @@ private:
 
     void rotateWithRightChild(AvlNode *&k1)
     {
-        //std::cout << "Warining There is A rotation" << std::endl;
+        // std::cout << "Warining There is A rotation" << std::endl;
         AvlNode *k2 = k1->right;
         k1->right = k2->left;
         k2->left = k1;
@@ -308,20 +334,23 @@ private:
         rotateWithLeftChild(k1->right);
         rotateWithRightChild(k1);
     }
-    void update(AvlNode *&root, const string &ID, const MedicalInfo &info)
+    bool update(AvlNode *&root, const string &ID, const MedicalInfo &info)
     {
         if (root == nullptr)
         {
-            return;
+            return false;
         }
         else
         {
             if (root->element.getId() == ID)
+            {
                 root->element.setMedicalInfo(info);
+                return true;
+            }
             else if (stoll(root->element.getId()) < stoll(ID))
-                update(root->right, ID, info);
+                return update(root->right, ID, info);
             else
-                update(root->left, ID, info);
+                return update(root->left, ID, info);
         }
     }
 

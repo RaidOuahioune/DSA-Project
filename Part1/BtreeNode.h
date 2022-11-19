@@ -5,6 +5,13 @@
 #include "../utilities/FileHandler.h"
 using std::cout;
 using std::endl;
+
+struct PatientFlag
+{
+  Patient patient;
+  bool found;
+};
+
 class BTreeNode
 {
 public:
@@ -24,12 +31,13 @@ private:
 
   int findKey(const string &);
   BTreeNode *search(const string &);
+  PatientFlag Search(const string &);
   void insertNonFull(const Patient &, int &numberOfPatient);
   void insertNonFull(Patient &&, int &numberOfPatient);
   void splitChild(int i, BTreeNode *y);
-  void deletion(const string &, int &numberOfPatient);
+  void deletion(const string &, int &numberOfPatient, bool &state);
   void removeFromLeaf(int index, int &numberOfPatient);
-  void removeFromNonLeaf(int index, int &numberOfPatient);
+  void removeFromNonLeaf(int index, int &numberOfPatient, bool &state);
   Patient getPredecessor(int index);
   Patient getSuccessor(int index);
   void fill(int index);
@@ -37,7 +45,7 @@ private:
   void borrowFromNext(int index);
   void merge(int index);
   void traverse();
-  void update(const string &ID, const MedicalInfo &info);
+  bool update(const string &ID, const MedicalInfo &info);
   void storeData(const Patient &patient) const;
   void InsertSortedArrayHelper(BTreeNode *&root, const vector<Patient> &patients);
 
@@ -96,6 +104,7 @@ int BTreeNode::findKey(const string &ID)
 }
 
 // Recursive Search
+
 BTreeNode *BTreeNode::search(const string &ID)
 {
   int i = 0;
@@ -111,6 +120,23 @@ BTreeNode *BTreeNode::search(const string &ID)
   // at this point we have travesred all the node which means elemnt is not found
   // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
   return leaf ? nullptr : Children[i]->search(ID);
+}
+
+PatientFlag BTreeNode::Search(const string &ID)
+{
+  int i = 0;
+  // search 2*order in the sorted patients(ascending) of keys where n is the current number of keys in the node
+  while (i < n && (stoll(ID) > stoll(keys[i].getId())))
+  {
+    i++;
+  }
+  if (i < n && keys[i].getId() == ID)
+  {
+    return PatientFlag{keys[i], true}; // return node cuz it contains the 2*orderq
+  }
+  // at this point we have travesred all the node which means elemnt is not found
+  // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
+  return leaf ? PatientFlag{keys[0], false} : Children[i]->Search(ID);
 }
 
 // Insertion non full
@@ -157,7 +183,9 @@ void BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
   if (index < n && keys[index] == std::move(patient))
   {
     cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
-    return;
+    keys[index].setMedicalInfo(patient.getMedicalInfo());
+    cout << "THE PATIENT'S INFORMATION ENTERED HAS BEEN UPDATED "
+         << endl;
   }
   int i = n - 1;
 
@@ -221,7 +249,7 @@ void BTreeNode::splitChild(int i, BTreeNode *y)
 // Traverse
 
 // Deletion operation
-void BTreeNode::deletion(const string &ID, int &numberOfPatient)
+void BTreeNode::deletion(const string &ID, int &numberOfPatient, bool &state)
 {
   int index = findKey(ID);
 
@@ -230,13 +258,14 @@ void BTreeNode::deletion(const string &ID, int &numberOfPatient)
     if (leaf)
       removeFromLeaf(index, numberOfPatient);
     else
-      removeFromNonLeaf(index, numberOfPatient);
+      removeFromNonLeaf(index, numberOfPatient, state);
   }
   else
   {
     if (leaf)
     {
       cout << "The Patient with the ID: " << ID << " does not exist in the tree\n";
+      state = false;
       return;
     }
 
@@ -246,9 +275,9 @@ void BTreeNode::deletion(const string &ID, int &numberOfPatient)
       fill(index);
 
     if (flag && index > n)
-      Children[index - 1]->deletion(ID, numberOfPatient);
+      Children[index - 1]->deletion(ID, numberOfPatient, state);
     else
-      Children[index]->deletion(ID, numberOfPatient);
+      Children[index]->deletion(ID, numberOfPatient, state);
   }
   return;
 }
@@ -266,7 +295,7 @@ void BTreeNode::removeFromLeaf(int index, int &numberOfPatient)
 }
 
 // Delete from non leaf node
-void BTreeNode::removeFromNonLeaf(int index, int &numberOfPatient)
+void BTreeNode::removeFromNonLeaf(int index, int &numberOfPatient, bool &state)
 {
   string ID = keys[index].getId();
 
@@ -274,20 +303,20 @@ void BTreeNode::removeFromNonLeaf(int index, int &numberOfPatient)
   {
     Patient pred = getPredecessor(index);
     keys[index] = pred;
-    Children[index]->deletion(pred.getId(), numberOfPatient);
+    Children[index]->deletion(pred.getId(), numberOfPatient, state);
   }
 
   else if (Children[index + 1]->n >= order)
   {
     Patient succ = getSuccessor(index);
     keys[index] = succ;
-    Children[index + 1]->deletion(succ.getId(), numberOfPatient);
+    Children[index + 1]->deletion(succ.getId(), numberOfPatient, state);
   }
 
   else
   {
     merge(index);
-    Children[index]->deletion(ID, numberOfPatient);
+    Children[index]->deletion(ID, numberOfPatient, state);
   }
   return;
 }
@@ -411,7 +440,7 @@ void BTreeNode::merge(int index)
   n--;
 }
 
-void BTreeNode::update(const string &ID, const MedicalInfo &info)
+bool BTreeNode::update(const string &ID, const MedicalInfo &info)
 {
   int i = 0;
   // search 2*order in the sorted patients(ascending) of keys where n is the current number of keys in the node
@@ -424,17 +453,15 @@ void BTreeNode::update(const string &ID, const MedicalInfo &info)
     // once SubArray is found update it
     keys[i].setMedicalInfo(info);
 
-    return;
+    return true;
   }
   // at this point we have travesred all the node which means elemnt is not found
   // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
   if (leaf)
   { // if current node is  leaf it means we didn't find the elment (hence no update is done)
-    cout << endl
-         << "ID not Found!You may want to use Create a new patient Instead" << endl;
-    return;
+    return false;
   } // otherwise traverse the subtree
-  Children[i]->update(ID, info);
+  return Children[i]->update(ID, info);
 }
 void BTreeNode::storeData(const Patient &patient) const
 {

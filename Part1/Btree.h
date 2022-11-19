@@ -19,10 +19,11 @@ public:
   bool contains(const string &);
   void insert(const Patient &);
   void insert(Patient &&);
-  void Delete(const string &);
-  void update(const string &, const MedicalInfo &);
+  void Delete(const string &, bool &state);
+  bool update(const string &, const MedicalInfo &);
   int getNumberOfPatient() const;
   void InsertSortedArray(const vector<Patient> &);
+  bool printPatient(const string &);
 
 private:
   BTreeNode *root;
@@ -118,14 +119,14 @@ void BTree::insert(Patient &&patient)
 }
 
 // Delete Operation
-void BTree::Delete(const string &ID)
+void BTree::Delete(const string &ID, bool &state)
 {
   if (root == nullptr)
   {
     cout << "The tree is empty\n";
     return;
   }
-  root->deletion(ID, numberOfPatient);
+  root->deletion(ID, numberOfPatient, state);
 
   if (root->n == 0)
   {
@@ -141,14 +142,14 @@ void BTree::Delete(const string &ID)
   return;
 }
 
-void BTree::update(const string &ID, const MedicalInfo &info)
+bool BTree::update(const string &ID, const MedicalInfo &info)
 {
   if (root != nullptr)
   {
-    root->update(ID, info);
+    return root->update(ID, info);
   }
   else
-    cout << "\nTree is Empty !You may want to Create a new Patient Instead" << endl;
+    return false;
 }
 int BTree::getNumberOfPatient() const
 {
@@ -176,4 +177,17 @@ void BTree::InsertSortedArray(const vector<Patient> &vec)
   numberOfPatient = vec.size();
   this->root->InsertSortedArrayHelper(root, vec);
 }
+
+bool BTree::printPatient(const string &ID)
+{
+  PatientFlag pf = this->root->Search(ID);
+
+  if (pf.found)
+  {
+    pf.patient.printPatient();
+    return true;
+  }
+  return false;
+}
+
 #endif
