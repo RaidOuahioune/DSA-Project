@@ -1,0 +1,17 @@
+ID: 97181122151953
+FullName: Katiejo Lashann 
+BirthDay: 08-09-1965
+Entry Date: 18-11-2022 15-19-33
+Adress: Washington/HARDIE AVE/Block:O/dep:179
+Gender: F
+Telephone: 0615801962
+ABO: AB-
+CD: Arthritis/ 
+Allergies: tree nut allergy  shellfish allergy Mold Allergy 
+BP: 110.961
+HR: 101.496
+Medicals Taken: Labetalol Terbinafine 
+Time: 18-11-2022 15-19-33
+Department: C
+Notes: 
+

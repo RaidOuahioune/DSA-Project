@@ -22,6 +22,7 @@ public:
   void Delete(const string &);
   void update(const string &, const MedicalInfo &);
   int getNumberOfPatient() const;
+  void InsertSortedArray(const vector<Patient> &);
 
 private:
   BTreeNode *root;
@@ -29,7 +30,7 @@ private:
   int numberOfPatient;
 };
 
-BTree::BTree(int treeOrder = 3)
+BTree::BTree(int treeOrder = NUMBER_OF_DEPARTMENTS)
 {
   root = nullptr;
   order = treeOrder;
@@ -168,5 +169,11 @@ BTree &BTree::operator=(BTree &&rhs)
   this->root = rhs.root;
   delete rhs.root;
   return (*this);
+}
+void BTree::InsertSortedArray(const vector<Patient> &vec)
+{
+
+  numberOfPatient = vec.size();
+  this->root->InsertSortedArrayHelper(root, vec);
 }
 #endif

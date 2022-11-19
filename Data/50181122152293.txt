@@ -1,0 +1,17 @@
+ID: 50181122152293
+FullName: Loryn Damario 
+BirthDay: 19-00-1956
+Entry Date: 18-11-2022 15-22-15
+Adress: New Hampshire/MARTINEZ ST/Block:M/dep:130
+Gender: M
+Telephone: 077294984
+ABO: A+
+CD: Alzheimer/ Cancer/ 
+Allergies: shellfish allergy Insect Allergy 
+BP: 138.741
+HR: 195.631
+Medicals Taken: Clonazepam Methylprednisolone Metronidazole 
+Time: 18-11-2022 15-22-15
+Department: E
+Notes: 
+

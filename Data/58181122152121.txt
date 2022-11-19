@@ -1,0 +1,17 @@
+ID: 58181122152121
+FullName: Nastasha Nateasha 
+BirthDay: 03-10-2001
+Entry Date: 18-11-2022 15-21-23
+Adress: Delaware/MCLAREN LODGE ACCESS RD/Block:S/dep:84
+Gender: F
+Telephone: 0680924194
+ABO: AB-
+CD: ALS (Lou Gehrig's Disease)/ 
+Allergies: peanut allergy  soy allergy  Insect Allergy 
+BP: 107.093
+HR: 88.3881
+Medicals Taken: Glyburide Polyethylene 
+Time: 18-11-2022 15-21-23
+Department: E
+Notes: 
+

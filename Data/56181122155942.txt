@@ -1,0 +1,17 @@
+ID: 56181122155942
+FullName: Jeramiah Jeannetta 
+BirthDay: 25-07-1943
+Entry Date: 18-11-2022 15-59-14
+Adress: Wisconsin/FEDERAL ST/Block:[/dep:166
+Gender: F
+Telephone: 0581868584
+ABO: A-
+CD: 
+Allergies: soy allergy  
+BP: 126.027
+HR: 152.55
+Medicals Taken: Methylphenidate 
+Time: 18-11-2022 15-59-14
+Department: E
+Notes: 
+

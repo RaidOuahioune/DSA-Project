@@ -1,0 +1,17 @@
+ID: 87181122160175
+FullName: Deryk Elonda 
+BirthDay: 05-00-1979
+Entry Date: 18-11-2022 16-01-12
+Adress: Georgia/VIRGINIA AVE/Block:A/dep:96
+Gender: F
+Telephone: 0540794394
+ABO: AB-
+CD: 
+Allergies: peanut allergy  
+BP: 90.616
+HR: 32.5537
+Medicals Taken: Clonidine 
+Time: 18-11-2022 16-01-12
+Department: E
+Notes: 
+

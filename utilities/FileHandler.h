@@ -175,16 +175,44 @@ void FileHandler::InsertFullData(const Patient &patient) const
     file.close();
   }
 }
-
+#ifdef _WIN32
 vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
 {
-  //#ifdef _WIN32
-  //  files = getFilesinWin();
-  //#else
-  //  files = getFiles();
-  //#endif
-  //  size = files.size();
-  //
+
+  vector<vector<Patient>> vec(NUMBER_OF_DEPARTMENTS);
+  string file;
+  Patient patient;
+  for (const auto &entry : fs::directory_iterator("Data"))
+  {
+    file = string(entry.path()).substr(5);
+    size++;
+    patient = BuildPatient(file);
+    vec[patient.getDepartment() - 'A'].push_back((patient));
+  }
+
+  return vec;
+}
+
+vector<vector<Patient>> FileHandler::getALLPatient() const
+{
+
+  vector<vector<Patient>> vec(NUMBER_OF_DEPARTMENTS);
+  string file;
+  Patient patient;
+  for (const auto &entry : fs::directory_iterator("Data"))
+  {
+    file = string(entry.path()).substr(5);
+    patient = BuildPatient(file);
+    vec[patient.getDepartment() - 'A'].push_back((patient));
+  }
+
+  return vec;
+}
+
+#else
+vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
+{
+
   vector<vector<Patient>> vec(NUMBER_OF_DEPARTMENTS);
   char buffer[128];
   const char *command;
@@ -246,9 +274,10 @@ vector<vector<Patient>> FileHandler::getALLPatient() const
   return vec;
 }
 
+#endif
 Patient FileHandler::BuildPatient(const string &file) const
 {
-  
+
   string path = "Data/" + file;
   Patient patient;
   ifstream rfile;

@@ -1,0 +1,17 @@
+ID: 70181122155948
+FullName: Anuj Annel 
+BirthDay: 26-10-2008
+Entry Date: 18-11-2022 15-59-37
+Adress: Oregon/AVON WAY/Block:B/dep:177
+Gender: M
+Telephone: 0659198321
+ABO: B+
+CD: Alzheimer/ 
+Allergies: milk allergy Drug Allergy 
+BP: 138.189
+HR: 193.761
+Medicals Taken: Methocarbamol Desvenlafaxine 
+Time: 18-11-2022 15-59-37
+Department: B
+Notes: 
+

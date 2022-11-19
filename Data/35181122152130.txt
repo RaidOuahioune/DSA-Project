@@ -1,0 +1,17 @@
+ID: 35181122152130
+FullName: Tajuan Cristino 
+BirthDay: 28-08-1945
+Entry Date: 18-11-2022 15-21-05
+Adress: New Jersey/I-80 E OFF RAMP/Block:[/dep:9
+Gender: F
+Telephone: 0523843774
+ABO: AB-
+CD: 
+Allergies: egg allergy  Drug Allergy Insect Allergy 
+BP: 109.514
+HR: 96.5929
+Medicals Taken: Hydrocortisone 
+Time: 18-11-2022 15-21-05
+Department: E
+Notes: 
+

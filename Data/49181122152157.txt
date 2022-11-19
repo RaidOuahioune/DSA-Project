@@ -1,0 +1,17 @@
+ID: 49181122152157
+FullName: Aleah Andree 
+BirthDay: 19-12-1939
+Entry Date: 18-11-2022 15-21-18
+Adress: Nevada/EARL GAGE JR ST/Block:G/dep:30
+Gender: F
+Telephone: 0639649439
+ABO: O-
+CD: Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: milk allergy 
+BP: 92.4788
+HR: 38.8659
+Medicals Taken: Norethindrone Eszopiclone 
+Time: 18-11-2022 15-21-18
+Department: E
+Notes: 
+

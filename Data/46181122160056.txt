@@ -1,0 +1,17 @@
+ID: 46181122160056
+FullName: Deandre Gilverto 
+BirthDay: 07-11-1980
+Entry Date: 18-11-2022 16-00-54
+Adress: Wyoming/SPENCER ST/Block:L/dep:18
+Gender: M
+Telephone: 0678176260
+ABO: A+
+CD: Alzheimer/ 
+Allergies: egg allergy  Drug Allergy 
+BP: 93.1278
+HR: 41.0653
+Medicals Taken: Rizatriptan Flecainide 
+Time: 18-11-2022 16-00-54
+Department: A
+Notes: 
+

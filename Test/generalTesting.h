@@ -11,7 +11,7 @@ namespace GeneralTesting
 
   void BuildTreeComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/GenralComparaison/BuildTree.csv", ios_base::app);
 
@@ -82,13 +82,24 @@ namespace GeneralTesting
 
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the Traditional Way(Btree): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
+
+    vector<BTree> btrees2(NUMBER_OF_DEPARTMENTS);
+    start = chrono::high_resolution_clock::now();
+    for (int y = 0; y < NUMBER_OF_DEPARTMENTS; y++)
+    {
+      btrees2[y].InsertSortedArray(allPatients[y]);
+    }
+    end = chrono::high_resolution_clock::now();
+    cout << "Duration of the Sorted Array Insertion (Btree): " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+
     file.close();
   }
 
   void SearchComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/GenralComparaison/Search.csv", ios_base::app);
     FileHandler handler;
@@ -142,7 +153,7 @@ namespace GeneralTesting
 
   void InsertionComparaison()
   {
-    int size=0;
+    int size = 0;
     Patient patient = Patient("Raid Ouahioune", "12/10/2004", "Aghouat", 'M', "0669511304", "A+", MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A'));
     ofstream file;
     file.open("Test/GenralComparaison/Insert.csv", ios_base::app);
@@ -194,7 +205,7 @@ namespace GeneralTesting
 
   void UpdateComparaison()
   {
-    int size=0;
+    int size = 0;
 
     MedicalInfo info = MedicalInfo("Null", "Null", 12, 10, {}, "Nothing", 'A');
 
@@ -251,7 +262,7 @@ namespace GeneralTesting
 
   void DeleteComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/GenralComparaison/delete.csv", ios_base::app);
     FileHandler handler;
@@ -315,7 +326,7 @@ namespace GeneralTesting
 
   void GenerateDataAndTest()
   {
-    for (int y = 1; y <= 300; y++)
+    for (int y = 1; y <= 10; y++)
     {
       addNewPatients();
       BuildTreeComparaison();

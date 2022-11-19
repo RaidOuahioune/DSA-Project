@@ -1,0 +1,17 @@
+ID: 13181122152118
+FullName: Arren Melchizedek 
+BirthDay: 21-09-1947
+Entry Date: 18-11-2022 15-21-09
+Adress: Colorado/MIGUEL ST/Block:[/dep:122
+Gender: F
+Telephone: 0727901560
+ABO: A-
+CD: Asthma/ Bowel Diseases/ 
+Allergies: egg allergy  
+BP: 106.339
+HR: 85.8321
+Medicals Taken: Liraglutide Dicyclomine Ranitidine 
+Time: 18-11-2022 15-21-09
+Department: A
+Notes: 
+

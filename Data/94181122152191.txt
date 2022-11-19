@@ -1,0 +1,17 @@
+ID: 94181122152191
+FullName: Safiya Duc 
+BirthDay: 11-10-1930
+Entry Date: 18-11-2022 15-21-01
+Adress: Michigan/STEUART ST/Block:C/dep:92
+Gender: M
+Telephone: 0792231651
+ABO: O+
+CD: Arthritis/ Obesity/ 
+Allergies: 
+BP: 137.824
+HR: 192.526
+Medicals Taken: Ondansetron Cephalexin Ziprasidone 
+Time: 18-11-2022 15-21-01
+Department: B
+Notes: 
+

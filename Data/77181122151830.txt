@@ -1,0 +1,17 @@
+ID: 77181122151830
+FullName: Marylou Danetta 
+BirthDay: 03-07-2000
+Entry Date: 18-11-2022 15-18-22
+Adress: Virginia/SIMONDS LOOP/Block:C/dep:104
+Gender: M
+Telephone: 0562364662
+ABO: AB+
+CD: 
+Allergies: egg allergy  Insect Allergy 
+BP: 113.856
+HR: 111.305
+Medicals Taken: Clonazepam 
+Time: 18-11-2022 15-18-22
+Department: C
+Notes: 
+

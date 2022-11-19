@@ -1,0 +1,17 @@
+ID: 52181122155934
+FullName: Priyanka Vivienne 
+BirthDay: 24-09-1948
+Entry Date: 18-11-2022 15-59-06
+Adress: Tennessee/DOVE LOOP/Block:N/dep:195
+Gender: M
+Telephone: 0727892536
+ABO: A+
+CD: ALS (Lou Gehrig's Disease)/ Cancer/ 
+Allergies: milk allergy Insect Allergy 
+BP: 107.592
+HR: 90.08
+Medicals Taken: Insulin Mesalamine Adalimumab 
+Time: 18-11-2022 15-59-06
+Department: B
+Notes: 
+

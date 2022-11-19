@@ -1,0 +1,17 @@
+ID: 96181122152237
+FullName: Katherine Summer 
+BirthDay: 28-10-1963
+Entry Date: 18-11-2022 15-22-37
+Adress: New York/ROME ST/Block:P/dep:9
+Gender: F
+Telephone: 0796810723
+ABO: O-
+CD: Crohn's Disease/ Ulcerative Colitis/ 
+Allergies: milk allergy 
+BP: 107.939
+HR: 91.2553
+Medicals Taken: Terazosin Tolterodine Fluocinonide 
+Time: 18-11-2022 15-22-37
+Department: D
+Notes: 
+

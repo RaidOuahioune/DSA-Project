@@ -1,0 +1,17 @@
+ID: 82181122152239
+FullName: Tyrese Ysidro 
+BirthDay: 12-07-1963
+Entry Date: 18-11-2022 15-22-31
+Adress: Oklahoma/I-280 N ON RAMP/Block:O/dep:63
+Gender: F
+Telephone: 0567467405
+ABO: B-
+CD: 
+Allergies: peanut allergy  
+BP: 100.424
+HR: 65.7893
+Medicals Taken: Benzonatate 
+Time: 18-11-2022 15-22-31
+Department: A
+Notes: 
+

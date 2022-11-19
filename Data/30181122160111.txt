@@ -1,0 +1,17 @@
+ID: 30181122160111
+FullName: Coley Elanda 
+BirthDay: 10-07-1938
+Entry Date: 18-11-2022 16-01-28
+Adress: Louisiana/11TH TI ST/Block:V/dep:61
+Gender: M
+Telephone: 0675712734
+ABO: AB+
+CD: Alzheimer/ 
+Allergies: 
+BP: 102.368
+HR: 72.3759
+Medicals Taken: Pantoprazole Hydrochlorothiazide 
+Time: 18-11-2022 16-01-28
+Department: E
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 72181122152298
+FullName: Tangela Chung 
+BirthDay: 00-04-1931
+Entry Date: 18-11-2022 15-22-42
+Adress: New York/CONSTANSO WAY/Block:T/dep:131
+Gender: F
+Telephone: 0772533415
+ABO: O-
+CD: ALS (Lou Gehrig's Disease)/ Alzheimer/ 
+Allergies: peanut allergy  
+BP: 97.7431
+HR: 56.7046
+Medicals Taken: Cholecalciferol Oseltamivir Melatonin 
+Time: 18-11-2022 15-22-42
+Department: A
+Notes: 
+

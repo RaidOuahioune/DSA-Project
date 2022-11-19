@@ -39,11 +39,12 @@ private:
   void traverse();
   void update(const string &ID, const MedicalInfo &info);
   void storeData(const Patient &patient) const;
+  void InsertSortedArrayHelper(BTreeNode *&root, const vector<Patient> &patients);
 
   friend class BTree;
 };
 
-BTreeNode::BTreeNode(int TreeOrder = NUMBER_OF_DEPARTMENTS, bool leaf1)
+BTreeNode::BTreeNode(int TreeOrder, bool leaf1)
 {
   order = TreeOrder;
   leaf = leaf1;
@@ -78,7 +79,8 @@ void BTreeNode::traverse()
   {
     if (leaf == false)
       Children[i]->traverse();
-    storeData(keys[i]);
+    // storeData(keys[i]);
+    keys[i].printPatient();
   }
   if (leaf == false)
     Children[i]->traverse();
@@ -97,14 +99,14 @@ int BTreeNode::findKey(const string &ID)
 BTreeNode *BTreeNode::search(const string &ID)
 {
   int i = 0;
-  // search k in the sorted array(ascending) of keys where n is the current number of keys in the node
+  // search 2*order in the sorted patients(ascending) of keys where n is the current number of keys in the node
   while (i < n && (stoll(ID) > stoll(keys[i].getId())))
   {
     i++;
   }
   if (i < n && keys[i].getId() == ID)
   {
-    return this; // return node cuz it contains the k
+    return this; // return node cuz it contains the 2*order
   }
   // at this point we have travesred all the node which means elemnt is not found
   // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
@@ -223,7 +225,7 @@ void BTreeNode::deletion(const string &ID, int &numberOfPatient)
 {
   int index = findKey(ID);
 
-  if (index < n && keys[index].getId() == ID) // it means that we found the k in the array of keys of the node that have called this node
+  if (index < n && keys[index].getId() == ID) // it means that we found the 2*order in the patients of keys of the node that have called this node
   {
     if (leaf)
       removeFromLeaf(index, numberOfPatient);
@@ -412,14 +414,14 @@ void BTreeNode::merge(int index)
 void BTreeNode::update(const string &ID, const MedicalInfo &info)
 {
   int i = 0;
-  // search k in the sorted array(ascending) of keys where n is the current number of keys in the node
+  // search 2*order in the sorted patients(ascending) of keys where n is the current number of keys in the node
   while (i < n && (stoll(ID) > stoll(keys[i].getId())))
   {
     i++;
   }
   if (i < n && keys[i].getId() == ID)
   {
-    // once element is found update it
+    // once SubArray is found update it
     keys[i].setMedicalInfo(info);
 
     return;
@@ -441,6 +443,52 @@ void BTreeNode::storeData(const Patient &patient) const
     handler.InsertMedicalInfo(patient.getMedicalInfo(), patient.getId());
   else
     handler.InsertFullData(patient);
+}
+
+void BTreeNode::InsertSortedArrayHelper(BTreeNode *&node, const vector<Patient> &patients)
+{
+
+  if (patients.empty())
+    return;
+  else
+  {
+    node = new BTreeNode(5, true);
+    if (patients.size() <= node->order * 2 - 1)
+    {
+      for (int y = 0; y < patients.size(); y++)
+      {
+        node->keys[y] = patients[y];
+        node->n++;
+      }
+      return;
+    }
+    else
+    {
+      node->leaf = false;
+      vector<Patient> SubArray;
+      int start;
+      for (int y = 0; y < 2 * node->order; y++)
+      {
+        if (y == 0)
+          start = 0;
+        else
+          start = y * patients.size() / (2 * node->order) + 1;
+        for (int j = start; j < (y + 1) * patients.size() / (2 * node->order); j++)
+        {
+          SubArray.push_back(patients[j]);
+        }
+
+        if (y != 2 * node->order - 1)
+        {
+          node->keys[y] = patients[(y + 1) * patients.size() / (2 * node->order)];
+          node->n++;
+        }
+
+        InsertSortedArrayHelper(node->Children[y], SubArray);
+        SubArray.clear();
+      }
+    }
+  }
 }
 
 #endif

@@ -1,0 +1,17 @@
+ID: 39181122151916
+FullName: Jensen Nevada 
+BirthDay: 01-08-2021
+Entry Date: 18-11-2022 15-19-28
+Adress: Washington/AMHERST ST/Block:G/dep:82
+Gender: F
+Telephone: 0643135134
+ABO: AB-
+CD: Crohn's Disease/ 
+Allergies: peanut allergy  Latex Allergy  Mold Allergy 
+BP: 121.348
+HR: 136.694
+Medicals Taken: Citalopram Propranolol 
+Time: 18-11-2022 15-19-28
+Department: E
+Notes: 
+

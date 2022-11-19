@@ -17,7 +17,13 @@ public:
     ~MedicalInfo()
     {
     }
-    void setMedicalInfo() const;
+    void setCd(const string &);
+    void setAllergies(const string &);
+    void setBP(float);
+    void steHr(float);
+    void setMedicalstaken(const vector<string> &);
+    void setNote(const string &);
+    void setDepartment(const char &);
     void printInfo() const;
 
 private:
@@ -52,4 +58,35 @@ void MedicalInfo::printInfo() const
     cout << endl;
 }
 
+void MedicalInfo::setCd(const string &a)
+{
+    this->CD = a;
+}
+void MedicalInfo::setAllergies(const string &a)
+{
+    this->Allergies = a;
+}
+void MedicalInfo::setBP(float a)
+{
+    if (a > 0)
+        this->BP = a;
+}
+void MedicalInfo::steHr(float a)
+{
+    if (a > 0)
+        this->HR = a;
+}
+void MedicalInfo::setMedicalstaken(const vector<string> &array)
+{
+    this->MedicalsTaken = array;
+}
+void MedicalInfo::setNote(const string &a)
+{
+    this->briefNote = a;
+}
+
+void MedicalInfo::setDepartment(const char &a)
+{
+    this->Department = a;
+}
 #endif //

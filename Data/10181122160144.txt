@@ -1,0 +1,17 @@
+ID: 10181122160144
+FullName: Cori Hollis 
+BirthDay: 11-02-1969
+Entry Date: 18-11-2022 16-01-22
+Adress: Massachusetts/BROTHERHOOD WAY/Block:C/dep:132
+Gender: F
+Telephone: 0681427365
+ABO: B-
+CD: Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: tree nut allergy  Drug Allergy Pollen Allergy  
+BP: 119.589
+HR: 130.734
+Medicals Taken: Mirabegron Phentermine 
+Time: 18-11-2022 16-01-22
+Department: A
+Notes: 
+

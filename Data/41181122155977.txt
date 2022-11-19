@@ -1,0 +1,17 @@
+ID: 41181122155977
+FullName: Candyce Jacolby 
+BirthDay: 02-09-1963
+Entry Date: 18-11-2022 15-59-01
+Adress: Oklahoma/CAINE AVE/Block:W/dep:133
+Gender: F
+Telephone: 0539040883
+ABO: O-
+CD: 
+Allergies: peanut allergy  
+BP: 93.1733
+HR: 41.2194
+Medicals Taken: Lamotrigine 
+Time: 18-11-2022 15-59-01
+Department: D
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 79181122151844
+FullName: Kisha Jamonte 
+BirthDay: 05-05-1942
+Entry Date: 18-11-2022 15-18-21
+Adress: Michigan/ROCKLAND ST/Block:R/dep:156
+Gender: M
+Telephone: 073070401
+ABO: B+
+CD: Ulcerative Colitis/ Bowel Diseases/ 
+Allergies: 
+BP: 96.0123
+HR: 50.8398
+Medicals Taken: Baclofen Valacyclovir Desvenlafaxine 
+Time: 18-11-2022 15-18-21
+Department: B
+Notes: 
+

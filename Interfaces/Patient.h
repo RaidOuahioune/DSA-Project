@@ -12,14 +12,20 @@ class Patient
 {
 public:
     Patient(const string &, const string &, const string &, char, const string &, const string &, const MedicalInfo &);
+    bool operator<(const Patient &) const;
+    bool operator>(const Patient &) const;
+    bool operator==(const Patient &) const;
     string getId() const;
     MedicalInfo getMedicalInfo() const;
     void setMedicalInfo(const MedicalInfo &);
     void printPatient() const;
     char getDepartment() const;
-    bool operator<(const Patient &) const;
-    bool operator>(const Patient &) const;
-    bool operator==(const Patient &) const;
+    void setName(const string &);
+    void setBday(const string &);
+    void setAddress(const string &);
+    void setFm(const char &);
+    void setPhone(const string &);
+    void setAbo(const string &);
 
 private:
     //{
@@ -86,14 +92,39 @@ bool Patient::operator>(const Patient &other) const
     return !((*this) < other) && !((*this) == other);
 }
 
-void Patient::setMedicalInfo(const MedicalInfo &info)
-{
-    this->MI = info;
-}
-
 char Patient::getDepartment() const
 {
     return this->MI.Department;
+}
+void Patient::setName(const string &a)
+{
+    this->fullName = a;
+}
+void Patient::setBday(const string &a)
+{
+    this->bDay = a;
+}
+
+void Patient::setAddress(const string &a)
+{
+    this->adress = a;
+}
+void Patient ::setFm(const char &a)
+{
+    if (a == 'M' || a == 'F' || a == 'U')
+        this->FM = a;
+}
+void Patient ::setPhone(const string &a)
+{
+    this->tel = a;
+}
+void Patient ::setAbo(const string &a)
+{
+    this->ABO = a;
+}
+void Patient::setMedicalInfo(const MedicalInfo &info)
+{
+    this->MI = info;
 }
 
 #endif

@@ -1,0 +1,17 @@
+ID: 94181122152219
+FullName: Sonali Dawud 
+BirthDay: 29-05-2020
+Entry Date: 18-11-2022 15-22-10
+Adress: Maryland/ROSE ST/Block:P/dep:130
+Gender: M
+Telephone: 0514136542
+ABO: AB+
+CD: 
+Allergies: soy allergy  shellfish allergy 
+BP: 124.562
+HR: 147.583
+Medicals Taken: Phenytoin 
+Time: 18-11-2022 15-22-10
+Department: C
+Notes: 
+

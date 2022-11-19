@@ -1,0 +1,17 @@
+ID: 37181122152197
+FullName: Adriane Keyonna 
+BirthDay: 29-05-2015
+Entry Date: 18-11-2022 15-21-32
+Adress: Georgia/NORTHGATE DR/Block:I/dep:50
+Gender: F
+Telephone: 0527412275
+ABO: O-
+CD: 
+Allergies: soy allergy  
+BP: 93.3293
+HR: 41.7478
+Medicals Taken: Ethinyl 
+Time: 18-11-2022 15-21-32
+Department: A
+Notes: 
+

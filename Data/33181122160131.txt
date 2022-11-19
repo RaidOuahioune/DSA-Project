@@ -1,0 +1,17 @@
+ID: 33181122160131
+FullName: Jawad Davan 
+BirthDay: 21-00-2011
+Entry Date: 18-11-2022 16-01-38
+Adress: Alaska/DANTON ST/Block:G/dep:102
+Gender: F
+Telephone: 0658527415
+ABO: O-
+CD: Asthma/ 
+Allergies: Drug Allergy 
+BP: 131.588
+HR: 171.395
+Medicals Taken: Sertraline Warfarin 
+Time: 18-11-2022 16-01-38
+Department: A
+Notes: 
+

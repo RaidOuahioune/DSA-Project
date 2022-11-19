@@ -1,0 +1,17 @@
+ID: 84181122151995
+FullName: Montrell Shun 
+BirthDay: 27-04-2001
+Entry Date: 18-11-2022 15-19-48
+Adress: Texas/WINSTON DR/Block:M/dep:198
+Gender: F
+Telephone: 0541491507
+ABO: O-
+CD: 
+Allergies: tree nut allergy  Drug Allergy Latex Allergy  
+BP: 104.936
+HR: 81.0776
+Medicals Taken: Acyclovir 
+Time: 18-11-2022 15-19-48
+Department: C
+Notes: 
+

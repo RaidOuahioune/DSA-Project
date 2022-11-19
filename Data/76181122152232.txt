@@ -1,0 +1,17 @@
+ID: 76181122152232
+FullName: Merrick Henery 
+BirthDay: 08-12-1969
+Entry Date: 18-11-2022 15-22-26
+Adress: New Jersey/ASHBURY ST/Block:N/dep:49
+Gender: F
+Telephone: 054142812
+ABO: A-
+CD: 
+Allergies: shellfish allergy Insect Allergy Mold Allergy 
+BP: 135.898
+HR: 185.998
+Medicals Taken: Fluticasone 
+Time: 18-11-2022 15-22-26
+Department: C
+Notes: 
+

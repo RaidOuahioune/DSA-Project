@@ -1,0 +1,17 @@
+ID: 26181122155814
+FullName: Edith Ruddy 
+BirthDay: 05-09-1930
+Entry Date: 18-11-2022 15-58-31
+Adress: Ohio/LONG BRIDGE VARA/Block:B/dep:186
+Gender: M
+Telephone: 0714623024
+ABO: A+
+CD: Alzheimer/ Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: 
+BP: 130.505
+HR: 167.724
+Medicals Taken: Sertraline Acetaminophen Prednisolone 
+Time: 18-11-2022 15-58-31
+Department: E
+Notes: 
+

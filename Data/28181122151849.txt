@@ -1,0 +1,17 @@
+ID: 28181122151849
+FullName: Sindy Lonell 
+BirthDay: 03-07-1955
+Entry Date: 18-11-2022 15-18-29
+Adress: Minnesota/REX AVE/Block:T/dep:94
+Gender: F
+Telephone: 0519769660
+ABO: A-
+CD: 
+Allergies: peanut allergy  
+BP: 139.052
+HR: 196.685
+Medicals Taken: Fluticasone; 
+Time: 18-11-2022 15-18-29
+Department: A
+Notes: 
+

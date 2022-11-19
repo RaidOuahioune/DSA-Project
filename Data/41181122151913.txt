@@ -1,0 +1,17 @@
+ID: 41181122151913
+FullName: Jaylene Danetta 
+BirthDay: 02-02-1971
+Entry Date: 18-11-2022 15-19-25
+Adress: Minnesota/MORAGA ST/Block:Z/dep:63
+Gender: F
+Telephone: 0513139823
+ABO: O-
+CD: 
+Allergies: milk allergy 
+BP: 117.717
+HR: 124.39
+Medicals Taken: Carvedilol 
+Time: 18-11-2022 15-19-25
+Department: D
+Notes: 
+

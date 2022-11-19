@@ -1,0 +1,17 @@
+ID: 45181122151938
+FullName: Detrick Tacoma 
+BirthDay: 02-02-1956
+Entry Date: 18-11-2022 15-19-45
+Adress: Wyoming/Block:A/dep:173
+Gender: M
+Telephone: 0691093103
+ABO: O+
+CD: Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: egg allergy  tree nut allergy  
+BP: 100.913
+HR: 67.4448
+Medicals Taken: Losartan Ferrous 
+Time: 18-11-2022 15-19-45
+Department: D
+Notes: 
+

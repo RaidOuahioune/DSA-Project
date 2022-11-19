@@ -1,0 +1,17 @@
+ID: 47181122151856
+FullName: Melina Tran 
+BirthDay: 22-07-2019
+Entry Date: 18-11-2022 15-18-25
+Adress: Nevada/KNOCKASH HL/Block:[/dep:163
+Gender: F
+Telephone: 0687282479
+ABO: O-
+CD: Ulcerative Colitis/ 
+Allergies: shellfish allergy 
+BP: 117.278
+HR: 122.901
+Medicals Taken: Vortioxetine Lurasidone 
+Time: 18-11-2022 15-18-25
+Department: E
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 51181122155915
+FullName: Sheanna Stevin 
+BirthDay: 29-03-2017
+Entry Date: 18-11-2022 15-59-22
+Adress: Massachusetts/SAINT GERMAIN AVE/Block:R/dep:190
+Gender: F
+Telephone: 0641451075
+ABO: O-
+CD: Chronic Obstructive Pulmonary Disease (COPD)/ 
+Allergies: milk allergy Latex Allergy  
+BP: 94.4426
+HR: 45.5204
+Medicals Taken: Meloxicam Lisdexamfetamine 
+Time: 18-11-2022 15-59-22
+Department: A
+Notes: 
+

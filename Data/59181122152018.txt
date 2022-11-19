@@ -1,0 +1,17 @@
+ID: 59181122152018
+FullName: Toddrick Penney 
+BirthDay: 04-02-1975
+Entry Date: 18-11-2022 15-20-57
+Adress: Minnesota/SAN ALESO AVE/Block:S/dep:95
+Gender: F
+Telephone: 0514508463
+ABO: O-
+CD: 
+Allergies: wheat allergy  
+BP: 91.2159
+HR: 34.5865
+Medicals Taken: Furosemide 
+Time: 18-11-2022 15-20-57
+Department: D
+Notes: 
+
