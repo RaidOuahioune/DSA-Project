@@ -1,3 +1,8 @@
+// Leader Full Name: Ouahioune Raid Abderrezak 
+
+//Group:4
+
+
 #ifndef BtreeNode_h
 #define BtreeNode_h
 #include <iostream>
@@ -32,8 +37,8 @@ private:
   int findKey(const string &);
   BTreeNode *search(const string &);
   PatientFlag Search(const string &);
-  void insertNonFull(const Patient &, int &numberOfPatient);
-  void insertNonFull(Patient &&, int &numberOfPatient);
+  bool insertNonFull(const Patient &, int &numberOfPatient);
+  bool insertNonFull(Patient &&, int &numberOfPatient);
   void splitChild(int i, BTreeNode *y);
   void deletion(const string &, int &numberOfPatient, bool &state);
   void removeFromLeaf(int index, int &numberOfPatient);
@@ -46,6 +51,7 @@ private:
   void merge(int index);
   void traverse();
   bool update(const string &ID, const MedicalInfo &info);
+  bool update(const string &ID, const char &dep, MedicalInfo &info);
   void storeData(const Patient &patient) const;
   void InsertSortedArrayHelper(BTreeNode *&root, const vector<Patient> &patients);
 
@@ -140,13 +146,13 @@ PatientFlag BTreeNode::Search(const string &ID)
 }
 
 // Insertion non full
-void BTreeNode::insertNonFull(const Patient &patient, int &numberOfPatient)
+bool BTreeNode::insertNonFull(const Patient &patient, int &numberOfPatient)
 {
   int index = findKey(patient.getId());
   if (index < n && keys[index] == patient)
   {
     cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
-    return;
+    return false;
   }
   int i = n - 1;
 
@@ -161,6 +167,7 @@ void BTreeNode::insertNonFull(const Patient &patient, int &numberOfPatient)
     keys[i + 1] = patient;
     n = n + 1;
     numberOfPatient++;
+    return true;
   }
   else
   {
@@ -174,10 +181,10 @@ void BTreeNode::insertNonFull(const Patient &patient, int &numberOfPatient)
       if (keys[i + 1] < patient)
         i++;
     }
-    Children[i + 1]->insertNonFull(patient, numberOfPatient);
+    return Children[i + 1]->insertNonFull(patient, numberOfPatient);
   }
 }
-void BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
+bool BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
 {
   int index = findKey(patient.getId());
   if (index < n && keys[index] == std::move(patient))
@@ -186,6 +193,7 @@ void BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
     keys[index].setMedicalInfo(patient.getMedicalInfo());
     cout << "THE PATIENT'S INFORMATION ENTERED HAS BEEN UPDATED "
          << endl;
+    return false;
   }
   int i = n - 1;
 
@@ -200,6 +208,7 @@ void BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
     keys[i + 1] = std::move(patient);
     n = n + 1;
     numberOfPatient++;
+    return true;
   }
   else
   {
@@ -213,7 +222,7 @@ void BTreeNode::insertNonFull(Patient &&patient, int &numberOfPatient)
       if (keys[i + 1] < patient)
         i++;
     }
-    Children[i + 1]->insertNonFull(std::move(patient), numberOfPatient);
+    return Children[i + 1]->insertNonFull(std::move(patient), numberOfPatient);
   }
 }
 // Split child
@@ -264,7 +273,6 @@ void BTreeNode::deletion(const string &ID, int &numberOfPatient, bool &state)
   {
     if (leaf)
     {
-      cout << "The Patient with the ID: " << ID << " does not exist in the tree\n";
       state = false;
       return;
     }
@@ -462,6 +470,31 @@ bool BTreeNode::update(const string &ID, const MedicalInfo &info)
     return false;
   } // otherwise traverse the subtree
   return Children[i]->update(ID, info);
+}
+bool BTreeNode::update(const string &ID, const char &dep, MedicalInfo &info)
+{
+  int i = 0;
+  // search 2*order in the sorted patients(ascending) of keys where n is the current number of keys in the node
+  while (i < n && (stoll(ID) > stoll(keys[i].getId())))
+  {
+    i++;
+  }
+  if (i < n && keys[i].getId() == ID)
+  {
+    // once SubArray is found update it
+    keys[i].setDepartment(dep);
+    keys[i].setTime(getTime());
+    info = keys[i].getMedicalInfo();
+
+    return true;
+  }
+  // at this point we have travesred all the node which means elemnt is not found
+  // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
+  if (leaf)
+  { // if current node is  leaf it means we didn't find the elment (hence no update is done)
+    return false;
+  } // otherwise traverse the subtree
+  return Children[i]->update(ID, dep, info);
 }
 void BTreeNode::storeData(const Patient &patient) const
 {

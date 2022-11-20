@@ -1,3 +1,7 @@
+// Leader Full Name: Ouahioune Raid Abderrezak 
+
+//Group:4
+
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
@@ -98,20 +102,24 @@ public:
         makeEmpty(root);
     }
 
-    void insert(const Patient &ID)
+    bool insert(const Patient &ID)
     {
 
-        insert(ID, root);
+        return insert(ID, root);
     }
 
-    void insert(Patient &&ID)
+    bool insert(Patient &&ID)
     {
-        insert(std::move(ID), root);
+        return insert(std::move(ID), root);
     }
 
-    void update(const string &ID, const MedicalInfo &info)
+    bool update(const string &ID, const MedicalInfo &info)
     {
-        update(root, ID, info);
+        return update(root, ID, info);
+    }
+    bool update(const string &ID, const char &dep, MedicalInfo &info)
+    {
+        return update(root, ID, dep, info);
     }
 
     /**
@@ -137,42 +145,46 @@ private:
     static const int CAPACITY = 10000;
     int NumberOfPatient;
 
-    void insert(const Patient &patient, AvlNode *&t)
+    bool insert(const Patient &patient, AvlNode *&t)
     {
 
         if (t == nullptr)
         {
             t = new AvlNode{patient, nullptr, nullptr};
             NumberOfPatient++;
+            return true;
         }
         else if (patient < t->element)
-            insert(patient, t->left);
+            return insert(patient, t->left);
         else if (t->element < patient)
-            insert(patient, t->right);
+            return insert(patient, t->right);
         else
         {
             cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
             t->element.setMedicalInfo(patient.getMedicalInfo());
             cout << "THE PATIENT'S INFORMATION ENTERED HAS BEEN UPDATED "
                  << endl;
-            return;
+            return false;
         }
 
         balance(t);
     }
 
-    void insert(Patient &&ID, AvlNode *&t)
+    bool insert(Patient &&ID, AvlNode *&t)
     {
         if (t == nullptr)
         {
             NumberOfPatient++;
+
             t = new AvlNode{std::move(ID), nullptr, nullptr};
+            return true;
         }
         else if (ID < t->element)
-            insert(std::move(ID), t->left);
+            return insert(std::move(ID), t->left);
         else if (t->element < ID)
-            insert(std::move(ID), t->right);
-
+            return insert(std::move(ID), t->right);
+        else
+            return false;
         balance(t);
     }
 
@@ -243,7 +255,6 @@ private:
             return contains(ID, t->right);
         else
             return true; // Match
-        return true;
     }
     bool printPatient(const string &ID, AvlNode *t) const
     {
@@ -258,7 +269,6 @@ private:
             t->element.printPatient();
             return true; // Match
         }
-        return true;
     }
 
     void makeEmpty(AvlNode *&t)
@@ -351,6 +361,27 @@ private:
                 return update(root->right, ID, info);
             else
                 return update(root->left, ID, info);
+        }
+    }
+    bool update(AvlNode *&root, const string &ID, const char &dep, MedicalInfo &info)
+    {
+        if (root == nullptr)
+        {
+            return false;
+        }
+        else
+        {
+            if (root->element.getId() == ID)
+            {
+                root->element.setDepartment(dep);
+                root->element.setTime(getTime());
+                info = root->element.getMedicalInfo();
+                return true;
+            }
+            else if (stoll(root->element.getId()) < stoll(ID))
+                return update(root->right, ID, dep, info);
+            else
+                return update(root->left, ID, dep, info);
         }
     }
 

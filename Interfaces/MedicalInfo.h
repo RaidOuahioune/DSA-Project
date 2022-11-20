@@ -1,3 +1,7 @@
+// Leader Full Name: Ouahioune Raid Abderrezak
+
+// Group:4
+
 #ifndef MEDICALINFO_H
 #define MEDICALINFO_H
 
@@ -55,12 +59,12 @@ void MedicalInfo::setAllergies(const string &a)
 }
 void MedicalInfo::setBP(float a)
 {
-    if (a > 0)
+    if (a >= 0)
         this->BP = a;
 }
 void MedicalInfo::setHr(float a)
 {
-    if (a > 0)
+    if (a >= 0)
         this->HR = a;
 }
 void MedicalInfo::setMedicalstaken(const vector<string> &array)
@@ -79,20 +83,23 @@ void MedicalInfo::setTime(const string &time)
 
 void MedicalInfo::setDepartment(const char &a)
 {
-    this->Department = a;
+    if (a == 'A' || a == 'B' || a == 'C' || a == 'D' || a == 'E' || a == 'N')
+        this->Department = a;
 }
 
 void MedicalInfo::printInfo() const
 {
-    cout << CD << endl;
-    cout << Allergies << endl;
-    cout << BP << endl;
-    cout << HR << endl;
+    cout << "Chronical Diseases: " CD << endl;
+    cout << "Allergies: " << Allergies << endl;
+    cout << "Blood Pressure: " << BP << endl;
+    cout << "Heart Rate: " << HR << endl;
+    cout << "MedicalsTaken: ";
     for (const string &i : MedicalsTaken)
-        cout << i << endl;
-    cout << time << endl;
-    cout << Department << endl;
-    cout << briefNote << endl;
+        cout << i << " ";
     cout << endl;
+    cout << "time: " << time << endl;
+    cout << "Department: " << Department << endl;
+    cout << "briefNote:" << briefNote << endl;
+    cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n";
 }
 #endif //

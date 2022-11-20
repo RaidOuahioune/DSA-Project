@@ -1,3 +1,8 @@
+// Leader Full Name: Ouahioune Raid Abderrezak 
+
+//Group:4
+
+
 #ifndef Test_h
 #define Test_h
 #include "../utilities/FileHandler.h"
@@ -287,6 +292,7 @@ namespace GeneralTesting
 
     srand(time(nullptr));
 
+    bool dummy= true;
     int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
@@ -296,18 +302,18 @@ namespace GeneralTesting
     string randomId = allPatients[randomDep][random].getId();
 
     auto start = chrono::high_resolution_clock::now();
-    BSTtrees[randomDep].Delete((randomId));
+    BSTtrees[randomDep].Delete(randomId, dummy);
     auto end = chrono::high_resolution_clock::now();
     cout << "Duration  of delete in A BST : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
 
     start = chrono::high_resolution_clock::now();
-    AVltrees[randomDep].Delete((randomId));
+    AVltrees[randomDep].Delete(randomId, dummy);
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the delete  in An AvlTree : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << ',';
     start = chrono::high_resolution_clock::now();
-    BSTtrees[randomDep].Delete((randomId));
+    BSTtrees[randomDep].Delete(randomId, dummy);
     end = chrono::high_resolution_clock::now();
     cout << "Duration of the delete  in Btree with order 10 : " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
     file << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;

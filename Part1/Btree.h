@@ -1,4 +1,7 @@
-// Deleting a key from a B-tree in Children++
+// Leader Full Name: Ouahioune Raid Abderrezak 
+
+//Group:4
+
 #ifndef Btree_h
 #define Btree_h
 #include "BtreeNode.h"
@@ -17,10 +20,11 @@ public:
   ~BTree();
   void storeAllPatients();
   bool contains(const string &);
-  void insert(const Patient &);
-  void insert(Patient &&);
+  bool insert(const Patient &);
+  bool insert(Patient &&);
   void Delete(const string &, bool &state);
   bool update(const string &, const MedicalInfo &);
+  bool update(const string &, const char &, MedicalInfo &);
   int getNumberOfPatient() const;
   void InsertSortedArray(const vector<Patient> &);
   bool printPatient(const string &);
@@ -57,7 +61,7 @@ bool BTree::contains(const string &ID)
   return (root->search(ID) != nullptr);
 }
 // Insertion operation
-void BTree::insert(const Patient &patient)
+bool BTree::insert(const Patient &patient)
 {
   if (root == nullptr)
   {
@@ -65,6 +69,7 @@ void BTree::insert(const Patient &patient)
     root->keys[0] = patient;
     root->n = 1;
     numberOfPatient++;
+    return true;
   }
   else
   {
@@ -79,22 +84,23 @@ void BTree::insert(const Patient &patient)
       int i = 0;
       if (s->keys[0] < patient)
         i++;
-      s->Children[i]->insertNonFull(patient, numberOfPatient);
+      return s->Children[i]->insertNonFull(patient, numberOfPatient);
 
       root = s;
     }
     else
-      root->insertNonFull(patient, numberOfPatient);
+      return root->insertNonFull(patient, numberOfPatient);
   }
 }
 
-void BTree::insert(Patient &&patient)
+bool BTree::insert(Patient &&patient)
 {
   if (root == nullptr)
   {
     root = new BTreeNode(order, true);
     root->keys[0] = std::move(patient);
     root->n = 1;
+    return true;
   }
   else
   {
@@ -109,12 +115,12 @@ void BTree::insert(Patient &&patient)
       int i = 0;
       if (s->keys[0] < patient)
         i++;
-      s->Children[i]->insertNonFull(std::move(patient), numberOfPatient);
+      return s->Children[i]->insertNonFull(std::move(patient), numberOfPatient);
 
       root = s;
     }
     else
-      root->insertNonFull(std::move(patient), numberOfPatient);
+      return root->insertNonFull(std::move(patient), numberOfPatient);
   }
 }
 
@@ -147,6 +153,15 @@ bool BTree::update(const string &ID, const MedicalInfo &info)
   if (root != nullptr)
   {
     return root->update(ID, info);
+  }
+  else
+    return false;
+}
+bool BTree::update(const string &ID, const char &dep, MedicalInfo &info)
+{
+  if (root != nullptr)
+  {
+    return root->update(ID, dep, info);
   }
   else
     return false;

@@ -1,3 +1,5 @@
+// Leader Full Name :Ouahioune Raid Abderrezak
+// Group: G4
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 #include "../Interfaces/Patient.h"
@@ -187,7 +189,8 @@ vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
     file = (entry.path().string()).substr(5);
     size++;
     patient = BuildPatient(file);
-    vec[patient.getDepartment() - 'A'].push_back((patient));
+    if (patient.getDepartment() != 'N')
+      vec[patient.getDepartment() - 'A'].push_back((patient));
   }
 
   return vec;
@@ -203,7 +206,8 @@ vector<vector<Patient>> FileHandler::getALLPatient() const
   {
     file = (entry.path().string()).substr(5); // without /Data
     patient = BuildPatient(file);
-    vec[patient.getDepartment() - 'A'].push_back((patient));
+    if (patient.getDepartment() != 'N')
+      vec[patient.getDepartment() - 'A'].push_back((patient));
   }
 
   return vec;
@@ -235,7 +239,8 @@ vector<vector<Patient>> FileHandler::getALLPatient(int &size) const
       size++;
       file = string(buffer).erase(18);
       patient = BuildPatient(file);
-      vec[patient.getDepartment() - 'A'].push_back((patient));
+      if (patient.getDepartment() != 'N')
+        vec[patient.getDepartment() - 'A'].push_back((patient));
     }
   }
   pclose(pipe);
@@ -267,7 +272,8 @@ vector<vector<Patient>> FileHandler::getALLPatient() const
     {
       file = string(buffer).erase(18);
       patient = BuildPatient(file);
-      vec[patient.getDepartment() - 'A'].push_back((patient));
+      if (patient.getDepartment() != 'N')
+        vec[patient.getDepartment() - 'A'].push_back((patient));
     }
   }
   pclose(pipe);

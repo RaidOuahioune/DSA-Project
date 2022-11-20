@@ -1,3 +1,5 @@
+// Leader Full Name :Ouahioune Raid Abderrezak
+// Group: G4
 #include <iostream>
 #include <unordered_map>
 #include "Part1/Btree.h"
@@ -7,47 +9,13 @@
 #include "Test/generalTesting.h"
 #include "Test/BtreeComparaison.h"
 #include <filesystem>
+#include "Interfaces/Hospital.h"
 using namespace std;
 
-enum Trees
+MedicalInfo &EnterMedicalinfos()
 {
-  Bst,
-  Avl,
-  Btree
-};
 
-const Trees Type = Bst;
-
-template <typename TreeType>
-TreeType &getTree()
-{
-  if (Type == Bst)
-  {
-    static BST TREE;
-    TREE.InsertSortedArray(FileHandler().getALLPatient());
-    return TREE;
-  }
-  else if (Type == Avl)
-  {
-    static AvlTree TREE;
-    TREE.InsertSortedArray(FileHandler().getALLPatient());
-    return TREE;
-  }
-  else
-  {
-    static BTree TREE;
-    TREE.InsertSortedArray(FileHandler().getALLPatient());
-    return TREE;
-  }
-}
-
-template <typename TreeType>
-void HandleTree(vector<TreeType> &AllTrees)
-{
-}
-
-void EnterMedicalinfos(MedicalInfo &medicalInfo)
-{
+  MedicalInfo medicalInfo;
   string Allergeies, CD, Note, Time;
   float BP, HR;
   char Depart;
@@ -61,15 +29,19 @@ void EnterMedicalinfos(MedicalInfo &medicalInfo)
   cin >> BP;
   cout << "Enter the Heart Rate in BPS of the Patient: ";
   cin >> HR;
-
   cout << "Enter the Medicals taken by the Patient (-1) to quit";
+  cout << "Enter the Department:";
+  cin >> Depart;
+  cout << "Enter any Note :";
+  cin >> Note;
   string medical;
-  do
+  while (true)
   {
     cin >> medical;
+    if (medical == "-1")
+      break;
     MedicalTaken.push_back(medical);
-  } while (medical != "-1");
-
+  }
   medicalInfo.setAllergies(Allergeies);
   medicalInfo.setCd(CD);
   medicalInfo.setDepartment(Depart);
@@ -77,13 +49,15 @@ void EnterMedicalinfos(MedicalInfo &medicalInfo)
   medicalInfo.setBP(BP);
   medicalInfo.setHr(HR);
   medicalInfo.setNote(Note);
-  medicalInfo.setTime(Time);
+  medicalInfo.setTime(getTime());
+  return medicalInfo;
 }
 
-void enterPatient(Patient &patient)
+Patient &enterPatient()
 {
   string fullName, bDay, entryDate, adress, tel, ABO;
   char FM;
+  Patient patient;
   MedicalInfo info;
 
   cout << "Enter the name of the patient : ";
@@ -101,8 +75,7 @@ void enterPatient(Patient &patient)
   cout << "Today's date : \" dd/mm/yyyy \": ";
   cin >> entryDate;
 
-  EnterMedicalinfos(info);
-
+  info = EnterMedicalinfos();
   patient.setAbo(ABO);
   patient.setAddress(adress);
   patient.setBday(bDay);
@@ -110,8 +83,5 @@ void enterPatient(Patient &patient)
   patient.setMedicalInfo(info);
   patient.setName(fullName);
   patient.setPhone(tel);
-}
-
-int main()
-{
+  return patient;
 }

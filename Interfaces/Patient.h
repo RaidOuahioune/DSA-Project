@@ -1,3 +1,7 @@
+// Leader Full Name: Ouahioune Raid Abderrezak
+
+// Group:4
+
 #ifndef PATIENT_H
 #define PATIENT_H
 
@@ -25,7 +29,9 @@ public:
     void setAddress(const string &);
     void setFm(const char &);
     void setPhone(const string &);
+    void setTime(const string &);
     void setAbo(const string &);
+    void setDepartment(const char &);
 
 private:
     //{
@@ -66,6 +72,7 @@ MedicalInfo Patient::getMedicalInfo() const
 }
 void Patient::printPatient() const
 {
+    cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
     cout << "ID: " << ID << endl
          << "FullName: " << fullName << endl
          << "BirthDay: " << bDay << endl
@@ -127,4 +134,12 @@ void Patient::setMedicalInfo(const MedicalInfo &info)
     this->MI = info;
 }
 
+void Patient::setDepartment(const char &dep)
+{
+    this->MI.Department = dep;
+}
+void Patient::setTime(const string &time)
+{
+    this->MI.time = time;
+}
 #endif

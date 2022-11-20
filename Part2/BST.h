@@ -1,3 +1,7 @@
+// Leader Full Name: Ouahioune Raid Abderrezak 
+
+//Group:4
+
 #ifndef BST_H
 #define BST_H
 
@@ -28,12 +32,13 @@ class BST
 {
 public:
     void storeAllPatients();
-    void insert(const Patient &);
-    void insert(Patient &&);
+    bool insert(const Patient &);
+    bool insert(Patient &&);
     bool contains(const string &);
     void Delete(const string &, bool &state);
     int getNumberOfPatient() const;
     bool update(const string &, const MedicalInfo &);
+    bool update(const string &, const char &, MedicalInfo &);
     void InsertSortedArray(const vector<Patient> &);
     bool printPatient(const string &) const;
     BST(){};
@@ -43,12 +48,13 @@ private:
     BSTNode *root = nullptr;
     int numberOfPatient = 0;
     void storeAllPatientsHelper(BSTNode *&);
-    void InsertElementHelper(BSTNode *&, const Patient &);
-    void InsertElementHelper(BSTNode *&, Patient &&);
+    bool InsertElementHelper(BSTNode *&, const Patient &);
+    bool InsertElementHelper(BSTNode *&, Patient &&);
     bool BinarySearchHelper(BSTNode *&, const string &) const;
     void DestructorHelper(BSTNode **);
     void Delete(const string &, BSTNode *&, bool &state);
     bool updateHelper(BSTNode *&, const string &, const MedicalInfo &);
+    bool updateHelper(BSTNode *&, const string &, const char &, MedicalInfo &);
     void InsertSortedArrayHelper(BSTNode *&, const vector<Patient> &, int, int);
     BSTNode *findMin(BSTNode *&root) const;
     void storeData(const Patient &patient) const;
@@ -73,13 +79,13 @@ void BST::storeAllPatientsHelper(BSTNode *&root)
     storeAllPatientsHelper(root->right);
 }
 
-void BST::insert(const Patient &patient)
+bool BST::insert(const Patient &patient)
 {
-    InsertElementHelper(this->root, patient);
+    return InsertElementHelper(this->root, patient);
 }
-void BST::insert(Patient &&patient)
+bool BST::insert(Patient &&patient)
 {
-    InsertElementHelper(this->root, std::move(patient));
+    return InsertElementHelper(this->root, std::move(patient));
 }
 
 bool BST::BinarySearchHelper(BSTNode *&root, const string &id) const
@@ -122,38 +128,40 @@ BST::~BST()
     DestructorHelper(&(this->root));
 }
 
-void BST::InsertElementHelper(BSTNode *&root, const Patient &patient)
+bool BST::InsertElementHelper(BSTNode *&root, const Patient &patient)
 {
     if (root == nullptr)
     {
         root = new BSTNode(patient);
         numberOfPatient++;
+        return true;
     }
     else if (root->data < patient)
-        InsertElementHelper(root->right, patient);
+        return InsertElementHelper(root->right, patient);
     else if (root->data > patient)
-        InsertElementHelper(root->left, patient);
+        return InsertElementHelper(root->left, patient);
     else
     {
         cout << "PATIENT WITH THIS ID: " << patient.getId() << " ALREADY EXISTS" << endl;
         root->data.setMedicalInfo(patient.getMedicalInfo());
         cout << "THE PATIENT'S INFORMATION ENTERED HAS BEEN UPDATED "
              << endl;
-        return;
+        return false;
     }
 }
 
-void BST::InsertElementHelper(BSTNode *&root, Patient &&patient)
+bool BST::InsertElementHelper(BSTNode *&root, Patient &&patient)
 {
     if (root == nullptr)
     {
         root = new BSTNode(std::move(patient));
         numberOfPatient++;
+        return true;
     }
     else if (root->data < patient)
-        InsertElementHelper(root->right, std::move(patient));
+        return InsertElementHelper(root->right, std::move(patient));
     else
-        InsertElementHelper(root->left, std::move(patient));
+        return InsertElementHelper(root->left, std::move(patient));
 }
 void BST::Delete(const string &value, bool &state)
 {
@@ -196,6 +204,10 @@ bool BST::update(const string &ID, const MedicalInfo &info)
 {
     return updateHelper(root, ID, info);
 }
+bool BST::update(const string &ID, const char &dep, MedicalInfo &info)
+{
+    return updateHelper(root, ID, dep, info);
+}
 
 bool BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info)
 {
@@ -214,6 +226,27 @@ bool BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info
             return updateHelper(root->right, ID, info);
         else
             return updateHelper(root->left, ID, info);
+    }
+}
+bool BST::updateHelper(BSTNode *&root, const string &ID, const char &dep, MedicalInfo &info)
+{
+    if (root == nullptr)
+    {
+        return false;
+    }
+    else
+    {
+        if (root->data.getId() == ID)
+        {
+            root->data.setTime(getTime());
+            root->data.setDepartment(dep);
+            info = root->data.getMedicalInfo();
+            return true;
+        }
+        else if (stoll(root->data.getId()) < stoll(ID))
+            return updateHelper(root->right, ID, dep, info);
+        else
+            return updateHelper(root->left, ID, dep, info);
     }
 }
 
@@ -263,7 +296,6 @@ bool BST::printPatient(const string &ID, BSTNode *t) const
         t->data.printPatient();
         return true; // Match
     }
-    return true;
 }
 
 bool BST::printPatient(const string &ID) const
