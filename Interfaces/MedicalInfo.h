@@ -89,7 +89,7 @@ void MedicalInfo::setDepartment(const char &a)
 
 void MedicalInfo::printInfo() const
 {
-    cout << "Chronical Diseases: " CD << endl;
+    cout << "Chronical Diseases: " << CD << endl;
     cout << "Allergies: " << Allergies << endl;
     cout << "Blood Pressure: " << BP << endl;
     cout << "Heart Rate: " << HR << endl;

@@ -1,6 +1,6 @@
-// Leader Full Name: Ouahioune Raid Abderrezak 
+// Leader Full Name: Ouahioune Raid Abderrezak
 
-//Group:4
+// Group:4
 
 #ifndef HOSPITAL_H
 #define HOSPITAL_H
@@ -110,6 +110,7 @@ public:
             if (Tree.printPatient(ID))
                 return;
         }
+        cout << "\nCould not print patient with the ID: " << ID << endl;
     }
     void LeaveHospital(const string &ID)
     {

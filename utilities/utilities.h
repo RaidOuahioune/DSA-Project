@@ -108,7 +108,7 @@ vector<string> getFilesinWin()
   vector<string> files;
 
   for (const auto &entry : fs::directory_iterator(path))
-    files.push_back(string(entry.path()).substr(5));
+    files.push_back(entry.path().string().substr(5));
 
   return files;
 }
