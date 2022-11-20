@@ -20,9 +20,10 @@ public:
     void setCd(const string &);
     void setAllergies(const string &);
     void setBP(float);
-    void steHr(float);
+    void setHr(float);
     void setMedicalstaken(const vector<string> &);
     void setNote(const string &);
+    void setTime(const string &);
     void setDepartment(const char &);
     void printInfo() const;
 
@@ -44,20 +45,6 @@ MedicalInfo::MedicalInfo(const string &CD = generateCDS(), const string &Allergi
     time = getTime();
 }
 
-void MedicalInfo::printInfo() const
-{
-    cout << CD << endl;
-    cout << Allergies << endl;
-    cout << BP << endl;
-    cout << HR << endl;
-    for (const string &i : MedicalsTaken)
-        cout << i << endl;
-    cout << time << endl;
-    cout << Department << endl;
-    cout << briefNote << endl;
-    cout << endl;
-}
-
 void MedicalInfo::setCd(const string &a)
 {
     this->CD = a;
@@ -71,7 +58,7 @@ void MedicalInfo::setBP(float a)
     if (a > 0)
         this->BP = a;
 }
-void MedicalInfo::steHr(float a)
+void MedicalInfo::setHr(float a)
 {
     if (a > 0)
         this->HR = a;
@@ -85,8 +72,27 @@ void MedicalInfo::setNote(const string &a)
     this->briefNote = a;
 }
 
+void MedicalInfo::setTime(const string &time)
+{
+    this->time = time;
+}
+
 void MedicalInfo::setDepartment(const char &a)
 {
     this->Department = a;
+}
+
+void MedicalInfo::printInfo() const
+{
+    cout << CD << endl;
+    cout << Allergies << endl;
+    cout << BP << endl;
+    cout << HR << endl;
+    for (const string &i : MedicalsTaken)
+        cout << i << endl;
+    cout << time << endl;
+    cout << Department << endl;
+    cout << briefNote << endl;
+    cout << endl;
 }
 #endif //

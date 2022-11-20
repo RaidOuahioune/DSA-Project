@@ -26,7 +26,9 @@ public:
     }
     void init()
     {
+        Departements(NUMBER_OF_DEPARTMENTS);
         vector<vector<Patient>> allPatients = FileHandler().getALLPatient();
+
         for (int i = 0; i < allPatients.size(); i++)
         {
             Departements[i].insertSortedArray(allPatients[i]);
@@ -34,7 +36,7 @@ public:
     }
     void insert(const Patient &patient)
     {
-        Departements(NUMBER_OF_DEPARTMENTS);
+
         Departements[patient.getDepartment() - 'A'].insert(patient);
     }
 
@@ -46,7 +48,8 @@ public:
         for (T &Tree : Departements)
         {
             Tree.Delete(ID, state);
-            if (state != isBtree)
+
+            if ((isBtree && state) || (!isBtree && state))
             {
                 cout << "Deleted Patient Successfully With ID : " << ID << endl;
                 return;

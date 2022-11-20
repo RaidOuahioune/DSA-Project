@@ -12,7 +12,7 @@ namespace BtreeComparaison
   vector<int> Orders = {2, 3, 4, 5, 6};
   void BuildTreeComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/BtreeComparaison/BuildTree.csv", std::ios_base::app);
 
@@ -49,14 +49,14 @@ namespace BtreeComparaison
 
   void SearchComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/BtreeComparaison/Search.csv", std::ios_base::app);
     FileHandler handler;
     vector<vector<Patient>> allPatients = handler.getALLPatient(size);
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -95,7 +95,7 @@ namespace BtreeComparaison
 
   void InsertionComparaison()
   {
-    int size=0;
+    int size = 0;
     fstream file;
     file.open("Test/BtreeComparaison/Insert.csv", ios_base::app);
     FileHandler handler;
@@ -119,7 +119,7 @@ namespace BtreeComparaison
           Btrees[patient.getDepartment() - 'A'].insert((patient));
         }
       }
-      int randomDep=0;
+      int randomDep = 0;
       while (allPatients[randomDep].size() == 0)
       {
         randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -138,7 +138,7 @@ namespace BtreeComparaison
 
   void UpdateComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/BtreeComparaison/update.csv", ios_base::app);
 
@@ -150,7 +150,7 @@ namespace BtreeComparaison
 
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -188,7 +188,7 @@ namespace BtreeComparaison
 
   void DeleteComparaison()
   {
-    int size=0;
+    int size = 0;
     ofstream file;
     file.open("Test/BtreeComparaison/delete.csv", ios_base::app);
     FileHandler handler;
@@ -197,7 +197,7 @@ namespace BtreeComparaison
 
     srand(time(nullptr));
 
-    int randomDep=0;
+    int randomDep = 0;
     while (allPatients[randomDep].size() == 0)
     {
       randomDep = rand() % NUMBER_OF_DEPARTMENTS;
@@ -208,6 +208,7 @@ namespace BtreeComparaison
     for (int y = 0; y < Orders.size(); y++)
     {
       vector<BTree> Btrees(NUMBER_OF_DEPARTMENTS);
+      bool dummy = true;
       for (BTree &tree : Btrees)
       {
         tree = BTree(Orders[y]);
@@ -222,7 +223,7 @@ namespace BtreeComparaison
         }
       }
       auto start = std::chrono::high_resolution_clock::now();
-      Btrees[randomDep].Delete(randomId);
+      Btrees[randomDep].Delete(randomId, dummy);
       auto end = std::chrono::high_resolution_clock::now();
       file << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
       if (Orders[y] != 6)

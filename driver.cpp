@@ -1,4 +1,4 @@
-/* #include <iostream>
+#include <iostream>
 #include <unordered_map>
 #include "Part1/Btree.h"
 #include "Part3/AVL.h"
@@ -82,36 +82,36 @@ void EnterMedicalinfos(MedicalInfo &medicalInfo)
 
 void enterPatient(Patient &patient)
 {
-  string a, b, c, d, g, h;
+  string fullName, bDay, entryDate, adress, tel, ABO;
+  char FM;
   MedicalInfo info;
 
-  char e;
   cout << "Enter the name of the patient : ";
-  cin >> g;
+  getline(cin, fullName);
   cout << "Enter the Adress of the patient : ";
-  cin >> b;
-  cout << "Enter the birthdate of the patient : ";
-  cin >> c;
+  getline(cin, adress);
+  cout << "Enter the Birth Date of the patient \" dd/mm/yyyy \" : ";
+  cin >> bDay;
   cout << "Enter the gender of the patient ( M for male & F for female) : ";
-  cin >> e;
+  cin >> FM;
   cout << "Enter the blood type of the patient : ";
-  cin >> a;
+  cin >> ABO;
   cout << "Enter the phone number of the patient : ";
-  cin >> h;
-  cout << "Today's date : ";
-  cin >> d;
+  cin >> tel;
+  cout << "Today's date : \" dd/mm/yyyy \": ";
+  cin >> entryDate;
 
   EnterMedicalinfos(info);
 
-  patient.setAbo(a);
-  patient.setAddress(b);
-  patient.setBday(c);
-  patient.setFm(e);
+  patient.setAbo(ABO);
+  patient.setAddress(adress);
+  patient.setBday(bDay);
+  patient.setFm(FM);
   patient.setMedicalInfo(info);
-  patient.setName(g);
-  patient.setPhone(h);
+  patient.setName(fullName);
+  patient.setPhone(tel);
 }
 
 int main()
 {
-} */
+}
