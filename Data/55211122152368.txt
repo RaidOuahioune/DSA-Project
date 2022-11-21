@@ -1,0 +1,17 @@
+ID: 55211122152368
+FullName: Steffanie Emmitt 
+BirthDay: 23-07-1974
+Entry Date: 21-11-2022 15-23-43
+Adress: West Virginia/WOOL CT/Block:I/dep:184
+Gender: M
+Telephone: 0792589667
+ABO: O+
+CD: Asthma/ Diabetes/ 
+Allergies: 
+BP: 91.5182
+HR: 35.6107
+Medicals Taken: Ciprofloxacin Clobetasol Metronidazole 
+Time: 21-11-2022 15-23-43
+Department: C
+Notes: 
+

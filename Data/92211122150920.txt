@@ -1,0 +1,17 @@
+ID: 92211122150920
+FullName: Jawaun Nikea 
+BirthDay: 27-05-1963
+Entry Date: 21-11-2022 15-09-39
+Adress: Vermont/NAPLES ST/Block:W/dep:148
+Gender: F
+Telephone: 077808870
+ABO: AB-
+CD: Irritable Bowel Syndrome/ Obesity/ 
+Allergies: soy allergy  
+BP: 117.998
+HR: 125.343
+Medicals Taken: Simvastatin Sitagliptin Epinephrine 
+Time: 21-11-2022 15-09-39
+Department: A
+Notes: 
+

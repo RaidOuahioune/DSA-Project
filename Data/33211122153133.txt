@@ -1,0 +1,17 @@
+ID: 33211122153133
+FullName: Rhea Yashira 
+BirthDay: 14-01-1939
+Entry Date: 21-11-2022 15-31-53
+Adress: Iowa/MARCELA AVE/Block:[/dep:125
+Gender: F
+Telephone: 064433394
+ABO: AB-
+CD: Bowel Diseases/ 
+Allergies: peanut allergy  
+BP: 97.0581
+HR: 54.3835
+Medicals Taken: Docusate Oseltamivir 
+Time: 21-11-2022 15-31-53
+Department: E
+Notes: 
+

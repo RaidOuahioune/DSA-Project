@@ -1,0 +1,17 @@
+ID: 85211122150950
+FullName: Gerry Karthik 
+BirthDay: 11-02-2007
+Entry Date: 21-11-2022 15-09-42
+Adress: Nevada/NICHOLS WAY/Block:N/dep:2
+Gender: F
+Telephone: 068084752
+ABO: A-
+CD: Bowel Diseases/ 
+Allergies: milk allergy 
+BP: 122.115
+HR: 139.292
+Medicals Taken: Atorvastatin Sulfamethoxazole 
+Time: 21-11-2022 15-09-42
+Department: C
+Notes: 
+

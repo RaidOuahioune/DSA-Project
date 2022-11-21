@@ -1,0 +1,17 @@
+ID: 27211122151219
+FullName: Sheilah Antwion 
+BirthDay: 19-03-1949
+Entry Date: 21-11-2022 15-12-01
+Adress: Delaware/ARELLANO AVE/Block:P/dep:130
+Gender: F
+Telephone: 0650147241
+ABO: B-
+CD: Asthma/ 
+Allergies: Latex Allergy  Mold Allergy 
+BP: 137.733
+HR: 192.216
+Medicals Taken: Fluticasone; Oxcarbazepine 
+Time: 21-11-2022 15-12-01
+Department: B
+Notes: 
+

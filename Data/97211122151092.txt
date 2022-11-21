@@ -1,0 +1,17 @@
+ID: 97211122151092
+FullName: Donald Donovan 
+BirthDay: 15-09-1982
+Entry Date: 21-11-2022 15-10-13
+Adress: New Mexico/HUBBELL ST/Block:R/dep:56
+Gender: M
+Telephone: 0613915992
+ABO: A+
+CD: Bowel Diseases/ 
+Allergies: 
+BP: 102.506
+HR: 72.8444
+Medicals Taken: Oxycodone Topiramate 
+Time: 21-11-2022 15-10-13
+Department: C
+Notes: 
+

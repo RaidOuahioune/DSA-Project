@@ -1,7 +1,6 @@
-// Leader Full Name: Ouahioune Raid Abderrezak 
+// Leader Full Name: Ouahioune Raid Abderrezak
 
-//Group:4
-
+// Group:4
 
 #ifndef BtreeNode_h
 #define BtreeNode_h
@@ -51,6 +50,7 @@ private:
   void merge(int index);
   void traverse();
   bool update(const string &ID, const MedicalInfo &info);
+  bool update(const string &ID, const char &dep, Patient &info);
   bool update(const string &ID, const char &dep, MedicalInfo &info);
   void storeData(const Patient &patient) const;
   void InsertSortedArrayHelper(BTreeNode *&root, const vector<Patient> &patients);
@@ -471,6 +471,30 @@ bool BTreeNode::update(const string &ID, const MedicalInfo &info)
   } // otherwise traverse the subtree
   return Children[i]->update(ID, info);
 }
+bool BTreeNode::update(const string &ID, const char &dep, Patient &info)
+{
+  int i = 0;
+  // search 2*order in the sorted patients(ascending) of keys where n is the current number of keys in the node
+  while (i < n && (stoll(ID) > stoll(keys[i].getId())))
+  {
+    i++;
+  }
+  if (i < n && keys[i].getId() == ID)
+  {
+    // once SubArray is found update it
+    keys[i].setDepartment(dep);
+    keys[i].setTime(getTime());
+    info = keys[i];
+    return true;
+  }
+  // at this point we have travesred all the node which means elemnt is not found
+  // if current is leaf that means we won't find the elemnet anywhere else we search at the i th subtree
+  if (leaf)
+  { // if current node is  leaf it means we didn't find the elment (hence no update is done)
+    return false;
+  } // otherwise traverse the subtree
+  return Children[i]->update(ID, dep, info);
+}
 bool BTreeNode::update(const string &ID, const char &dep, MedicalInfo &info)
 {
   int i = 0;
@@ -485,7 +509,6 @@ bool BTreeNode::update(const string &ID, const char &dep, MedicalInfo &info)
     keys[i].setDepartment(dep);
     keys[i].setTime(getTime());
     info = keys[i].getMedicalInfo();
-
     return true;
   }
   // at this point we have travesred all the node which means elemnt is not found

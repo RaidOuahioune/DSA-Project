@@ -1,0 +1,17 @@
+ID: 51211122151010
+FullName: Diandria Shanikqua 
+BirthDay: 03-02-1960
+Entry Date: 21-11-2022 15-10-33
+Adress: North Carolina/CLARKE ST/Block:Z/dep:174
+Gender: M
+Telephone: 0531926769
+ABO: B+
+CD: 
+Allergies: egg allergy  tree nut allergy  
+BP: 135.519
+HR: 184.713
+Medicals Taken: Alprazolam 
+Time: 21-11-2022 15-10-33
+Department: E
+Notes: 
+

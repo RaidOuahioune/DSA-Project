@@ -1,0 +1,17 @@
+ID: 40211122152529
+FullName: Liza Sharin 
+BirthDay: 06-05-1966
+Entry Date: 21-11-2022 15-25-33
+Adress: IllinoisIndiana/FELTON ST/Block:N/dep:7
+Gender: M
+Telephone: 0573384748
+ABO: A+
+CD: 
+Allergies: 
+BP: 112.857
+HR: 107.922
+Medicals Taken: Glyburide 
+Time: 21-11-2022 15-25-33
+Department: D
+Notes: 
+

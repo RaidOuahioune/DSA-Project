@@ -1,6 +1,6 @@
-// Leader Full Name: Ouahioune Raid Abderrezak 
+// Leader Full Name: Ouahioune Raid Abderrezak
 
-//Group:4
+// Group:4
 
 #ifndef BST_H
 #define BST_H
@@ -38,6 +38,7 @@ public:
     void Delete(const string &, bool &state);
     int getNumberOfPatient() const;
     bool update(const string &, const MedicalInfo &);
+    bool update(const string &, const char &, Patient &);
     bool update(const string &, const char &, MedicalInfo &);
     void InsertSortedArray(const vector<Patient> &);
     bool printPatient(const string &) const;
@@ -54,7 +55,8 @@ private:
     void DestructorHelper(BSTNode **);
     void Delete(const string &, BSTNode *&, bool &state);
     bool updateHelper(BSTNode *&, const string &, const MedicalInfo &);
-    bool updateHelper(BSTNode *&, const string &, const char &, MedicalInfo &);
+    bool updateHelper(BSTNode *&, const string &, const char &, Patient &);
+     bool updateHelper(BSTNode *&, const string &, const char &, MedicalInfo &);
     void InsertSortedArrayHelper(BSTNode *&, const vector<Patient> &, int, int);
     BSTNode *findMin(BSTNode *&root) const;
     void storeData(const Patient &patient) const;
@@ -204,6 +206,10 @@ bool BST::update(const string &ID, const MedicalInfo &info)
 {
     return updateHelper(root, ID, info);
 }
+bool BST::update(const string &ID, const char &dep, Patient &info)
+{
+    return updateHelper(root, ID, dep, info);
+}
 bool BST::update(const string &ID, const char &dep, MedicalInfo &info)
 {
     return updateHelper(root, ID, dep, info);
@@ -226,6 +232,27 @@ bool BST::updateHelper(BSTNode *&root, const string &ID, const MedicalInfo &info
             return updateHelper(root->right, ID, info);
         else
             return updateHelper(root->left, ID, info);
+    }
+}
+bool BST::updateHelper(BSTNode *&root, const string &ID, const char &dep, Patient &info)
+{
+    if (root == nullptr)
+    {
+        return false;
+    }
+    else
+    {
+        if (root->data.getId() == ID)
+        {
+            root->data.setTime(getTime());
+            root->data.setDepartment(dep);
+            info = root->data;
+            return true;
+        }
+        else if (stoll(root->data.getId()) < stoll(ID))
+            return updateHelper(root->right, ID, dep, info);
+        else
+            return updateHelper(root->left, ID, dep, info);
     }
 }
 bool BST::updateHelper(BSTNode *&root, const string &ID, const char &dep, MedicalInfo &info)

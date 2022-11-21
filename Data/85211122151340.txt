@@ -1,0 +1,17 @@
+ID: 85211122151340
+FullName: Chauncey Terresa 
+BirthDay: 27-04-1972
+Entry Date: 21-11-2022 15-13-26
+Adress: Virginia/BEPLER ST/Block:V/dep:108
+Gender: M
+Telephone: 0589846182
+ABO: AB+
+CD: 
+Allergies: Insect Allergy Pet Allergy  
+BP: 110.714
+HR: 100.658
+Medicals Taken: Tiotropium 
+Time: 21-11-2022 15-13-26
+Department: C
+Notes: 
+

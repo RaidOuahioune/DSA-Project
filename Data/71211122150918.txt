@@ -1,0 +1,17 @@
+ID: 71211122150918
+FullName: Elan Kristyl 
+BirthDay: 16-12-1946
+Entry Date: 21-11-2022 15-09-53
+Adress: Michigan/STONEYFORD AVE/Block:T/dep:137
+Gender: M
+Telephone: 076386498
+ABO: AB+
+CD: Alzheimer/ Cystic Fibrosis/ 
+Allergies: 
+BP: 94.2563
+HR: 44.8893
+Medicals Taken: Empagliflozin Docusate Isotretinoin 
+Time: 21-11-2022 15-09-53
+Department: D
+Notes: 
+

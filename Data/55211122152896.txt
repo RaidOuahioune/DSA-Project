@@ -1,0 +1,17 @@
+ID: 55211122152896
+FullName: Neil Jeanie 
+BirthDay: 21-06-1973
+Entry Date: 21-11-2022 15-28-43
+Adress: Washington/SUTTER ST/Block:N/dep:152
+Gender: F
+Telephone: 0639561856
+ABO: A-
+CD: Arthritis/ 
+Allergies: soy allergy  shellfish allergy 
+BP: 117.491
+HR: 123.625
+Medicals Taken: Ergocalciferol Valacyclovir 
+Time: 21-11-2022 15-28-43
+Department: B
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 99211122151929
+FullName: Leann Lia 
+BirthDay: 19-12-2013
+Entry Date: 21-11-2022 15-19-08
+Adress: OLD CHINATOWN LN/Block:N/dep:140
+Gender: F
+Telephone: 0797976526
+ABO: AB-
+CD: ALS (Lou Gehrig's Disease)/ Cancer/ 
+Allergies: soy allergy  shellfish allergy Mold Allergy 
+BP: 113.992
+HR: 111.765
+Medicals Taken: Ergocalciferol Donepezil Ofloxacin 
+Time: 21-11-2022 15-19-08
+Department: B
+Notes: 
+

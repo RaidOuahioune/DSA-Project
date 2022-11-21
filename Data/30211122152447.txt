@@ -1,0 +1,17 @@
+ID: 30211122152447
+FullName: Daphne Najla 
+BirthDay: 17-08-2002
+Entry Date: 21-11-2022 15-24-39
+Adress: Alabama/PARK ST/Block:M/dep:68
+Gender: M
+Telephone: 0563484206
+ABO: AB+
+CD: 
+Allergies: 
+BP: 95.3329
+HR: 48.5373
+Medicals Taken: Mirtazapine 
+Time: 21-11-2022 15-24-39
+Department: B
+Notes: 
+

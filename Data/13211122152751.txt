@@ -1,0 +1,17 @@
+ID: 13211122152751
+FullName: Monica Phyllis 
+BirthDay: 01-02-2008
+Entry Date: 21-11-2022 15-27-32
+Adress: Oregon/DELMAR ST/Block:X/dep:112
+Gender: M
+Telephone: 0668970378
+ABO: AB+
+CD: Alzheimer/ 
+Allergies: peanut allergy  soy allergy  
+BP: 119.922
+HR: 131.862
+Medicals Taken: Magnesium Bumetanide 
+Time: 21-11-2022 15-27-32
+Department: D
+Notes: 
+

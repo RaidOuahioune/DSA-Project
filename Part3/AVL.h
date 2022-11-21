@@ -1,6 +1,6 @@
-// Leader Full Name: Ouahioune Raid Abderrezak 
+// Leader Full Name: Ouahioune Raid Abderrezak
 
-//Group:4
+// Group:4
 
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
@@ -116,6 +116,10 @@ public:
     bool update(const string &ID, const MedicalInfo &info)
     {
         return update(root, ID, info);
+    }
+    bool update(const string &ID, const char &dep, Patient &info)
+    {
+        return update(root, ID, dep, info);
     }
     bool update(const string &ID, const char &dep, MedicalInfo &info)
     {
@@ -363,6 +367,27 @@ private:
                 return update(root->left, ID, info);
         }
     }
+    bool update(AvlNode *&root, const string &ID, const char &dep, Patient &info)
+    {
+        if (root == nullptr)
+        {
+            return false;
+        }
+        else
+        {
+            if (root->element.getId() == ID)
+            {
+                root->element.setDepartment(dep);
+                root->element.setTime(getTime());
+                info = root->element;
+                return true;
+            }
+            else if (stoll(root->element.getId()) < stoll(ID))
+                return update(root->right, ID, dep, info);
+            else
+                return update(root->left, ID, dep, info);
+        }
+    }
     bool update(AvlNode *&root, const string &ID, const char &dep, MedicalInfo &info)
     {
         if (root == nullptr)
@@ -384,7 +409,6 @@ private:
                 return update(root->left, ID, dep, info);
         }
     }
-
     void InsertSortedArrayHelper(AvlNode *&root, const vector<Patient> &array, int left, int right)
     {
         if (left > right)

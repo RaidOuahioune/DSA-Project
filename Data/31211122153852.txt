@@ -1,0 +1,17 @@
+ID: 31211122153852
+FullName: Pablo Kelsi 
+BirthDay: 20-10-1934
+Entry Date: 21-11-2022 15-38-24
+Adress: IllinoisIndiana/NORTHRIDGE RD/Block:X/dep:111
+Gender: M
+Telephone: 059260984
+ABO: A+
+CD: 
+Allergies: 
+BP: 103.389
+HR: 75.8358
+Medicals Taken: Clopidogrel 
+Time: 21-11-2022 15-38-24
+Department: E
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 99211122151849
+FullName: Tracie Delisa 
+BirthDay: 23-02-1972
+Entry Date: 21-11-2022 15-18-50
+Adress: Connecticut/BORICA ST/Block:Q/dep:14
+Gender: M
+Telephone: 0539932369
+ABO: B+
+CD: 
+Allergies: Drug Allergy Pet Allergy  
+BP: 116.58
+HR: 120.535
+Medicals Taken: Clonidine 
+Time: 21-11-2022 15-18-50
+Department: E
+Notes: 
+

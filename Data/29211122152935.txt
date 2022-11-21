@@ -1,0 +1,17 @@
+ID: 29211122152935
+FullName: Sarabeth Elyce 
+BirthDay: 29-09-1940
+Entry Date: 21-11-2022 15-29-53
+Adress: Virginia/HIGUERA AVE/Block:W/dep:100
+Gender: M
+Telephone: 0530758542
+ABO: AB+
+CD: 
+Allergies: wheat allergy  Insect Allergy 
+BP: 121.803
+HR: 138.234
+Medicals Taken: Insulin 
+Time: 21-11-2022 15-29-53
+Department: C
+Notes: 
+

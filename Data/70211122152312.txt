@@ -1,0 +1,17 @@
+ID: 70211122152312
+FullName: Desaree Haneef 
+BirthDay: 14-01-1991
+Entry Date: 21-11-2022 15-23-17
+Adress: Minnesota/THORNTON AVE/Block:L/dep:25
+Gender: F
+Telephone: 0564969365
+ABO: B-
+CD: 
+Allergies: milk allergy 
+BP: 125.985
+HR: 152.406
+Medicals Taken: Tamsulosin 
+Time: 21-11-2022 15-23-17
+Department: A
+Notes: 
+

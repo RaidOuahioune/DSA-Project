@@ -1,0 +1,17 @@
+ID: 79211122150926
+FullName: Katoya Dashan 
+BirthDay: 20-00-2005
+Entry Date: 21-11-2022 15-09-40
+Adress: Idaho/DRUMM ST/Block:O/dep:71
+Gender: F
+Telephone: 07411810
+ABO: AB-
+CD: ALS (Lou Gehrig's Disease)/ Arthritis/ 
+Allergies: tree nut allergy  Insect Allergy Mold Allergy 
+BP: 111.052
+HR: 101.803
+Medicals Taken: Insulin Spironolactone Ranolazine 
+Time: 21-11-2022 15-09-40
+Department: A
+Notes: 
+

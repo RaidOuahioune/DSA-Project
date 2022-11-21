@@ -24,6 +24,7 @@ public:
   bool insert(Patient &&);
   void Delete(const string &, bool &state);
   bool update(const string &, const MedicalInfo &);
+  bool update(const string &, const char &, Patient &);
   bool update(const string &, const char &, MedicalInfo &);
   int getNumberOfPatient() const;
   void InsertSortedArray(const vector<Patient> &);
@@ -153,6 +154,15 @@ bool BTree::update(const string &ID, const MedicalInfo &info)
   if (root != nullptr)
   {
     return root->update(ID, info);
+  }
+  else
+    return false;
+}
+bool BTree::update(const string &ID, const char &dep, Patient &info)
+{
+  if (root != nullptr)
+  {
+    return root->update(ID, dep, info);
   }
   else
     return false;

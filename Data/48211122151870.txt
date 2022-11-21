@@ -1,0 +1,17 @@
+ID: 48211122151870
+FullName: Kerline Takeria 
+BirthDay: 29-09-1998
+Entry Date: 21-11-2022 15-18-17
+Adress: Alabama/CRESTWELL WALK/Block:S/dep:40
+Gender: M
+Telephone: 0559538665
+ABO: B+
+CD: 
+Allergies: 
+BP: 125.277
+HR: 150.009
+Medicals Taken: Clonidine 
+Time: 21-11-2022 15-18-17
+Department: A
+Notes: 
+

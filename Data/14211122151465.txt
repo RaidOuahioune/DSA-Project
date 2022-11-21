@@ -1,0 +1,17 @@
+ID: 14211122151465
+FullName: Jillianne Jameshia 
+BirthDay: 11-09-1989
+Entry Date: 21-11-2022 15-14-07
+Adress: KINGSTON ST/Block:Z/dep:112
+Gender: F
+Telephone: 0721794334
+ABO: AB-
+CD: Crohn's Disease/ Ulcerative Colitis/ 
+Allergies: tree nut allergy  Latex Allergy  Mold Allergy 
+BP: 120.397
+HR: 133.472
+Medicals Taken: Alendronate Mirtazapine Dexlansoprazole 
+Time: 21-11-2022 15-14-07
+Department: E
+Notes: 
+

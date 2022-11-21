@@ -1,0 +1,17 @@
+ID: 97211122153627
+FullName: Delvin San 
+BirthDay: 18-06-2010
+Entry Date: 21-11-2022 15-36-57
+Adress: MontanaNebraska/FUNSTON RD/Block:L/dep:169
+Gender: M
+Telephone: 0563733592
+ABO: A+
+CD: 
+Allergies: 
+BP: 94.3549
+HR: 45.2233
+Medicals Taken: Tamsulosin 
+Time: 21-11-2022 15-36-57
+Department: C
+Notes: 
+

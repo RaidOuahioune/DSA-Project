@@ -1,0 +1,17 @@
+ID: 15211122150922
+FullName: Darnisha Maygan 
+BirthDay: 00-02-1976
+Entry Date: 21-11-2022 15-09-46
+Adress: Connecticut/TACOMA ST/Block:L/dep:181
+Gender: M
+Telephone: 0554594066
+ABO: AB+
+CD: 
+Allergies: milk allergy soy allergy  
+BP: 118.616
+HR: 127.436
+Medicals Taken: Lovastatin 
+Time: 21-11-2022 15-09-46
+Department: B
+Notes: 
+

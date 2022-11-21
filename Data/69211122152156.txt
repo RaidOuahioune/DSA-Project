@@ -1,0 +1,17 @@
+ID: 69211122152156
+FullName: Lavell Landis 
+BirthDay: 25-12-1934
+Entry Date: 21-11-2022 15-21-38
+Adress: IllinoisIndiana/CEDRO AVE/Block:V/dep:136
+Gender: M
+Telephone: 0596727357
+ABO: B+
+CD: 
+Allergies: 
+BP: 127.012
+HR: 155.888
+Medicals Taken: Tamsulosin 
+Time: 21-11-2022 15-21-38
+Department: C
+Notes: 
+

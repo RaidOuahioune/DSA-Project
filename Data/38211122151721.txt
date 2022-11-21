@@ -1,0 +1,17 @@
+ID: 38211122151721
+FullName: Dian Charlesetta 
+BirthDay: 26-02-1994
+Entry Date: 21-11-2022 15-17-59
+Adress: Florida/WORTH ST/Block:J/dep:57
+Gender: M
+Telephone: 0772171092
+ABO: A+
+CD: ALS (Lou Gehrig's Disease)/ Osteoporosis/ 
+Allergies: 
+BP: 102.677
+HR: 73.4223
+Medicals Taken: Ketoconazole Phenytoin Isosorbide 
+Time: 21-11-2022 15-17-59
+Department: C
+Notes: 
+

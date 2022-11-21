@@ -1,7 +1,6 @@
-// Leader Full Name: Ouahioune Raid Abderrezak 
+// Leader Full Name: Ouahioune Raid Abderrezak
 
-//Group:4
-
+// Group:4
 
 #ifndef BtreeComparaison_h
 #define BtreeComparaison_h
@@ -43,6 +42,7 @@ namespace BtreeComparaison
         }
       }
       auto end = std::chrono::high_resolution_clock::now();
+      cout << "Build Btree of Order " << Orders[y] << " Running Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << endl;
       file << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
       if (Orders[y] != 6)
         file << ',';
@@ -90,6 +90,8 @@ namespace BtreeComparaison
       Btrees[randomDep].contains(randomId);
       auto end = std::chrono::high_resolution_clock::now();
       file << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+      cout << "Searching in Btree of Order " << Orders[y] << " Running Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << endl;
+
       if (Orders[y] != 6)
         file << ',';
     }
@@ -134,6 +136,8 @@ namespace BtreeComparaison
       Btrees[randomDep].insert(patient);
       auto end = std::chrono::high_resolution_clock::now();
       file << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+      cout << "Inserting in Btree of Order " << Orders[y] << " Running Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << endl;
+
       if (Orders[y] != 6)
         file << ',';
     }
@@ -183,6 +187,8 @@ namespace BtreeComparaison
       Btrees[randomDep].update(randomId, info);
       auto end = std::chrono::high_resolution_clock::now();
       file << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+      cout << "Updating in Btree of Order " << Orders[y] << " Running Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << endl;
+
       if (Orders[y] != 6)
         file << ',';
     }
@@ -231,6 +237,8 @@ namespace BtreeComparaison
       Btrees[randomDep].Delete(randomId, dummy);
       auto end = std::chrono::high_resolution_clock::now();
       file << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+      cout << "Deleting in Btree of Order " << Orders[y] << " Running Time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << endl;
+
       if (Orders[y] != 6)
         file << ',';
     }
@@ -251,7 +259,7 @@ namespace BtreeComparaison
 
   void GenerateData()
   {
-    for (int y = 1; y <= 300; y++)
+    for (int y = 1; y <= 100; y++)
     {
       addNewPatients();
       BuildTreeComparaison();

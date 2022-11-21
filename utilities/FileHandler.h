@@ -67,7 +67,11 @@ vector<MedicalInfo> FileHandler::getAllHistory(const string &ID) const
     string line;
     // we skip the first 8 lines of the genaral information
     for (int i = 0; i < 8; ++i)
+    {
       getline(file, line);
+      if (i == 1)
+        cout << line << endl;
+    }
 
     // Medical Info Object to be pushed to the output vector
     MedicalInfo info;

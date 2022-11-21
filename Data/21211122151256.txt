@@ -1,0 +1,17 @@
+ID: 21211122151256
+FullName: Althea Domingue 
+BirthDay: 14-07-2003
+Entry Date: 21-11-2022 15-12-10
+Adress: Vermont/HIGHLAND AVE/Block:S/dep:35
+Gender: F
+Telephone: 0746883116
+ABO: A-
+CD: Arthritis/ Irritable Bowel Syndrome/ 
+Allergies: milk allergy 
+BP: 124.044
+HR: 145.828
+Medicals Taken: Oxycodone Aripiprazole Phenytoin 
+Time: 21-11-2022 15-12-10
+Department: B
+Notes: 
+

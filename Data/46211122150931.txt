@@ -1,0 +1,17 @@
+ID: 46211122150931
+FullName: Gene Arlington 
+BirthDay: 00-08-1932
+Entry Date: 21-11-2022 15-09-50
+Adress: Hawaii/WYMAN AVE/Block:R/dep:141
+Gender: M
+Telephone: 0615977882
+ABO: AB+
+CD: ALS (Lou Gehrig's Disease)/ 
+Allergies: milk allergy Pet Allergy  
+BP: 115.419
+HR: 116.602
+Medicals Taken: Oxybutynin Dorzolamide 
+Time: 21-11-2022 15-09-50
+Department: C
+Notes: 
+

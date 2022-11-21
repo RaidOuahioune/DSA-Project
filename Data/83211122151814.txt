@@ -1,0 +1,17 @@
+ID: 83211122151814
+FullName: Deryk Alven 
+BirthDay: 23-11-1939
+Entry Date: 21-11-2022 15-18-35
+Adress: Maine/EXETER ST/Block:B/dep:74
+Gender: F
+Telephone: 0723879208
+ABO: A-
+CD: Alzheimer/ Cancer/ 
+Allergies: egg allergy  
+BP: 97.8814
+HR: 57.1734
+Medicals Taken: Lisdexamfetamine Lansoprazole Epinephrine 
+Time: 21-11-2022 15-18-35
+Department: D
+Notes: 
+

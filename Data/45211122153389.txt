@@ -1,0 +1,17 @@
+ID: 45211122153389
+FullName: Jousha Taiesha 
+BirthDay: 06-03-1934
+Entry Date: 21-11-2022 15-33-59
+Adress: IllinoisIndiana/BRIDGEVIEW DR/Block:F/dep:57
+Gender: M
+Telephone: 0582405516
+ABO: A+
+CD: 
+Allergies: 
+BP: 129.903
+HR: 165.683
+Medicals Taken: Dextroamphetamine 
+Time: 21-11-2022 15-33-59
+Department: B
+Notes: 
+

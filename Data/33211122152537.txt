@@ -1,0 +1,17 @@
+ID: 33211122152537
+FullName: Octavian Thaer 
+BirthDay: 29-07-1950
+Entry Date: 21-11-2022 15-25-06
+Adress: California/RICE ST/Block:V/dep:190
+Gender: M
+Telephone: 0639174159
+ABO: O+
+CD: Asthma/ 
+Allergies: 
+BP: 103.934
+HR: 77.6824
+Medicals Taken: Mesalamine Flecainide 
+Time: 21-11-2022 15-25-06
+Department: E
+Notes: 
+

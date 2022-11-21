@@ -1,0 +1,17 @@
+ID: 31211122151286
+FullName: Cortni Vernisha 
+BirthDay: 25-10-1941
+Entry Date: 21-11-2022 15-12-40
+Adress: Washington/PANORAMA DR/Block:G/dep:96
+Gender: F
+Telephone: 0658057488
+ABO: A-
+CD: Alzheimer/ 
+Allergies: peanut allergy  Latex Allergy  
+BP: 111.472
+HR: 103.227
+Medicals Taken: Glimepiride Fluticasone; 
+Time: 21-11-2022 15-12-40
+Department: D
+Notes: 
+

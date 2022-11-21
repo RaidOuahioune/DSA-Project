@@ -1,0 +1,17 @@
+ID: 47211122152876
+FullName: Richael Anamda 
+BirthDay: 19-04-2001
+Entry Date: 21-11-2022 15-28-06
+Adress: Washington/COTTAGE ROW/Block:D/dep:110
+Gender: F
+Telephone: 0691950
+ABO: AB-
+CD: Alzheimer/ 
+Allergies: peanut allergy  Drug Allergy Mold Allergy 
+BP: 104.423
+HR: 79.3409
+Medicals Taken: Dextroamphetamine Fenofibrate 
+Time: 21-11-2022 15-28-06
+Department: A
+Notes: 
+

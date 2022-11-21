@@ -1,0 +1,17 @@
+ID: 91211122152030
+FullName: Joeline Britnei 
+BirthDay: 24-11-1979
+Entry Date: 21-11-2022 15-20-50
+Adress: Oklahoma/INGERSON AVE/Block:W/dep:75
+Gender: F
+Telephone: 0587336427
+ABO: O-
+CD: 
+Allergies: egg allergy  
+BP: 116.731
+HR: 121.048
+Medicals Taken: Rosuvastatin 
+Time: 21-11-2022 15-20-50
+Department: C
+Notes: 
+

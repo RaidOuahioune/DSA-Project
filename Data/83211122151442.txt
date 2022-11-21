@@ -1,0 +1,17 @@
+ID: 83211122151442
+FullName: Chip Rollin 
+BirthDay: 22-09-1981
+Entry Date: 21-11-2022 15-14-34
+Adress: Arkansas/LEXINGTON ST/Block:C/dep:193
+Gender: F
+Telephone: 058724517
+ABO: B-
+CD: 
+Allergies: Latex Allergy  Mold Allergy Pet Allergy  
+BP: 129.3
+HR: 163.639
+Medicals Taken: Potassium 
+Time: 21-11-2022 15-14-34
+Department: C
+Notes: 
+

@@ -1,0 +1,17 @@
+ID: 44211122153753
+FullName: Carleigh Neidra 
+BirthDay: 01-10-1937
+Entry Date: 21-11-2022 15-37-46
+Adress: Idaho/CARPENTER CT/Block:Q/dep:192
+Gender: F
+Telephone: 0786586641
+ABO: B-
+CD: Alzheimer/ Ulcerative Colitis/ 
+Allergies: Drug Allergy Latex Allergy  
+BP: 97.5415
+HR: 56.0217
+Medicals Taken: Desogestrel; Canagliflozin Potassium 
+Time: 21-11-2022 15-37-46
+Department: B
+Notes: 
+

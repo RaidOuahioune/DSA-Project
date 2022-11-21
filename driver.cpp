@@ -19,5 +19,17 @@ using namespace DriverFunctions;
 
 int main()
 {
-  DoctorInput();
+  // IF YOU WANT TO RUN THE SOFTWARE
+  //DoctorInput();
+
+  /*IF YOU WANT TO COMPARE BETWEEN THE 3 ADTS*/
+  // IF YOU WANT TO GENERATE DATA  ONLY
+
+  // GeneralTesting::GenerateDataOnly();
+  // IF YOU WANT TO GENERATE DATA AND TEST
+  // GeneralTesting::GenerateDataAndTest();
+
+  /*IF YOU WANT TO COMPARE BETWEEN THE BTRESS*/
+
+  BtreeComparaison::GenerateData();
 }

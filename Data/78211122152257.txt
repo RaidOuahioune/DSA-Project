@@ -1,0 +1,17 @@
+ID: 78211122152257
+FullName: Boe Clavin 
+BirthDay: 12-07-1953
+Entry Date: 21-11-2022 15-22-52
+Adress: Missouri/GOLDEN BELL WAY/Block:I/dep:193
+Gender: F
+Telephone: 0762316004
+ABO: A-
+CD: Asthma/ Bowel Diseases/ 
+Allergies: Latex Allergy  Mold Allergy 
+BP: 127.895
+HR: 158.88
+Medicals Taken: Ergocalciferol Testosterone Sucralfate 
+Time: 21-11-2022 15-22-52
+Department: E
+Notes: 
+
