@@ -1,0 +1,13 @@
+milk allergy
+egg allergy 
+peanut allergy 
+soy allergy 
+wheat allergy 
+tree nut allergy 
+shellfish allergy
+Drug Allergy
+Insect Allergy
+Latex Allergy 
+Mold Allergy
+Pet Allergy 
+Pollen Allergy 

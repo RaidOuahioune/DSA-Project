@@ -1,0 +1,16 @@
+ALS (Lou Gehrig's Disease)/
+Alzheimer/
+Arthritis/
+Asthma/
+Cancer/
+Chronic Obstructive Pulmonary Disease (COPD)/
+Crohn's Disease/
+Ulcerative Colitis/
+Bowel Diseases/
+Irritable Bowel Syndrome/
+Cystic Fibrosis/
+Diabetes/
+Heart Disease/
+Obesity/
+Osteoporosis/
+Reflex Sympathetic Dystrophy (RSD) Syndrome/
